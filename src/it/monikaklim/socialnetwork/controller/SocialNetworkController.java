@@ -31,10 +31,11 @@ public class SocialNetworkController {
 
 		String username = request.getParameter("username").trim();
 		String password = request.getParameter("password").trim();
-		String esito = service.findUtente(username,password);
-		
-		model.addAttribute("esito",esito);
-		return "redirect:/";
+		boolean esito = service.findUtente(username,password);
+		if(esito == false)
+			return "login";
+		else
+			return "home";
 		}
 	
 	
@@ -57,7 +58,7 @@ public class SocialNetworkController {
 			if((nome.isEmpty() == false)&& (cognome.isEmpty() == false)&&(data.isEmpty() == false)&&(username.isEmpty() == false)&&(password.isEmpty() == false))
 			utente = new Utente(nome,cognome,data,username,password);
 			
-		// service.insertContatto(utente);
+		// service.registraUtente(utente);
 			
 		return "redirect:/";
 	}	

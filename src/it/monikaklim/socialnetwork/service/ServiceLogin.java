@@ -14,16 +14,16 @@ public class ServiceLogin {
 	
 	
 	@Transactional
-	public String findUtente(String user, String pass) {
+	public boolean findUtente(String user, String pass) {
 		
 		
 		if(loginDAO.findUtente(user,pass) == null)
 		{
-			return  "Username errato o password errata";
+			return  false;
 		}
 		else {
 			
-			return "Trovato";
+			return true;
 		}
 			
 		}	

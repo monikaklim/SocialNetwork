@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 
 <html>
@@ -20,20 +21,22 @@
 <table>
 <tr>
 <td>Username:</td>
-<td><input type = "text" name = "username" /></td>
+<td><input type = "text" name = "username" required/></td>
 </tr> <tr>
 <td>Password:</td>
-<td> <input type = "password" name = "password" /></td>
+<td> <input type = "password" name = "password" required/></td>
 </tr><tr>
 <td> <br><input class = "button" type = "submit" value = "Accedi" /></td>
 </tr>
 
 </table>
-${esito}
+
 </form>
+<br> <br>
+<form action = "registrazione"  >
+<input class = "button" type = "submit" value = "Registrati" />
 
-
-
+</form>
 
 </body>
 
