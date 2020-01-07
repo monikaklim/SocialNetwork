@@ -32,7 +32,7 @@ public class SocialNetworkController {
 	
 	@RequestMapping("/processRegistrazione")
 	public String processInsert(HttpServletRequest request, Model model) {
-		Utente utente = null;
+		 	Utente utente = null;
 			String nome = request.getParameter("nome").trim();
 			String cognome = request.getParameter("cognome").trim();
 			String data = request.getParameter("data").trim();
@@ -46,11 +46,11 @@ public class SocialNetworkController {
 		return "redirect:/";
 	}	
 		
-	
-	
-	
-	
-	
+	@RequestMapping("/select")
+	public String showSelect() {
+
+	return "redirect:/";
+	}	
 	
 	
 	
