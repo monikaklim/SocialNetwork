@@ -9,12 +9,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import it.monikaklim.socialnetwork.model.Utente;
+import it.monikaklim.socialnetwork.service.ServiceLogin;
 
 @Controller
 public class SocialNetworkController {
 
+	@Autowired
+	private ServiceLogin service;	
+	
 	
 	@RequestMapping("/")
 	public String showLogin() {
@@ -28,8 +31,10 @@ public class SocialNetworkController {
 
 		String username = request.getParameter("username").trim();
 		String password = request.getParameter("password").trim();
-		//service.loginUtente(username,password);
-		return "login";
+		String esito = service.findUtente(username,password);
+		
+		model.addAttribute("esito",esito);
+		return "redirect:/";
 		}
 	
 	

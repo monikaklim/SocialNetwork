@@ -1,7 +1,5 @@
 package it.monikaklim.socialnetwork.dao;
 
-import java.sql.*;
-
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +20,7 @@ public class LoginDAOImpl implements LoginDAO{
 		try {
 					Session session = sessionFactory.getCurrentSession();
 
-					utente = session.createQuery("from Utente where username = '"+user+"'", Utente.class).getSingleResult();
+					utente = session.createQuery("from Utente where username = '"+user+"' and password = '"+pass+"'", Utente.class).getSingleResult();
 
 					}
 					catch(Exception e) {
