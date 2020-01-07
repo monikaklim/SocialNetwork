@@ -18,8 +18,15 @@ public class SocialNetworkController {
 	@Autowired
 	private ServiceLogin service;	
 	
-	
 	@RequestMapping("/")
+	public String homepage() {
+
+	return "home";
+	}	
+	
+	
+	
+	@RequestMapping("/login")
 	public String showLogin() {
 
 	return "login";
@@ -35,7 +42,7 @@ public class SocialNetworkController {
 		if(esito == false)
 			return "login";
 		else
-			return "home";
+			return "redirect:home";
 		}
 	
 	
