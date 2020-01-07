@@ -1,0 +1,22 @@
+.button{
+  vertical-align:middle;
+  cursor:pointer;
+  border-radius: 8px;
+  border: none;
+  display: block;
+  background-color: #f1f1f1;
+  padding: 3px 10px;
+  text-decoration: none;
+  text-align: center;
+  color:black;
+  border: 2px solid #555;
+  font-family: "Verdana";
+  width: 200px;
+}
+.button:hover {
+  background-color: #555;
+  color: white;
+}
+
+
+
