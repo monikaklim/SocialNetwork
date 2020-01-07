@@ -21,10 +21,10 @@
 <table>
 <tr>
 <td>Username:</td>
-<td><input type = "text" name = "username" required/></td>
+<td><input type = "text" placeholder = "Username" name = "username" required/></td>
 </tr> <tr>
 <td>Password:</td>
-<td> <input type = "password" name = "password" id = "pass" required/></td>
+<td> <input type = "password" placeholder = "Password" name = "password" id = "pass" required/></td>
 <td><input type="checkbox" onclick="mostraPassword()">Mostra Password</td>
 </tr><tr>
 <tr>

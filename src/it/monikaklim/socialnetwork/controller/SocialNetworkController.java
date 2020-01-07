@@ -42,7 +42,7 @@ public class SocialNetworkController {
 		if(esito == false)
 			return "login";
 		else
-			return "redirect:home";
+			return "redirect:";
 		}
 	
 	
