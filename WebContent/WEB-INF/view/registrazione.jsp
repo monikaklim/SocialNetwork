@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 
 <html>
@@ -22,7 +21,7 @@
 <td> <input type = "text" name = "cognome" /></td>
 </tr><tr>
 <td>Data di nascita:</td>
-<td> <input type = "date" name = "data" max = "currentDate" /></td>
+<td> <input type = "date" name = "data" max = "2004-12-31" /></td>
 </tr><tr>
 <td>Username:</td>
 <td> <input type = "text" name = "username" /></td>
@@ -39,13 +38,6 @@
 </table>
 
 </form>
-
-
-
-
-
-
-
 
 
 
