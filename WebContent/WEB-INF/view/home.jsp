@@ -12,6 +12,26 @@
 <body>
 <h3>HOMEPAGE</h3>
 
+
+
+<form action = "login"  >
+<input class = "button" type = "submit" value = "Accedi" />
+
+</form>
+
+<br> <br>
+
+<form action = "registrazione"  >
+<input class = "button" type = "submit" value = "Registrati" />
+
+</form>
+
+
+
+
+
+
+
 </body>
 
 </html>
