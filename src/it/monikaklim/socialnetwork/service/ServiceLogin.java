@@ -30,4 +30,10 @@ public class ServiceLogin {
 	
 	
 	
+	@Transactional
+	public String insertContatto(Utente utente) {		
+		return loginDAO.registraUtente(utente);
+				
+		}	
+	
 }

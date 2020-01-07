@@ -6,6 +6,7 @@ public interface LoginDAO {
 
 	Utente findUtente(String user, String pass);	
 	
+	String registraUtente(Utente utente);
 	
 	
 	
