@@ -23,6 +23,17 @@ public class SocialNetworkController {
 	}		
 	
 	
+	@RequestMapping("/processLogin")
+	public String processLogin(HttpServletRequest request, Model model) {
+
+		String username = request.getParameter("username").trim();
+		String password = request.getParameter("password").trim();
+		//service.loginUtente(username,password);
+		return "login";
+		}
+	
+	
+	
 	@RequestMapping("/registrazione")
 	public String showRegistrazione() {
 
