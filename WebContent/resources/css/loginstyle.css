@@ -18,6 +18,18 @@ a:hover, .button:hover {
   background-color:  #0059b3;
   color: white;
 }
+#link
+{
+position: absolute;
+right: 25px;	
+top: 5px;	
+}
+
+#homelink
+{
+font-size:15px;	
+ width: 50px;	
+}
 
 html,body{	
     background-color:#ccebff;	

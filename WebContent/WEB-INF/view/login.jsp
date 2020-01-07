@@ -9,6 +9,8 @@
     rel="stylesheet">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
 </head>
 
 <body>
@@ -29,9 +31,15 @@
 <td> <br><input class = "button" type = "submit" value = "Conferma" /></td></tr>
 </table>
 
-<a href= "registrazione">Registrati</a>  
-<a href= "">Indietro</a>
 
+<div id = "link">
+<table>
+<tr>
+<td><a href= "registrazione">Registrati</a>  </td>
+<td><a id = "homelink" href= ""><i class="material-icons">home</i></a></td></tr>
+
+</table>
+</div>
 
 
 
