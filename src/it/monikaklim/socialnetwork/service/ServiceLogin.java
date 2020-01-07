@@ -30,4 +30,10 @@ public class ServiceLogin {
 	
 	
 	
+	@Transactional
+	public String registraUtente(Utente utente) {		
+		return loginDAO.registraUtente(utente);
+				
+		}	
+	
 }

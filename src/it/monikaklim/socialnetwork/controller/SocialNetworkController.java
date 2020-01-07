@@ -57,8 +57,7 @@ public class SocialNetworkController {
 			String password = request.getParameter("password").trim();
 			if((nome.isEmpty() == false)&& (cognome.isEmpty() == false)&&(data.isEmpty() == false)&&(username.isEmpty() == false)&&(password.isEmpty() == false))
 			utente = new Utente(nome,cognome,data,username,password);
-			
-		// service.registraUtente(utente);
+	        service.registraUtente(utente);
 			
 		return "redirect:/";
 	}	

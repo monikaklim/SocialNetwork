@@ -4,7 +4,6 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
 import it.monikaklim.socialnetwork.model.Utente;
 
 
@@ -31,7 +30,21 @@ public class LoginDAOImpl implements LoginDAO{
 			
 	
 	
-	
+	public String registraUtente(Utente utente) {
+		String esito = "";	
+			
+		try {
+		Session session = sessionFactory.getCurrentSession();
+		session.save(utente);
+		esito = "Registrazione avvenuta con successo.";
+
+		}
+		catch(Exception e){
+		esito = "Errore.";	
+		}
+
+		return esito;
+		}
 	
 	
 	
