@@ -11,7 +11,7 @@
   color:black;
   border: 2px solid  #0059b3;
   font-family: "Verdana";
-  width: 200px;
+  width: 150px;
 }
 .button:hover {
   background-color:  #0059b3;
@@ -24,3 +24,15 @@ html,body{
     cursor:default;  
 }
 
+#login
+{
+  position: absolute;
+  right: 10px;
+
+}
+#regi
+{
+  position: absolute;
+  right: 205px;
+		
+}

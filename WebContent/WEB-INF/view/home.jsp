@@ -13,20 +13,21 @@
 <h3>HOMEPAGE</h3>
 
 
-
-<form id = "login" action = "login"  >
+<table>
+<tr>
+<td><form id = "login" action = "login"  >
 <input class = "button" type = "submit" value = "Accedi" />
 
-</form>
+</form> </td>
 
-<br> <br>
-
+<td>
 <form id = "regi" action = "registrazione"  >
 <input class = "button" type = "submit" value = "Registrati" />
 
 </form>
-
-
+</td>
+<tr>
+</table>
 
 
 
