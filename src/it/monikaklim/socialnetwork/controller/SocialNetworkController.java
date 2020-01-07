@@ -14,7 +14,11 @@ public class SocialNetworkController {
 	}		
 	
 	
-	
+	@RequestMapping("/registrazione")
+	public String showRegistrazione() {
+
+	return "registrazione";
+	}	
 	
 	
 	
