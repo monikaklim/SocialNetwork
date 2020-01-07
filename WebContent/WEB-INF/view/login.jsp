@@ -26,7 +26,8 @@
 <td>Password:</td>
 <td> <input type = "password" name = "password" required/></td>
 </tr><tr>
-<td> <br><input class = "button" type = "submit" value = "Accedi" /></td>
+<td> <br><input class = "button" type = "submit" value = "Conferma" /></td>
+<td><a href= "">Indietro</a><td>
 </tr>
 
 </table>

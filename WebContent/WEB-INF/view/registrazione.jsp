@@ -33,6 +33,7 @@
 <tr>
 <td></td>
 <td> <br><input class = "button" type = "submit" value = "Conferma" /></td>
+<td><a href= "">Indietro</a><td>
 </tr>
 
 </table>
