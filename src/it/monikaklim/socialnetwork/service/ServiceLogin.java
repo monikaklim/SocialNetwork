@@ -31,7 +31,7 @@ public class ServiceLogin {
 	
 	
 	@Transactional
-	public String insertContatto(Utente utente) {		
+	public String registraUtente(Utente utente) {		
 		return loginDAO.registraUtente(utente);
 				
 		}	
