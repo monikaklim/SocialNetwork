@@ -14,14 +14,14 @@
 
 
 
-<form action = "login"  >
+<form id = "login" action = "login"  >
 <input class = "button" type = "submit" value = "Accedi" />
 
 </form>
 
 <br> <br>
 
-<form action = "registrazione"  >
+<form id = "regi" action = "registrazione"  >
 <input class = "button" type = "submit" value = "Registrati" />
 
 </form>
