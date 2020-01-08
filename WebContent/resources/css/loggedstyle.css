@@ -36,10 +36,11 @@ html,body{
     padding: 12px;
     text-decoration: none;
     font-size: 15px; 
-    border: 1px solid  #0059b3;
     height:18px;
-    border-radius: 1px;
+    border:none;
+    border-radius:1px;
     background-color: #66b3ff;
+    overflow:auto;
     
  }
  
@@ -54,6 +55,16 @@ html,body{
   padding: 6px 10px;
   border: none;
   background-color: #66b3ff;
+}
+#cercabutton:hover{
+background-color:  #0059b3;
+  color: white;	
+}
+
+#barra
+{
+margin-top:0px;
+background-color: #66b3ff;	
 }
 
 #cercainput{

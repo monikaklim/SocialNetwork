@@ -13,16 +13,16 @@
 <body>
 <div >
 
-<table>
+<table id = "barra">
 
 <tr>
 
 <td>
 <table> 
 <tr>
-<td><a class = "nav"  href ="">Home</a></td>
-<td><a class = "nav" href ="">Profilo</a></td>
-<td><a class = "nav" href ="">Impostazioni</a></td>
+<td><a class = "nav"  href =""><i class="material-icons">home</i></a></td>
+<td><a class = "nav" href =""><i class="material-icons">person</i></a></td>
+<td><a class = "nav" href =""><i class="material-icons">settings</i></a></td>
 
 </tr>
 
@@ -31,6 +31,13 @@
 <td></td>
 <td></td>
 <td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><% String username = request.getParameter("username"); %>
+Benvenuto  <% out.println(username); %></td>
 <td></td>
 <td></td>
 <td></td>
@@ -48,9 +55,6 @@
 
 
 
-<h3>Loggato</h3>
-<% String username = request.getParameter("username"); %>
-Benvenuto  <% out.println(username); %>
 </body>
 
 </html>
