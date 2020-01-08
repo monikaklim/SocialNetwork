@@ -23,7 +23,7 @@ public class LoginDAOImpl implements LoginDAO{
 
 					}
 					catch(Exception e) {
-						e.printStackTrace();
+						System.out.println("Utente non trovato");
 					}
 		return utente;
 		}	

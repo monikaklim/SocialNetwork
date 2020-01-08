@@ -28,23 +28,38 @@ public class Utente {
 	private String username;
 	@Column
 	private String password;
+	@Column
+	private String email;
 	
 	
 	public Utente() {
 		
 	}
 	
-	public Utente(String nome, String cognome, String dataNascita, String username, String password) {
+	
+	public Utente(String nome, String cognome, String dataNascita, String username, String password, String email) {
+		
 		this.nome = nome;
 		this.cognome = cognome;
 		this.dataNascita = dataNascita;
 		this.username = username;
 		this.password = password;
+		this.email = email;
 	}
 
-	
-	
-	
+
+
+
+	public String getEmail() {
+		return email;
+	}
+
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+
 	public String getUsername() {
 		return username;
 	}

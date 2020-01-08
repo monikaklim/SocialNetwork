@@ -38,11 +38,22 @@ public class SocialNetworkController {
 
 		String username = request.getParameter("username").trim();
 		String password = request.getParameter("password").trim();
-		boolean esito = service.findUtente(username,password);
-		if(esito == false)
-			return "login";
+		
+		String messaggio = "";
+		
+		if( service.findUtente(username,password) == false)
+			{messaggio = "password e/o username non validi";
+			model.addAttribute("msg",messaggio);
+			model.addAttribute("display", "\"block\"");
+			return "login";}
 		else
-			return "redirect:home";
+			
+		{
+			
+			return "redirect:";	
+			}
+		
+		
 		}
 	
 	
@@ -62,8 +73,9 @@ public class SocialNetworkController {
 			String data = request.getParameter("data").trim();
 			String username = request.getParameter("username").trim();
 			String password = request.getParameter("password").trim();
-			if((nome.isEmpty() == false)&& (cognome.isEmpty() == false)&&(data.isEmpty() == false)&&(username.isEmpty() == false)&&(password.isEmpty() == false))
-			utente = new Utente(nome,cognome,data,username,password);
+			String email = request.getParameter("email").trim();
+			if((nome.isEmpty() == false)&& (cognome.isEmpty() == false)&&(data.isEmpty() == false)&&(username.isEmpty() == false)&&(password.isEmpty() == false)&&(email.isEmpty() == false))
+			utente = new Utente(nome,cognome,data,username,password,email);
 	        service.registraUtente(utente);
 			
 		return "redirect:/";
