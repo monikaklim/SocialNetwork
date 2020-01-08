@@ -18,24 +18,24 @@
 <table>
 <tr>
 <td>Nome:</td>
-<td><input type = "text" name = "nome" /></td>
+<td><input type = "text" name = "nome" required /></td>
 </tr> <tr>
 <td>Cognome:</td>
-<td> <input type = "text" name = "cognome" /></td>
+<td> <input type = "text" name = "cognome" required/></td>
 </tr><tr>
 <td>Data di nascita:</td>
-<td> <input type = "date" name = "data" max = "2004-12-31" placeholder = "yyyy-mm-dd"/></td>
+<td> <input type = "date" name = "data" max = "2004-12-31" placeholder = "yyyy-mm-dd" required/></td>
 </tr><tr>
 <tr>
 <td>Email:</td>
-<td> <input type = "email" name = "email" /></td>
+<td> <input type = "email" name = "email" required/></td>
 </tr>
 <td>Username:</td>
-<td> <input type = "text" name = "username" /></td>
+<td> <input type = "text" name = "username"required /></td>
 </tr>
 <tr>
 <td>Password:</td>
-<td> <input type = "password" name = "password" id = "pass"/></td>
+<td> <input type = "password" name = "password" id = "pass" required/></td>
 <td><input type="checkbox" onclick="mostraPassword()">Mostra Password</td>
 </tr>
 <tr>
@@ -59,7 +59,7 @@ function mostraPassword() {
 
 function annulla(){
 	if (confirm("Vuoi annullare la registrazione?")) {
-		window.location.href = "";	
+		window.location.href ="";	
 	  } else {
 	   
 	  }

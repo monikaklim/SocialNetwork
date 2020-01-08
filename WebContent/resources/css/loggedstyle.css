@@ -1,0 +1,26 @@
+.button,a{
+  font-size: 15px;
+  vertical-align:middle;
+  cursor:pointer;
+  border-radius: 8px;
+  display: block;
+  background-color: #66b3ff;
+  padding:  10px;
+  text-decoration: none;
+  text-align: left;
+  color:black;
+  border: 2px solid  #0059b3;
+  width: 100px;
+}
+
+  
+a:hover, .button:hover {
+  background-color:  #0059b3;
+  color: white;
+}
+
+html,body{	
+    background-color:#ccebff;	
+    font-family:"Verdana";
+    cursor:default;  
+}
