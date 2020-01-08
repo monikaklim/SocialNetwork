@@ -1,7 +1,13 @@
 package it.monikaklim.socialnetwork.controller;
 
+import java.io.IOException;
 import java.util.List;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -34,7 +40,7 @@ public class SocialNetworkController {
 	
 	
 	@RequestMapping("/processLogin")
-	public String processLogin(HttpServletRequest request, Model model) {
+	public void processLogin(HttpServletRequest request, Model model,HttpServletResponse response) throws ServletException, IOException{
 
 		String username = request.getParameter("username").trim();
 		String password = request.getParameter("password").trim();
@@ -45,12 +51,15 @@ public class SocialNetworkController {
 			{messaggio = "password e/o username non validi";
 			model.addAttribute("msg",messaggio);
 			model.addAttribute("display", "\"block\"");
-			return "login";}
+			RequestDispatcher req = request.getRequestDispatcher("login");
+			req.forward(request, response);
+			}
 		else
 			
 		{
-			
-			return "redirect:";	
+			RequestDispatcher req = request.getRequestDispatcher("logged");
+			req.forward(request, response);
+
 			}
 		
 		
@@ -62,6 +71,12 @@ public class SocialNetworkController {
 	public String showRegistrazione() {
 
 	return "registrazione";
+	}	
+	
+	@RequestMapping("/logged")
+	public String showLogged() {
+
+	return "homelogged";
 	}	
 	
 	

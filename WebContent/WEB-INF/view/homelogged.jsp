@@ -11,9 +11,9 @@
 
 </head>
 <body>
-
+<h3>Loggato</h3>
 <% String username = request.getParameter("username"); %>
-Welcome   <% out.println(username); %> User!!!! You have logged in.
+Benvenuto  <% out.println(username); %>.
 </body>
 
 </html>
