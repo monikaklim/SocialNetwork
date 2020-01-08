@@ -11,6 +11,8 @@
 
 <body>
 
+<h3>Inserisci i tuoi dati</h3>
+
 <form action = "processRegistrazione" method = "POST" >
 
 <table>
@@ -22,14 +24,15 @@
 <td> <input type = "text" name = "cognome" /></td>
 </tr><tr>
 <td>Data di nascita:</td>
-<td> <input type = "date" name = "data" max = "2004-12-31" /></td>
+<td> <input type = "date" name = "data" max = "2004-12-31" placeholder = "yyyy-mm-dd"/></td>
 </tr><tr>
 <td>Username:</td>
 <td> <input type = "text" name = "username" /></td>
 </tr>
 <tr>
 <td>Password:</td>
-<td> <input type = "password" name = "password" /></td>
+<td> <input type = "password" name = "password" id = "pass"/></td>
+<td><input type="checkbox" onclick="mostraPassword()">Mostra Password</td>
 </tr>
 <tr>
 <td></td>
@@ -37,6 +40,19 @@
 </tr>
 
 </table>
+
+<script>
+
+function mostraPassword() {
+	  var x = document.getElementById("pass");
+	  if (x.type === "password") {
+	    x.type = "text";
+	  } else {
+	    x.type = "password";
+	  }
+	}
+
+</script>
 
 </form>
 
