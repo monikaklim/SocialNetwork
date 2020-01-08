@@ -86,14 +86,26 @@ public class SocialNetworkController {
 	
 	 // Creazione di una mail session
     Properties props = new Properties();
-    props.put("mail.smtp.host", "smtp.mioprovider.it");
-    Session session = Session.getDefaultInstance(props);
-	 
+    props.put("mail.smtp.socketFactory.port", "465");
+    props.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+    props.put("mail.smtp.auth", "true");
+    props.put("mail.smtp.prot", "465");
+    props.put("mail.smtp.starttls.enable", "true");
+    props.put("mail.smtp.host", "smtp.gmail.com");
+    Session session = Session.getDefaultInstance(props,new javax.mail.Authenticator() {
+        protected PasswordAuthentication getPasswordAuthentication() {
+
+            return new PasswordAuthentication("mail","password");
+        }
+    }
+    );
+    
+    
     MimeMessage message = new MimeMessage(session);
     message.setSubject("Reset password");
     message.setText(messaggio);
 
-    InternetAddress fromAddress = new InternetAddress("monyklim@gmail.com");
+    InternetAddress fromAddress = new InternetAddress("mail");
     InternetAddress toAddress = new InternetAddress(indirizzo);
     message.setFrom(fromAddress);
     message.setRecipient(Message.RecipientType.TO, toAddress);
