@@ -40,7 +40,7 @@ public class SocialNetworkController {
 	
 	
 	@RequestMapping("/processLogin")
-	public void processLogin(HttpServletRequest request, Model model,HttpServletResponse response) throws ServletException, IOException{
+	public String processLogin(HttpServletRequest request, Model model,HttpServletResponse response) throws ServletException, IOException{
 
 		String username = request.getParameter("username").trim();
 		String password = request.getParameter("password").trim();
@@ -50,16 +50,12 @@ public class SocialNetworkController {
 		if( service.findUtente(username,password) == false)
 			{messaggio = "password e/o username non validi";
 			model.addAttribute("msg",messaggio);
-			model.addAttribute("display", "\"block\"");
-			RequestDispatcher req = request.getRequestDispatcher("login");
-			req.forward(request, response);
+			return "login";
 			}
 		else
 			
 		{
-			RequestDispatcher req = request.getRequestDispatcher("logged");
-			req.forward(request, response);
-
+			return "homelogged";
 			}
 		
 		
