@@ -1,4 +1,5 @@
 .button,a{
+  font-size: 12px;
   vertical-align:middle;
   cursor:pointer;
   border-radius: 8px;
@@ -10,7 +11,7 @@
   text-align: center;
   color:black;
   border: 2px solid  #0059b3;
-  width: 150px;
+  width: 120px;
 }
 
   

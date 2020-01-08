@@ -29,7 +29,9 @@
 
 </tr><tr>
 <tr>
-<td> <br><input class = "button" type = "submit" value = "Conferma" /></td></tr>
+<td> <br><input class = "button" onclick = "display()" type = "submit" value = "Conferma" /></td>
+<td><a href = "">Password dimenticata?</a>
+</tr>
 
 </table>
 <br>
@@ -47,6 +49,7 @@
 
 
 <script>
+
 
 function mostraPassword() {
 	  var x = document.getElementById("pass");

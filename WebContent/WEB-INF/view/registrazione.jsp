@@ -26,6 +26,10 @@
 <td>Data di nascita:</td>
 <td> <input type = "date" name = "data" max = "2004-12-31" placeholder = "yyyy-mm-dd"/></td>
 </tr><tr>
+<tr>
+<td>Email:</td>
+<td> <input type = "email" name = "email" /></td>
+</tr>
 <td>Username:</td>
 <td> <input type = "text" name = "username" /></td>
 </tr>
