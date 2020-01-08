@@ -69,13 +69,13 @@ function mostraPassword() {
 
 
 
-<form id= "passDim">
+<form action = "sendMail" id= "passDim">
 <button class = "button" id = "close"> <i class="material-icons">close</i>  </button>
 <br><br>
 Inserisci la tua email: <input type = "text" placeholder = "Email" name = "mailPass"/>
 <p>Sarà inviato un link per reimpostare la password.</p>
 <br>
-<input class = "button" type = "button" onclick = "closeForm()" value = "Invia" />
+<input class = "button" type = "submit" value = "Invia" />
 
 
 
