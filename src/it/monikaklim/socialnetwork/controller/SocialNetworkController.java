@@ -1,5 +1,6 @@
 package it.monikaklim.socialnetwork.controller;
 
+import java.util.*;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -11,7 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import it.monikaklim.socialnetwork.model.Utente;
 import it.monikaklim.socialnetwork.service.ServiceLogin;
-
+import javax.mail.*;
+import javax.mail.internet.*;
 @Controller
 public class SocialNetworkController {
 
@@ -74,6 +76,38 @@ public class SocialNetworkController {
 
 	return "homelogged";
 	}	
+	
+	
+	
+	@RequestMapping("/sendMail")
+	public String sendMail(HttpServletRequest request, Model model) throws MessagingException{
+	String messaggio = "Clicca il link per resettare la password";
+	String indirizzo = request.getParameter("mailPass").trim();
+	
+	 // Creazione di una mail session
+    Properties props = new Properties();
+    props.put("mail.smtp.host", "smtp.mioprovider.it");
+    Session session = Session.getDefaultInstance(props);
+	 
+    MimeMessage message = new MimeMessage(session);
+    message.setSubject("Reset password");
+    message.setText(messaggio);
+
+    InternetAddress fromAddress = new InternetAddress("monyklim@gmail.com");
+    InternetAddress toAddress = new InternetAddress(indirizzo);
+    message.setFrom(fromAddress);
+    message.setRecipient(Message.RecipientType.TO, toAddress);
+
+    // Invio del messaggio
+    Transport.send(message);	
+		
+		
+	return "redirect:/login";	
+	}
+	
+	
+	
+	
 	
 	
 	@RequestMapping("/processRegistrazione")
