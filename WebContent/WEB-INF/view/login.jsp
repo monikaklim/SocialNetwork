@@ -29,7 +29,7 @@
 
 </tr><tr>
 <tr>
-<td> <br><input class = "button" type = "submit" value = "Conferma" /></td></tr>
+<td> <br><input class = "button" type = "submit" value = "Accedi" /></td></tr>
 <tr></tr>
 <tr></tr>
 <tr>
@@ -44,7 +44,7 @@
 <div id = "link">
 <table>
 <tr>
-<td><a href= "registrazione">Registrati</a>  </td>
+<td><a href= "registrazione">Registrati</a> </td>
 <td><a id = "homelink" href= ""><i class="material-icons">home</i></a></td></tr>
 
 </table>

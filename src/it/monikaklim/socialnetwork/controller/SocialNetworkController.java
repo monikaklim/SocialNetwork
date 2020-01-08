@@ -1,12 +1,12 @@
 package it.monikaklim.socialnetwork.controller;
 
-import java.util.List;
+import java.io.IOException;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import it.monikaklim.socialnetwork.model.Utente;
@@ -33,8 +33,15 @@ public class SocialNetworkController {
 	}		
 	
 	
+	@RequestMapping("/confirmRegistration")
+	public String showConfirm() {
+
+	return "confirmRegistration";
+	}	
+	
+	
 	@RequestMapping("/processLogin")
-	public String processLogin(HttpServletRequest request, Model model) {
+	public String processLogin(HttpServletRequest request, Model model,HttpServletResponse response) throws ServletException, IOException{
 
 		String username = request.getParameter("username").trim();
 		String password = request.getParameter("password").trim();
@@ -44,24 +51,28 @@ public class SocialNetworkController {
 		if( service.findUtente(username,password) == false)
 			{messaggio = "password e/o username non validi";
 			model.addAttribute("msg",messaggio);
-			model.addAttribute("display", "\"block\"");
-			return "login";}
+			return "login";
+			}
 		else
 			
 		{
-			
-			return "redirect:";	
+			return "homelogged";
 			}
 		
 		
 		}
 	
 	
-	
 	@RequestMapping("/registrazione")
 	public String showRegistrazione() {
 
 	return "registrazione";
+	}	
+	
+	@RequestMapping("/logged")
+	public String showLogged() {
+
+	return "homelogged";
 	}	
 	
 	
@@ -78,7 +89,7 @@ public class SocialNetworkController {
 			utente = new Utente(nome,cognome,data,username,password,email);
 	        service.registraUtente(utente);
 			
-		return "redirect:/";
+		return "confirmRegistration";
 	}	
 		
 	@RequestMapping("/select")
