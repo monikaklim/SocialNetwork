@@ -26,11 +26,14 @@
 <td>Password:</td>
 <td> <input type = "password" placeholder = "Password" name = "password" id = "pass" required/></td>
 <td><input type="checkbox" onclick="mostraPassword()">Mostra Password</td>
+
 </tr><tr>
 <tr>
 <td> <br><input class = "button" type = "submit" value = "Conferma" /></td></tr>
-</table>
 
+</table>
+<br>
+<p style = "font-size: 12px; color:#b30000"><i>  ${msg} </i></p>
 
 <div id = "link">
 <table>

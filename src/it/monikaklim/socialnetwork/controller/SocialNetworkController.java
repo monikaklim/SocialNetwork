@@ -38,11 +38,19 @@ public class SocialNetworkController {
 
 		String username = request.getParameter("username").trim();
 		String password = request.getParameter("password").trim();
-		boolean esito = service.findUtente(username,password);
-		if(esito == false)
-			return "login";
+		
+		String messaggio = "";
+		if( service.findUtente(username,password) == false)
+			{messaggio = "password e/o username non validi";
+			model.addAttribute("msg",messaggio);
+			return "login";}
 		else
-			return "redirect:";
+			
+		{
+			return "redirect:";	
+			}
+		
+		
 		}
 	
 	
