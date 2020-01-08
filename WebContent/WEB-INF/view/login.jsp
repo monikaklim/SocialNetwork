@@ -29,7 +29,7 @@
 
 </tr><tr>
 <tr>
-<td> <br><input class = "button" type = "submit" value = "Conferma" /></td></tr>
+<td> <br><input class = "button" type = "submit" value = "Accedi" /></td></tr>
 <tr></tr>
 <tr></tr>
 <tr>

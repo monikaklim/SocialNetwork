@@ -16,7 +16,7 @@
 <table>
 <tr>
 <td><form id = "login" action = "login"  >
-<input class = "button" type = "submit" value = "Accedi" />
+<input class = "button" type = "submit" value = "Login" />
 
 </form> </td>
 

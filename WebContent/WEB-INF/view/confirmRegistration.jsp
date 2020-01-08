@@ -17,10 +17,9 @@
 <h3><b>Account creato con successo. </b></h3>
 
 
-<a href = "login" ><i class="material-icons">person</i>Login</a>
+<a href = "login" ><i class="material-icons">person</i>Accedi</a><br>
 <br>
-<br>
-<a id = "homelink" href= ""><i class="material-icons">home</i></a>
+<a id = "homelink" href= ""><i class="material-icons">home</i>Home</a>
 
 
 
