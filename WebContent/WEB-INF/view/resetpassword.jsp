@@ -16,41 +16,13 @@
 </tr> <tr>
 <td>Conferma password:</td>
 <td> <input type = "password" placeholder = "Password" name = "password2" id = "pass2" required/></td>
-
-
-
-
 </tr><tr>
 <tr>
-<td> <br><input class = "button" onclick = "confronta()" value = "Conferma" /></td></tr>
+<td> <br><input class = "button" type = "button" onclick = "confronta()" value = "Conferma" /></td></tr>
 </table>
 
-
-<script>
-function confronta(){
-	var x = document.getElementById("pass1");
-	var y = document.getElementById("pass2");
-	
-	if(x != y){
-	alert("Le password non corrispondono");	
-		
-	}
-	
-}
-</script>
 </form>
-
-
-
 </body>
-
-
-
-
-
-
-
-
 
 
 

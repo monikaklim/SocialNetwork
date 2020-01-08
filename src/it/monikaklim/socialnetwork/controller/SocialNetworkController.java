@@ -119,6 +119,12 @@ public class SocialNetworkController {
 	
 	
 	
+	@RequestMapping("/resetPassword")
+	public String showReset() {
+
+	return "resetpassword";
+	}
+	
 	
 	
 	
