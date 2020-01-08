@@ -14,7 +14,7 @@
 <h3>Inserisci i tuoi dati</h3>
 
 <form action = "processRegistrazione" method = "POST" >
-
+<div>
 <table>
 <tr>
 <td>Nome:</td>
@@ -36,6 +36,7 @@
 </tr>
 <tr>
 <td></td>
+<td> <br><input class = "button" type = "button" onclick = "annulla()" value = "Annulla" /></td>
 <td> <br><input class = "button" type = "submit" value = "Conferma" /></td>
 </tr>
 
@@ -52,8 +53,17 @@ function mostraPassword() {
 	  }
 	}
 
-</script>
+function annulla(){
+	if (confirm("Vuoi annullare la registrazione?")) {
+		window.location.href = "";	
+	  } else {
+	   
+	  }
+	
+}
 
+</script>
+</div>
 </form>
 
 <a id = "homelink" href= ""><i class="material-icons">home</i></a>
