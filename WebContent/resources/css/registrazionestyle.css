@@ -19,6 +19,16 @@ a:hover, .button:hover {
   color: white;
 }
 
+#homelink
+{
+font-size:15px;	
+ width: 50px;	
+ position: absolute;
+right: 25px;	
+top: 5px;
+}
+
+
 html,body{	
     background-color:#ccebff;	
     font-family:"Verdana";

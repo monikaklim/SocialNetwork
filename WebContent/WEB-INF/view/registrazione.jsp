@@ -4,8 +4,9 @@
 <head>
 <title>Registrazione</title>
 
-<link href="${pageContext.request.contextPath}/resources/css/registrazionestyle.css"
-    rel="stylesheet">
+<link href="${pageContext.request.contextPath}/resources/css/registrazionestyle.css" rel="stylesheet">
+    
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 
 <body>
@@ -33,14 +34,13 @@
 <tr>
 <td></td>
 <td> <br><input class = "button" type = "submit" value = "Conferma" /></td>
-<td><a href= "">Indietro</a><td>
 </tr>
 
 </table>
 
 </form>
 
-
+<a id = "homelink" href= ""><i class="material-icons">home</i></a>
 
 
 </body>
