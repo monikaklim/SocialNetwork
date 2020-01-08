@@ -13,7 +13,7 @@
 <body>
 <h3>Loggato</h3>
 <% String username = request.getParameter("username"); %>
-Benvenuto  <% out.println(username); %>.
+Benvenuto  <% out.println(username); %>
 </body>
 
 </html>

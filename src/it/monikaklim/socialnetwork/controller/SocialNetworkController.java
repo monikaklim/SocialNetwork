@@ -96,7 +96,7 @@ public class SocialNetworkController {
 			utente = new Utente(nome,cognome,data,username,password,email);
 	        service.registraUtente(utente);
 			
-		return "redirect:/";
+		return "confirmRegistration";
 	}	
 		
 	@RequestMapping("/select")
