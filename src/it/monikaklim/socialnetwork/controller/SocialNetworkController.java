@@ -39,6 +39,13 @@ public class SocialNetworkController {
 	}		
 	
 	
+	@RequestMapping("/confirmRegistration")
+	public String showConfirm() {
+
+	return "confirmRegistration";
+	}	
+	
+	
 	@RequestMapping("/processLogin")
 	public String processLogin(HttpServletRequest request, Model model,HttpServletResponse response) throws ServletException, IOException{
 

@@ -31,19 +31,18 @@ public class LoginDAOImpl implements LoginDAO{
 	
 	
 	public String registraUtente(Utente utente) {
-		String esito = "";	
+		
 			
 		try {
 		Session session = sessionFactory.getCurrentSession();
-		session.save(utente);
-		esito = "Registrazione avvenuta con successo.";
-
+		session.save(utente);		
+		return "confirmRegistration";
 		}
 		catch(Exception e){
-		esito = "Errore.";	
+		return "Errore.";	
 		}
 
-		return esito;
+		
 		}
 	
 	
