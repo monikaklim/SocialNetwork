@@ -11,7 +11,7 @@
   text-align: center;
   color:black;
   border: 2px solid  #0059b3;
-  width: 120px;
+  width: 150px;
 }
 
   
@@ -38,4 +38,38 @@ html,body{
     background-color:#ccebff;	
     font-family:"Verdana";
     cursor:default;  
+}
+p{
+font-size:13px;
+color:	#001433;
+	
+}
+
+input[type=text],input[type=password]{
+width:190px;	
+padding: 8px;	
+font-size:12px;
+}
+
+#passDim{
+
+  width:400px;
+  height:150px;
+  display: none;
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  border: 2px solid #0059b3;
+  background-color: #66a3ff;
+  padding: 10px;	
+}
+#close{
+font-size:10px;
+position:fixed;
+right: 30px;
+width:35px;
+height:25px;	
+bottom:160px;
+border:none;
+background-color: #66a3ff;	
 }
