@@ -8,7 +8,7 @@ public interface LoginDAO {
 	
 	String registraUtente(Utente utente);
 	
+	Utente findUtenteByEmail(String mail);
 	
-	
-	
+	String updatePassword(int idUtente,String pass1);
 }

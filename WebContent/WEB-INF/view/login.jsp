@@ -1,4 +1,5 @@
-
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
+<%@ taglib prefix= "form" uri = "http://www.springframework.org/tags/form"  %>
 <!DOCTYPE html>
 
 <html>
@@ -70,6 +71,14 @@ function mostraPassword() {
 
 
 <form action = "sendMail" id= "passDim">
+
+<c:url var ="update" value = "update"> 
+						<c:param name="idUtente" value= "${idUtente}"/>
+						</c:url>
+
+<p style= "display:none" id= "linkupdate"><a href= "${update}" ></a>  </p>
+
+
 <button class = "button" id = "close"> <i class="material-icons">close</i>  </button>
 <br><br>
 Inserisci la tua email: <input type = "text" placeholder = "Email" name = "mailPass"/>

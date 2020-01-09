@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import it.monikaklim.socialnetwork.model.Utente;
@@ -81,9 +82,13 @@ public class SocialNetworkController {
 	//invio email
 	@RequestMapping("/sendMail")
 	public String sendMail(HttpServletRequest request, Model model) throws MessagingException{
-	String messaggio = "Clicca il link per resettare la password";
+	String link = request.getParameter("linkupdate");
+	String messaggio = "Clicca il link per resettare la password\n"+link;
 	String indirizzo = request.getParameter("mailPass").trim();
 	
+	Utente utente = service.findUtenteByEmail(indirizzo);
+	/*int idUtente = utente.getIdUtente();
+	model.addAttribute("idUtente",idUtente);*/
 	 // Creazione di una mail session
     Properties props = new Properties();
     props.put("mail.smtp.socketFactory.port", "465");
@@ -95,7 +100,7 @@ public class SocialNetworkController {
     Session session = Session.getDefaultInstance(props,new javax.mail.Authenticator() {
         protected PasswordAuthentication getPasswordAuthentication() {
 
-            return new PasswordAuthentication("mail","password");
+            return new PasswordAuthentication("monika.klim@scaiconsulting.it","monika99");
         }
     }
     );
@@ -105,8 +110,8 @@ public class SocialNetworkController {
     message.setSubject("Reset password");
     message.setText(messaggio);
 
-    InternetAddress fromAddress = new InternetAddress("mail");
-    InternetAddress toAddress = new InternetAddress(indirizzo);
+    InternetAddress fromAddress = new InternetAddress("monyklim@gmail.com");
+    InternetAddress toAddress = new InternetAddress("monika.klim@scaiconsulting.it");
     message.setFrom(fromAddress);
     message.setRecipient(Message.RecipientType.TO, toAddress);
 
@@ -120,7 +125,7 @@ public class SocialNetworkController {
 	
 	
 	@RequestMapping("/resetPassword")
-	public String showReset() {
+	public String showReset(Model model) {
 
 	return "resetpassword";
 	}
@@ -128,20 +133,32 @@ public class SocialNetworkController {
 	@RequestMapping("/confrontaPassword")
 	public String confrontaPassword(HttpServletRequest request, Model model) {
 
-		String pass1 = request.getParameter("password1").trim();
-		String pass2 = request.getParameter("pasword2").trim();
+		String pass1 = request.getParameter("p1").trim();
+		String pass2 = request.getParameter("p2").trim();
 		
 		if(pass1.equals(pass2)) {
-			return "/updatePassword";	
+			System.out.println("ok");
+			return "updatepassword";	
 		}
 		else {
-		model.addAttribute("confronto","Le password non corrispondono");
+	
 			return "redirect:/resetpassword";	
 		}
 	}
 	
 	
 	
+	@RequestMapping("/updatePassword")
+	public String updatePassword(Model model,HttpServletRequest request) {
+		String pass1 = request.getParameter("password1").trim();
+		String id = request.getParameter("idUtente");
+		service.updatePassword(Integer.parseInt(id), pass1);
+	
+	return "redirect:/login";
+	}
+	
+	
+
 	
 	@RequestMapping("/processRegistrazione")
 	public String processInsert(HttpServletRequest request, Model model) {

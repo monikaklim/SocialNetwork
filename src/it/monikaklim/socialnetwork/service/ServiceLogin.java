@@ -31,9 +31,30 @@ public class ServiceLogin {
 	
 	
 	@Transactional
+	public Utente findUtenteByEmail(String mail) {		
+		if(loginDAO.findUtenteByEmail(mail) == null)
+		{
+			return  null;
+		}
+		else {
+			
+			return loginDAO.findUtenteByEmail(mail);
+		}
+			
+		}	
+	
+	
+@Transactional
 	public String registraUtente(Utente utente) {		
 		return loginDAO.registraUtente(utente);
 				
-		}	
+		}
+
+
+@Transactional
+	public String updatePassword(int idUtente,String pass1) {
+		return loginDAO.updatePassword(idUtente, pass1);
+		
+	}	
 	
 }

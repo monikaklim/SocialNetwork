@@ -59,7 +59,6 @@ public class Utente {
 		this.email = email;
 	}
 
-
 	public String getUsername() {
 		return username;
 	}
