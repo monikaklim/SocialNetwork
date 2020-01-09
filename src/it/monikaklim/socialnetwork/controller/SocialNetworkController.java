@@ -18,8 +18,14 @@ import javax.mail.internet.*;
 @Controller
 public class SocialNetworkController {
 
+   private final String messaggioResetPassword ="http://localhost:8080/SocialNetwork/resetPassword?idUtente=";
+	
 	@Autowired
 	private ServiceLogin service;	
+	
+	
+
+	
 	
 	@RequestMapping("/")
 	public String homepage() {
@@ -83,8 +89,7 @@ public class SocialNetworkController {
 	@RequestMapping("/sendMail")
 	public String sendMail(HttpServletRequest request, Model model) throws MessagingException{
 	int idUtente = 0;
-	String link = request.getParameter("resetLink");
-	String messaggio = "Clicca il link per resettare la password\n"+link;
+	
 	String indirizzo = request.getParameter("mailPass").trim();
 	Utente utente = service.findUtenteByEmail(indirizzo);
 	if(utente != null) {
@@ -92,6 +97,7 @@ public class SocialNetworkController {
 	
 	}
 	
+	String messaggio = messaggioResetPassword  + idUtente;
 	 // Creazione di una mail session
     Properties props = new Properties();
     props.put("mail.smtp.socketFactory.port", "465");
