@@ -85,6 +85,67 @@ public class SocialNetworkController {
 	}	
 	
 	
+	
+	
+	
+	//email di verifica per richiesta modifica password
+	@RequestMapping("/sendMailVerifica")
+	public String sendMailVerifica(HttpServletRequest request, Model model) throws MessagingException{
+	int idUtente = 0;
+	String indirizzo = request.getParameter("mailPass").trim();
+	Utente utente = service.findUtenteByEmail(indirizzo);
+	if(utente != null) {
+	 idUtente = utente.getIdUtente();
+	
+	
+	
+	String messaggio ="Il codice di verifica è:\n\n"+  new Random().nextInt(10000) + 88888;
+	
+	 // Creazione di una mail session
+    Properties props = new Properties();
+    props.put("mail.smtp.socketFactory.port", "465");
+    props.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+    props.put("mail.smtp.auth", "true");
+    props.put("mail.smtp.prot", "465");
+    props.put("mail.smtp.starttls.enable", "true");
+    props.put("mail.smtp.host", "smtp.gmail.com");
+    Session session = Session.getDefaultInstance(props,new javax.mail.Authenticator() {
+        protected PasswordAuthentication getPasswordAuthentication() {
+
+            return new PasswordAuthentication("monika.klim@scaiconsulting.it","monika99");
+        }
+    }
+    );
+    
+    
+    MimeMessage message = new MimeMessage(session);
+    message.setSubject("Reset password");
+    message.setText(messaggio);
+
+    InternetAddress fromAddress = new InternetAddress("monika.klim@scaiconsulting.it");
+    InternetAddress toAddress = new InternetAddress("monika.klim@scaiconsulting.it");
+    message.setFrom(fromAddress);
+    message.setRecipient(Message.RecipientType.TO, toAddress);
+
+    // Invio del messaggio
+    Transport.send(message);	
+		
+    model.addAttribute("idUtente",idUtente);	
+	return "login";	
+	}
+	else
+		return "login";
+	
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	//invio email
 	@RequestMapping("/sendMail")
 	public String sendMail(HttpServletRequest request, Model model) throws MessagingException{
