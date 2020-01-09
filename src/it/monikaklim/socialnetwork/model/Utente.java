@@ -30,8 +30,19 @@ public class Utente {
 	private String password;
 	@Column
 	private String email;
+	@Column
+	private int richiestaModificaPsw; //0 = no - 1 = si
 	
-	
+	public int getRichiestaModificaPsw() {
+		return richiestaModificaPsw;
+	}
+
+
+	public void setRichiestaModificaPsw(int richiestaModificaPsw) {
+		this.richiestaModificaPsw = richiestaModificaPsw;
+	}
+
+
 	public Utente() {
 		
 	}
