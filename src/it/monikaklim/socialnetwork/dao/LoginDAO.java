@@ -10,5 +10,5 @@ public interface LoginDAO {
 	
 	Utente findUtenteByEmail(String mail);
 	
-	String updatePassword(int idUtente,String pass1);
+	void updatePassword(int idUtente,String pass1);
 }

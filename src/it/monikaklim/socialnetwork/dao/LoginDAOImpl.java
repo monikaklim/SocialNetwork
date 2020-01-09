@@ -69,27 +69,26 @@ public class LoginDAOImpl implements LoginDAO{
 
 
 //update password
-	public String updatePassword(int idUtente,String pass1) {
-	
-			//int id = Integer.parseInt(idUtente);
+	public void updatePassword(int idUtente,String pass1) {
 			Utente utente = null;		
 			String esito = "";	
 				
 			try {
 			Session session = sessionFactory.getCurrentSession();
 			utente = session.get(Utente.class, idUtente);
+			if(utente.getRichiestaModificaPsw() == 1) {
 		    utente.setPassword(pass1);
-			esito = "Password aggiornata con successo.";
-			
+			System.out.println( "Password aggiornata con successo.");
+			}
+			else
+				System.out.println("Non è stata richiesta la modifica di questa password");
 		}
 		catch(Exception e) {
 			e.printStackTrace();
-			esito = "errore";
+			System.out.println( "errore");
 		}
 		
 		
-		
-		return esito;
 	}
 	
 	

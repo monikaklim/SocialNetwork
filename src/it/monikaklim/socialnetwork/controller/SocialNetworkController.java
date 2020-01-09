@@ -88,15 +88,17 @@ public class SocialNetworkController {
 	//invio email
 	@RequestMapping("/sendMail")
 	public String sendMail(HttpServletRequest request, Model model) throws MessagingException{
-	int idUtente = 0;
+	int idUtente = 0,modifica = 0;
 	
 	String indirizzo = request.getParameter("mailPass").trim();
 	Utente utente = service.findUtenteByEmail(indirizzo);
 	if(utente != null) {
 	 idUtente = utente.getIdUtente();
+	 modifica = utente.getRichiestaModificaPsw();
 	
 	}
 	
+	if(modifica == 1) {
 	String messaggio = messaggioResetPassword  + idUtente;
 	 // Creazione di una mail session
     Properties props = new Properties();
@@ -129,6 +131,10 @@ public class SocialNetworkController {
 		
     model.addAttribute("idUtente",idUtente);	
 	return "login";	
+	}
+	else
+		return "login";
+	
 	}
 	
 	

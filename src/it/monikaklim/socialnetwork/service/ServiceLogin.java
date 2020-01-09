@@ -52,8 +52,8 @@ public class ServiceLogin {
 
 
 @Transactional
-	public String updatePassword(int idUtente,String pass1) {
-		return loginDAO.updatePassword(idUtente, pass1);
+	public void updatePassword(int idUtente,String pass1) {
+		 loginDAO.updatePassword(idUtente, pass1);
 		
 	}	
 	

@@ -56,6 +56,7 @@ public class Utente {
 		this.username = username;
 		this.password = password;
 		this.email = email;
+		this.richiestaModificaPsw = 0;
 	}
 
 
