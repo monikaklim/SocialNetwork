@@ -8,11 +8,9 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+
 import it.monikaklim.socialnetwork.model.Utente;
 import it.monikaklim.socialnetwork.service.ServiceLogin;
 import javax.mail.*;
@@ -20,7 +18,7 @@ import javax.mail.internet.*;
 @Controller
 public class SocialNetworkController {
 
-   private final String messaggioResetPassword ="http://localhost:8080/SocialNetwork/resetPassword?idUtente=";
+   private final String messaggioResetPassword ="Clicca sul link per creare una nuova password:\n\n http://localhost:8080/SocialNetwork/resetPassword?idUtente=";
 	
 	@Autowired
 	private ServiceLogin service;	
@@ -144,8 +142,8 @@ public class SocialNetworkController {
 	
 	
 	@RequestMapping("/confrontaPassword")
-	public String confrontaPassword(HttpServletRequest request, Model model) {
-		String id = request.getParameter("idU").trim();
+	public String confrontaPassword(@RequestParam("idUtente") String id, HttpServletRequest request, Model model) {
+	
 		String pass1 = request.getParameter("p1").trim();
 		String pass2 = request.getParameter("p2").trim();
 		

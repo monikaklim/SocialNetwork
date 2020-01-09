@@ -4,31 +4,38 @@
 <html>
 <head>
 <title>Reset password</title>
+
+<link href="${pageContext.request.contextPath}/resources/css/resetstyle.css"
+    rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
 </head>
 
 <body>
 
-
-
-<form:form action = "confrontaPassword" >
+<div>
+<h4>Reset password</h4>
+<form action = "confrontaPassword" >
 
 <table>
 <tr>
 <td>Nuova password:</td>
-<td><input type = "password" placeholder = "Password" name = "p1" id="pass1" required/></td>
+<td><input type = "password" placeholder = "Password" name = "p1" required/></td>
 </tr> <tr>
 <td>Conferma password:</td>
-<td> <input type = "password" placeholder = "Password" name = "p2" id = "pass2" required/></td>
+<td> <input type = "password" placeholder = "Password" name = "p2" required/></td>
 </tr>
-<tr><td><input type = text name = "idU" value = "${param.idUtente}" disabled/></td></tr>
+<tr><td></td></tr>
 <tr>
+<td></td>
 <td> <br><input class = "button" type = "submit" value = "Conferma" /></td></tr>
 </table>
 
 
 
-
-</form:form>
+<input style="display:none" type = text  value = "${param.idUtente}" name = "idUtente" />
+</form>
+</div>
 </body>
 
 
