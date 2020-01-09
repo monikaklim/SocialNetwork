@@ -78,7 +78,7 @@ public class SocialNetworkController {
 	}	
 	
 	
-	
+	//invio email
 	@RequestMapping("/sendMail")
 	public String sendMail(HttpServletRequest request, Model model) throws MessagingException{
 	String messaggio = "Clicca il link per resettare la password";
@@ -123,6 +123,21 @@ public class SocialNetworkController {
 	public String showReset() {
 
 	return "resetpassword";
+	}
+	
+	@RequestMapping("/confrontaPassword")
+	public String confrontaPassword(HttpServletRequest request, Model model) {
+
+		String pass1 = request.getParameter("password1").trim();
+		String pass2 = request.getParameter("pasword2").trim();
+		
+		if(pass1.equals(pass2)) {
+			return "/updatePassword";	
+		}
+		else {
+		model.addAttribute("confronto","Le password non corrispondono");
+			return "redirect:/resetpassword";	
+		}
 	}
 	
 	

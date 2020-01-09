@@ -8,7 +8,7 @@
 
 
 
-<form action = "processLogin" method = "POST" >
+<form action = "conforntaPass" method = "POST" >
 <table>
 <tr>
 <td>Nuova password:</td>
@@ -17,9 +17,13 @@
 <td>Conferma password:</td>
 <td> <input type = "password" placeholder = "Password" name = "password2" id = "pass2" required/></td>
 </tr><tr>
+<tr> <td> <p id = "confronto"> </p>
 <tr>
-<td> <br><input class = "button" type = "button" onclick = "confronta()" value = "Conferma" /></td></tr>
+<td> <br><input class = "button" type = "submit" value = "Conferma" /></td></tr>
 </table>
+
+
+
 
 </form>
 </body>
