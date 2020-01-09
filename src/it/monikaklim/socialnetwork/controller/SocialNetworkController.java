@@ -9,7 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import it.monikaklim.socialnetwork.model.Utente;
 import it.monikaklim.socialnetwork.service.ServiceLogin;
@@ -134,20 +136,22 @@ public class SocialNetworkController {
 	
 	
 	@RequestMapping("/resetPassword")
-	public String showReset(@RequestParam("idUtente")String idU, Model model) {
+	public String showReset(){
 
 	return "resetpassword";
 	}
 	
+	
+	
 	@RequestMapping("/confrontaPassword")
-	public String confrontaPassword(@RequestParam("idUtente")String idU,HttpServletRequest request, Model model) {
-
+	public String confrontaPassword(HttpServletRequest request, Model model) {
+		String id = request.getParameter("idU").trim();
 		String pass1 = request.getParameter("p1").trim();
 		String pass2 = request.getParameter("p2").trim();
 		
 		if(pass1.equals(pass2)) {
 
-			service.updatePassword(Integer.parseInt(idU), pass1);
+			service.updatePassword(Integer.parseInt(id), pass1);
 			return "redirect:/login";	
 		}
 		else {

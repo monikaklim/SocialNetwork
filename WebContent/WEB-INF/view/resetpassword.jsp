@@ -8,9 +8,9 @@
 
 <body>
 
-${idUtente}
 
-<form:form action = "confrontaPassword"  method = "post">
+
+<form:form action = "confrontaPassword" >
 
 <table>
 <tr>
@@ -19,8 +19,8 @@ ${idUtente}
 </tr> <tr>
 <td>Conferma password:</td>
 <td> <input type = "password" placeholder = "Password" name = "p2" id = "pass2" required/></td>
-</tr><tr>
-<tr> <td> <p id = "confronto"> </p>
+</tr>
+<tr><td><input type = text name = "idU" value = "${param.idUtente}" disabled/></td></tr>
 <tr>
 <td> <br><input class = "button" type = "submit" value = "Conferma" /></td></tr>
 </table>
