@@ -82,13 +82,16 @@ public class SocialNetworkController {
 	//invio email
 	@RequestMapping("/sendMail")
 	public String sendMail(HttpServletRequest request, Model model) throws MessagingException{
-	String link = request.getParameter("linkupdate");
+	int idUtente = 0;
+	String link = request.getParameter("resetLink");
 	String messaggio = "Clicca il link per resettare la password\n"+link;
 	String indirizzo = request.getParameter("mailPass").trim();
-	
 	Utente utente = service.findUtenteByEmail(indirizzo);
-	/*int idUtente = utente.getIdUtente();
-	model.addAttribute("idUtente",idUtente);*/
+	if(utente != null) {
+	 idUtente = utente.getIdUtente();
+	
+	}
+	
 	 // Creazione di una mail session
     Properties props = new Properties();
     props.put("mail.smtp.socketFactory.port", "465");
@@ -110,7 +113,7 @@ public class SocialNetworkController {
     message.setSubject("Reset password");
     message.setText(messaggio);
 
-    InternetAddress fromAddress = new InternetAddress("monyklim@gmail.com");
+    InternetAddress fromAddress = new InternetAddress("monika.klim@scaiconsulting.it");
     InternetAddress toAddress = new InternetAddress("monika.klim@scaiconsulting.it");
     message.setFrom(fromAddress);
     message.setRecipient(Message.RecipientType.TO, toAddress);
@@ -118,46 +121,36 @@ public class SocialNetworkController {
     // Invio del messaggio
     Transport.send(message);	
 		
-		
-	return "redirect:/login";	
+    model.addAttribute("idUtente",idUtente);	
+	return "login";	
 	}
 	
 	
 	
 	@RequestMapping("/resetPassword")
-	public String showReset(Model model) {
+	public String showReset(@RequestParam("idUtente")String idU, Model model) {
 
 	return "resetpassword";
 	}
 	
 	@RequestMapping("/confrontaPassword")
-	public String confrontaPassword(HttpServletRequest request, Model model) {
+	public String confrontaPassword(@RequestParam("idUtente")String idU,HttpServletRequest request, Model model) {
 
 		String pass1 = request.getParameter("p1").trim();
 		String pass2 = request.getParameter("p2").trim();
 		
 		if(pass1.equals(pass2)) {
-			System.out.println("ok");
-			return "updatepassword";	
+
+			service.updatePassword(Integer.parseInt(idU), pass1);
+			return "redirect:/login";	
 		}
 		else {
-	
-			return "redirect:/resetpassword";	
+	System.out.println("no");
+			return "redirect:/resetPassword";	
 		}
 	}
 	
-	
-	
-	@RequestMapping("/updatePassword")
-	public String updatePassword(Model model,HttpServletRequest request) {
-		String pass1 = request.getParameter("password1").trim();
-		String id = request.getParameter("idUtente");
-		service.updatePassword(Integer.parseInt(id), pass1);
-	
-	return "redirect:/login";
-	}
-	
-	
+
 
 	
 	@RequestMapping("/processRegistrazione")

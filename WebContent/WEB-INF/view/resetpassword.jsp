@@ -8,9 +8,9 @@
 
 <body>
 
+${idUtente}
 
-
-<form action = "confrontaPassword"  method = "post">
+<form:form action = "confrontaPassword"  method = "post">
 
 <table>
 <tr>
@@ -28,9 +28,8 @@
 
 
 
-</form>
+</form:form>
 </body>
-
 
 
 

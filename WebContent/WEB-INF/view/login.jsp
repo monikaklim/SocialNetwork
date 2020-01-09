@@ -69,14 +69,12 @@ function mostraPassword() {
 </form>
 
 
+<form action = "sendMail" id= "passDim" model>
 
-<form action = "sendMail" id= "passDim">
-
-<c:url var ="update" value = "update"> 
+<c:url  var ="resetLink" value = "/resetPassword" > 
 						<c:param name="idUtente" value= "${idUtente}"/>
 						</c:url>
 
-<p style= "display:none" id= "linkupdate"><a href= "${update}" ></a>  </p>
 
 
 <button class = "button" id = "close"> <i class="material-icons">close</i>  </button>
@@ -87,7 +85,7 @@ Inserisci la tua email: <input type = "text" placeholder = "Email" name = "mailP
 <input class = "button" type = "submit" value = "Invia" />
 
 
-
+<a href = "${resetLink}">reset</a>
 </form>
 
 <script>
