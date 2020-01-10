@@ -15,41 +15,37 @@
 </head>
 
 <body>
-
-<h3><b> Login </b></h3>
+<h3>Homepage</h3>
+<div id= "form">
+<p><i class="material-icons">account_box</i><b> ACCEDI O REGISTRATI </b></p>
+<hr >
 
 <form action = "processLogin" method = "POST" >
 <table>
 <tr>
-<td>Username:</td>
+<td><p>Username:</p></td>
 <td><input type = "text" placeholder = "Username" name = "username" required/></td>
 </tr> <tr>
-<td>Password:</td>
+<td><p>Password:</p></td>
 <td> <input type = "password" placeholder = "Password" name = "password" id = "pass" required/></td>
-<td><input type="checkbox" onclick="mostraPassword()">Mostra Password</td>
+<td><input type="checkbox" onclick="mostraPassword()"><label>Mostra password</label></td>
 
-</tr><tr>
-<tr>
-<td> <br><input class = "button" type = "submit" value = "Accedi" /></td></tr>
-<tr></tr>
-<tr></tr>
 <tr>
 <td></td>
+<td> <br><input style = "width:215px" class = "button" type = "submit" value = "Accedi" /></td></tr>
+<tr></tr>
+<tr></tr>
+<tr></tr>
+<tr></tr>
+<tr>
 <td><a href="forgottenPassword" >Password dimenticata?</a></td>
+<td><a href= "registration">Registrati</a> </td>
 </tr>
 
 </table>
 <br>
 <p style = "font-size: 12px; color:#b30000"><i>  ${msg} </i></p>
 
-<div id = "link">
-<table>
-<tr>
-<td><a href= "registration">Registrati</a> </td>
-<td><a id = "homelink" href= ""><i class="material-icons">home</i></a></td></tr>
-
-</table>
-</div>
 
 
 
@@ -68,14 +64,7 @@ function mostraPassword() {
 
 </form>
 
-
-
-
-
-
-
-
-
+</div>
 
 
 
