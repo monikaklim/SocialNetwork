@@ -29,9 +29,9 @@ html,body{
 
 p{
 	font-size:22px;
-	
-	
+	color:#001a66;	
 }
+
 label{
 font-size:13px;
 color:	#001433;
@@ -50,28 +50,16 @@ input[type=checkbox]{
 
 }
 
-input[type=checkbox]: checked{
-  background-color:  #0059b3;
-}
-
-
-#close{
-font-size:10px;
-position:fixed;
-right: 30px;
-width:35px;
-height:25px;	
-bottom:360px;
-border:none;
-background-color: #66a3ff;	
-}
 
 #form{
 	width:600px;
 	margin:auto;
 	padding:15px;
 	
-	
+}
+
+hr{
+  border: 1px solid #0059b3;	
 }
 
 table{

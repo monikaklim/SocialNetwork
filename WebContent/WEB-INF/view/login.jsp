@@ -15,10 +15,10 @@
 </head>
 
 <body>
-<h3>Homepage social network</h3>
+<h3>Homepage</h3>
 <div id= "form">
-<p><b>Accedi </b></p>
-
+<p><i class="material-icons">account_box</i><b> ACCEDI O REGISTRATI </b></p>
+<hr >
 
 <form action = "processLogin" method = "POST" >
 <table>
@@ -64,14 +64,7 @@ function mostraPassword() {
 
 </form>
 
-
-
 </div>
-
-
-
-
-
 
 
 

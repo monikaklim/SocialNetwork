@@ -21,7 +21,7 @@
 <table> 
 <tr>
 <td><a class = "nav"  href =""><i class="material-icons">home</i></a></td>
-<td><a class = "nav" href =""><i class="material-icons">person</i></a></td>
+<td><a class = "nav" href =""><i class="material-icons">account_circle</i></a></td>
 <td><a class = "nav" href =""><i class="material-icons">settings</i></a></td>
 
 </tr>
