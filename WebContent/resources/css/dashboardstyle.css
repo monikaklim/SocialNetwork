@@ -2,14 +2,11 @@
   font-size: 15px;
   vertical-align:middle;
   cursor:pointer;
-  display: block;
   background-color: #66b3ff;
   padding:  10px;
   text-decoration: none;
-  text-align: left;
   color:black;
   border: 2px solid  #0059b3;
-  width: 100px;
   border-radius: 8px;
 }
 
@@ -45,6 +42,7 @@ html,body{
  }
  
  #nav a{
+ display: inline-block;
   top:0px;
   float:left;
   font-size: 15px;
@@ -66,7 +64,14 @@ html,body{
   color: white;
 }
  
- 
+  #divpost{
+  bottom:0px;
+  
+  }
+  
+  
+  
+  
  
  @media screen and (max-width: 500px) {
   .navbar a {
@@ -74,7 +79,9 @@ html,body{
     display: block;
   }
  
+
  
+
 
 
 
