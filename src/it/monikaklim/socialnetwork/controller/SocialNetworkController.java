@@ -27,15 +27,9 @@ public class SocialNetworkController {
 	
 	
 
-	@RequestMapping("/")
-	public String homepage() {
-
-	return "home";
-	}	
-	
 	
 //-----homepage-----	
-	@RequestMapping("/login")
+	@RequestMapping("/")
 	public String showLogin() {
 
 	return "login";
