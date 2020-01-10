@@ -6,10 +6,12 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
 import it.monikaklim.socialnetwork.model.Utente;
 import it.monikaklim.socialnetwork.service.ServiceLogin;
@@ -43,9 +45,9 @@ public class SocialNetworkController {
 	
 	
 	@RequestMapping("/confirmRegistration")
-	public String showConfirm() {
+	public String showConfirmRegistration() {
 
-	return "confirmRegistration";
+	return "confirmregistration";
 	}	
 	
 	
@@ -72,10 +74,10 @@ public class SocialNetworkController {
 		}
 	
 	
-	@RequestMapping("/registrazione")
-	public String showRegistrazione() {
+	@RequestMapping("/registration")
+	public String showRegistation() {
 
-	return "registrazione";
+	return "registration";
 	}	
 	
 	@RequestMapping("/logged")
@@ -85,9 +87,18 @@ public class SocialNetworkController {
 	}	
 	
 	
+	
+	@RequestMapping("/forgottenPassword")
+	public String showForgottenPassword() {
+
+	return "forgottenpassword";
+	}	
+	
+	
 	String indirizzomail = "";
 	Utente utente = null;
 	int codiceGenerato = 0;
+	
 	//email di verifica per richiesta modifica password
 	@RequestMapping("/sendMailVerifica")
 	public String sendMailVerifica(HttpServletRequest request, Model model) throws MessagingException{
@@ -115,7 +126,6 @@ public class SocialNetworkController {
     }
     );
     
-    
     MimeMessage message = new MimeMessage(session);
     message.setSubject("Codice di verifica");
     message.setText(messaggio);
@@ -129,15 +139,12 @@ public class SocialNetworkController {
     Transport.send(message);	
 		
     model.addAttribute("idUtente",idUtente);	
-	return "login";	
+		
 	}
-	else
-		return "login";
-	
+	return "login";
 	}
 	
 	//controllo codice di verifica 
-	
 	@RequestMapping("/controlloCodice")
 	public String controlloCodice(HttpServletRequest request, Model model) {
 	int codiceInserito = Integer.parseInt(request.getParameter("codiceVerifica").trim());	
@@ -150,10 +157,8 @@ public class SocialNetworkController {
 	{
 		model.addAttribute("controllo","Il codice è errato");		
 	}
-		
 	return "login";	
 	}
-	
 	
 	
 	//invio email con link
@@ -197,13 +202,13 @@ public class SocialNetworkController {
 
     // Invio del messaggio
     Transport.send(message);	
-    utente.setRichiestaModificaPsw(0);	
-    model.addAttribute("idUtente",idUtente);	
-	return "login";	
-	}
-	else
-		return "login";
 	
+    model.addAttribute("idUtente",idUtente);	
+	
+	}
+
+	
+	return "login";
 	}
 	
 	
@@ -225,6 +230,7 @@ public class SocialNetworkController {
 		if(pass1.equals(pass2)) {
 
 			service.updatePassword(Integer.parseInt(id), pass1);
+			utente.setRichiestaModificaPsw(0);
 			return "redirect:/login";	
 		}
 		else {
@@ -249,7 +255,7 @@ public class SocialNetworkController {
 			utente = new Utente(nome,cognome,data,username,password,email);
 	        service.registraUtente(utente);
 			
-		return "confirmRegistration";
+		return "confirmregistration";
 	}	
 		
 	@RequestMapping("/select")
