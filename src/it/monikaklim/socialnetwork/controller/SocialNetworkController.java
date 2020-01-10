@@ -97,8 +97,6 @@ public class SocialNetworkController {
 	if(utente != null) {
 	 idUtente = utente.getIdUtente();
 	
-	
-	
 	String messaggio ="Il codice di verifica è:\n\n"+  new Random().nextInt(10000) + 88888;
 	
 	 // Creazione di una mail session
@@ -140,13 +138,7 @@ public class SocialNetworkController {
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	//invio email
+	//invio email con link
 	@RequestMapping("/sendMail")
 	public String sendMail(HttpServletRequest request, Model model) throws MessagingException{
 	int idUtente = 0,modifica = 0;

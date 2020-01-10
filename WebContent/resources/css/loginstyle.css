@@ -73,3 +73,9 @@ bottom:160px;
 border:none;
 background-color: #66a3ff;	
 }
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

@@ -66,7 +66,39 @@ function mostraPassword() {
 	}
 
 </script>
+
 </form>
+
+<div id = "mailverifica">
+<form action = "sendMailVerifica" id ="mailverifica">
+
+Inserisci la tua email: <input type = "text" placeholder = "Email" name = "mailPass"/>
+
+<input class = "button" type = "submit" value = "Avanti" />
+
+</form>
+
+</div>
+
+
+<div id = "codiceverifica">
+<form action = "controlloCodice" id ="mailverifica">
+
+Ti è stata inviata una mail con un codice di verifica. Inseriscilo qui: <br><br>
+ <input type = "number" placeholder = " " name = "codice"/>
+
+<input class = "button" type = "submit" value = "Avanti" />
+
+${confronto}
+</form>
+
+</div>
+
+
+
+
+
+
 
 
 <form action = "sendMail" id= "passDim" >
