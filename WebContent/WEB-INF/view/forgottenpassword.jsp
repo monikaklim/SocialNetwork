@@ -26,14 +26,14 @@
 
 Inserisci la tua email: <input type = "text" placeholder = "Email" name = "mailPass"/>
 
-<input class = "button" type = "submit" onclick = "openCode()"  value = "Avanti" />
+<input class = "button" type = "submit"   value = "Avanti" />
 </form>
 <br>
 <br>
 
 
-
-<form action = "controlloCodice" id ="formCodice">
+<div  id ="formCodice">
+<form action = "controlloCodice" >
 
 Ti sarà inviata una mail con un codice di verifica. Inseriscilo qui: <br><br>
  <input type = "number"  name = "codiceVerifica" required/>  ${controllo}
@@ -46,28 +46,23 @@ Ti sarà inviata una mail con un codice di verifica. Inseriscilo qui: <br><br>
 <p id = "conferma"></p>
 
 </form>
+</div>
 
+<div  id ="formFine">
 <form action = "sendMail">
 <input class = "button" type = "submit"  value = "Fine" />
 </form>
+</div>
 
 <script>
 
 
 function openForm() {
-	  document.getElementById("formPassDim").style.display = "block";
-	// document.getElementById("formCodice").style.display = "none";
+	 document.getElementById("formPassDim").style.display = "block";
 	}
 	
-	function openCode(){
-		 document.getElementById("formCodice").style.display = "block";	
-	}
-	
-	
-function closeForm() {
-	  document.getElementById("formPassDim").style.display = "none";
 
-	}
+	
 	
 	function showConferma(){
 		

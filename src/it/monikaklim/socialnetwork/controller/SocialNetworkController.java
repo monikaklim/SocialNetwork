@@ -141,7 +141,7 @@ public class SocialNetworkController {
     model.addAttribute("idUtente",idUtente);	
 		
 	}
-	return "login";
+	return "forgottenpassword";
 	}
 	
 	//controllo codice di verifica 
@@ -157,7 +157,7 @@ public class SocialNetworkController {
 	{
 		model.addAttribute("controllo","Il codice è errato");		
 	}
-	return "login";	
+	return "forgottenpassword";	
 	}
 	
 	
@@ -208,7 +208,7 @@ public class SocialNetworkController {
 	}
 
 	
-	return "login";
+	return "forgottenpassword";
 	}
 	
 	
