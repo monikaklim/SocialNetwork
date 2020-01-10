@@ -1,8 +1,5 @@
-
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
-<%@ taglib prefix= "form" uri = "http://www.springframework.org/tags/form"  %>
 <!DOCTYPE html>
-
 <html>
 <head>
 <title>Password dimenticata</title>
@@ -19,6 +16,7 @@
 
 <div id= "formPassDim">
 
+<h2>Recupero password</h2>
 <c:url  var ="resetLink" value = "/resetPassword" > 
 						<c:param name="idUtente" value= "${idUtente}"/>
 						</c:url>
@@ -50,7 +48,7 @@ Ti sarà inviata una mail con un codice di verifica. Inseriscilo qui: <br><br>
 </form>
 
 <form action = "sendMail">
-<input class = "button" type = "submit"  value = "Invia mail" />
+<input class = "button" type = "submit"  value = "Fine" />
 </form>
 
 <script>
