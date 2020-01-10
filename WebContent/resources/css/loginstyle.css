@@ -74,6 +74,21 @@ border:none;
 background-color: #66a3ff;	
 }
 
+#formMail,#formCodice,#formConferma{
+	
+  width:400px;
+  height:150px;
+  display: none;
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  border: 2px solid #0059b3;
+  background-color: #66a3ff;
+  padding: 10px;	
+}
+
+
+
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;

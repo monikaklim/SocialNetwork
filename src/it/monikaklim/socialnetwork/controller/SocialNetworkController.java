@@ -87,7 +87,7 @@ public class SocialNetworkController {
 	
 	
 	
-	
+	int codice = 0;
 	//email di verifica per richiesta modifica password
 	@RequestMapping("/sendMailVerifica")
 	public String sendMailVerifica(HttpServletRequest request, Model model) throws MessagingException{
@@ -96,8 +96,8 @@ public class SocialNetworkController {
 	Utente utente = service.findUtenteByEmail(indirizzo);
 	if(utente != null) {
 	 idUtente = utente.getIdUtente();
-	
-	String messaggio ="Il codice di verifica è:\n\n"+  new Random().nextInt(10000) + 88888;
+	 codice = (new Random().nextInt(10000) + 55555);
+	String messaggio ="Il codice di verifica è:\n\n"+ codice ;
 	
 	 // Creazione di una mail session
     Properties props = new Properties();
@@ -117,7 +117,7 @@ public class SocialNetworkController {
     
     
     MimeMessage message = new MimeMessage(session);
-    message.setSubject("Reset password");
+    message.setSubject("Codice di verifica");
     message.setText(messaggio);
 
     InternetAddress fromAddress = new InternetAddress("monika.klim@scaiconsulting.it");

@@ -66,46 +66,48 @@ function mostraPassword() {
 	}
 
 </script>
-
 </form>
 
-<div id = "mailverifica">
+<div id= "formPassDim">
+
+
+
+<div id = "formMail">
 <form action = "sendMailVerifica" id ="mailverifica">
 
 Inserisci la tua email: <input type = "text" placeholder = "Email" name = "mailPass"/>
 
-<input class = "button" type = "submit" value = "Avanti" />
-
-</form>
-
-</div>
-
-
-<div id = "codiceverifica">
-<form action = "controlloCodice" id ="mailverifica">
-
-Ti è stata inviata una mail con un codice di verifica. Inseriscilo qui: <br><br>
- <input type = "number" placeholder = " " name = "codice"/>
-
-<input class = "button" type = "submit" value = "Avanti" />
-
-${confronto}
-</form>
-
-</div>
-
-
-
-
-
-
-
-
-<form action = "sendMail" id= "passDim" >
+<input class = "button" type = "submit" onclick = "openCode()"  value = "Avanti" />
 
 <c:url  var ="resetLink" value = "/resetPassword" > 
 						<c:param name="idUtente" value= "${idUtente}"/>
 						</c:url>
+
+</form>
+</div>
+
+
+
+<div id = "formCodice">
+<form action = "sendMail" id ="mailverifica">
+
+Ti è stata inviata una mail con un codice di verifica. Inseriscilo qui: <br><br>
+ <input type = "number" placeholder = " " name = "codice"/>
+
+<input class = "button" type = "submit"  onclick = "openConferma()" value = "Avanti" />
+
+${confronto}
+</form>
+</div>
+
+
+
+<!--  
+
+<div id = "formConferma">
+<form action = "sendMail"  >
+
+
 
 <button class = "button" id = "close"> <i class="material-icons">close</i>  </button>
 <br><br>
@@ -114,17 +116,49 @@ Inserisci la tua email: <input type = "text" placeholder = "Email" name = "mailP
 <br>
 <input class = "button" type = "submit" value = "Invia" />
 
-
 </form>
+</div>
+-->
+
+
 
 <script>
+
+function openCode(){
+	 document.getElementById("formCodice").style.display = "block";
+	 document.getElementById("formMail").style.display = "none";
+	 document.getElementById("formConferma").style.display = "none";
+	
+	
+}
+
+function openConferma(){
+	 document.getElementById("formMail").style.display = "none";
+	 document.getElementById("formCodice").style.display = "none";
+	 document.getElementById("formConferma").style.display = "block";
+	
+}
+
+
+
+
 function openForm() {
-	  document.getElementById("passDim").style.display = "block";
+	  document.getElementById("formPassDim").style.display = "block";
+	  document.getElementById("formMail").style.display = "block";
+	//  document.getElementById("formConferma").style.display = "none";
+	 // document.getElementById("formCodice").style.display = "none";
 	}
 function closeForm() {
-	  document.getElementById("passDim").style.display = "none";
+	  document.getElementById("formPassDim").style.display = "none";
+	  document.getElementById("formMail").style.display = "none";
+	  document.getElementById("formConferma").style.display = "none";
+	  document.getElementById("formCodice").style.display = "none";
 	}
 </script>
+
+</div>
+
+
 
 
 
