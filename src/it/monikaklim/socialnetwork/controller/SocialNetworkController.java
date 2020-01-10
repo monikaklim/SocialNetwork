@@ -85,19 +85,19 @@ public class SocialNetworkController {
 	}	
 	
 	
-	
-	
-	int codice = 0;
+	String indirizzomail = "";
+	Utente utente = null;
+	int codiceGenerato = 0;
 	//email di verifica per richiesta modifica password
 	@RequestMapping("/sendMailVerifica")
 	public String sendMailVerifica(HttpServletRequest request, Model model) throws MessagingException{
 	int idUtente = 0;
-	String indirizzo = request.getParameter("mailPass").trim();
-	Utente utente = service.findUtenteByEmail(indirizzo);
+	indirizzomail = request.getParameter("mailPass").trim();
+	 utente = service.findUtenteByEmail(indirizzomail);
 	if(utente != null) {
 	 idUtente = utente.getIdUtente();
-	 codice = (new Random().nextInt(10000) + 55555);
-	String messaggio ="Il codice di verifica è:\n\n"+ codice ;
+	 codiceGenerato = (new Random().nextInt(10000) + 55555);
+	String messaggio ="Il codice di verifica è:\n\n"+ codiceGenerato ;
 	
 	 // Creazione di una mail session
     Properties props = new Properties();
@@ -121,7 +121,7 @@ public class SocialNetworkController {
     message.setText(messaggio);
 
     InternetAddress fromAddress = new InternetAddress("monika.klim@scaiconsulting.it");
-    InternetAddress toAddress = new InternetAddress("monika.klim@scaiconsulting.it");
+    InternetAddress toAddress = new InternetAddress(indirizzomail);
     message.setFrom(fromAddress);
     message.setRecipient(Message.RecipientType.TO, toAddress);
 
@@ -136,15 +136,31 @@ public class SocialNetworkController {
 	
 	}
 	
+	//controllo codice di verifica 
+	
+	@RequestMapping("/controlloCodice")
+	public String controlloCodice(HttpServletRequest request, Model model) {
+	int codiceInserito = Integer.parseInt(request.getParameter("codiceVerifica").trim());	
+		
+	if(codiceGenerato == codiceInserito)
+	{
+	utente.setRichiestaModificaPsw(1);		
+	}
+	else
+	{
+		model.addAttribute("controllo","Il codice è errato");		
+	}
+		
+	return "login";	
+	}
+	
 	
 	
 	//invio email con link
 	@RequestMapping("/sendMail")
 	public String sendMail(HttpServletRequest request, Model model) throws MessagingException{
 	int idUtente = 0,modifica = 0;
-	
-	String indirizzo = request.getParameter("mailPass").trim();
-	Utente utente = service.findUtenteByEmail(indirizzo);
+
 	if(utente != null) {
 	 idUtente = utente.getIdUtente();
 	 modifica = utente.getRichiestaModificaPsw();
@@ -175,13 +191,13 @@ public class SocialNetworkController {
     message.setText(messaggio);
 
     InternetAddress fromAddress = new InternetAddress("monika.klim@scaiconsulting.it");
-    InternetAddress toAddress = new InternetAddress("monika.klim@scaiconsulting.it");
+    InternetAddress toAddress = new InternetAddress(indirizzomail);
     message.setFrom(fromAddress);
     message.setRecipient(Message.RecipientType.TO, toAddress);
 
     // Invio del messaggio
     Transport.send(message);	
-		
+    utente.setRichiestaModificaPsw(0);	
     model.addAttribute("idUtente",idUtente);	
 	return "login";	
 	}

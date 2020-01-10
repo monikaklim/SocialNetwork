@@ -55,7 +55,6 @@
 
 <script>
 
-
 function mostraPassword() {
 	  var x = document.getElementById("pass");
 	  if (x.type === "password") {
@@ -66,97 +65,78 @@ function mostraPassword() {
 	}
 
 </script>
+
 </form>
 
 <div id= "formPassDim">
-
-
-
-<div id = "formMail">
-<form action = "sendMailVerifica" id ="mailverifica">
-
-Inserisci la tua email: <input type = "text" placeholder = "Email" name = "mailPass"/>
-
-<input class = "button" type = "submit" onclick = "openCode()"  value = "Avanti" />
+<button class = "button" id = "close" onclick="closeForm()"> <i class="material-icons">close</i>  </button>
+<br><br>
 
 <c:url  var ="resetLink" value = "/resetPassword" > 
 						<c:param name="idUtente" value= "${idUtente}"/>
 						</c:url>
 
+
+<form action = "sendMailVerifica" >
+
+Inserisci la tua email: <input type = "text" placeholder = "Email" name = "mailPass"/>
+
+<input class = "button" type = "submit" onclick = "openCode()"  value = "Avanti" />
 </form>
-</div>
+<br>
+<br>
 
 
 
-<div id = "formCodice">
-<form action = "sendMail" id ="mailverifica">
+<form action = "controlloCodice" id ="formCodice">
 
 Ti è stata inviata una mail con un codice di verifica. Inseriscilo qui: <br><br>
- <input type = "number" placeholder = " " name = "codice"/>
-
-<input class = "button" type = "submit"  onclick = "openConferma()" value = "Avanti" />
-
-${confronto}
-</form>
-</div>
-
-
-
-<!--  
-
-<div id = "formConferma">
-<form action = "sendMail"  >
-
-
-
-<button class = "button" id = "close"> <i class="material-icons">close</i>  </button>
-<br><br>
-Inserisci la tua email: <input type = "text" placeholder = "Email" name = "mailPass"/>
-<p>Sarà inviato un link per reimpostare la password.</p>
+ <input type = "number"  name = "codiceVerifica"/>  ${controllo}
 <br>
-<input class = "button" type = "submit" value = "Invia" />
+<br>
+<input class = "button" type = "submit"  onclick = "showConferma()" value = "Avanti" />
+<br>
+<br>
+<br>
+<p id = "conferma"></p>
 
 </form>
-</div>
--->
 
-
+<form action = "sendMail">
+<input class = "button" type = "submit"  value = "Invia mail" />
+</form>
 
 <script>
-
-function openCode(){
-	 document.getElementById("formCodice").style.display = "block";
-	 document.getElementById("formMail").style.display = "none";
-	 document.getElementById("formConferma").style.display = "none";
-	
-	
-}
-
-function openConferma(){
-	 document.getElementById("formMail").style.display = "none";
-	 document.getElementById("formCodice").style.display = "none";
-	 document.getElementById("formConferma").style.display = "block";
-	
-}
-
-
 
 
 function openForm() {
 	  document.getElementById("formPassDim").style.display = "block";
-	  document.getElementById("formMail").style.display = "block";
-	//  document.getElementById("formConferma").style.display = "none";
-	 // document.getElementById("formCodice").style.display = "none";
+	// document.getElementById("formCodice").style.display = "none";
 	}
+	
+	function openCode(){
+		 document.getElementById("formCodice").style.display = "block";	
+	}
+	
+	
 function closeForm() {
 	  document.getElementById("formPassDim").style.display = "none";
-	  document.getElementById("formMail").style.display = "none";
-	  document.getElementById("formConferma").style.display = "none";
-	  document.getElementById("formCodice").style.display = "none";
+
+	}
+	
+	function showConferma(){
+		
+		 document.getElementById("conferma").innerHTML = "Sarà inviato un link per reimpostare la password.";
 	}
 </script>
-
 </div>
+
+
+
+
+
+
+
 
 
 
