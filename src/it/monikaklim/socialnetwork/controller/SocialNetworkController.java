@@ -139,6 +139,7 @@ public class SocialNetworkController {
     Transport.send(message);	
 		
     model.addAttribute("idUtente",idUtente);	
+    model.addAttribute("controllo1","L'email di verifica è stata inviata.");	
 		
 	}
 	return "forgottenpassword";
@@ -155,7 +156,7 @@ public class SocialNetworkController {
 	}
 	else
 	{
-		model.addAttribute("controllo","Il codice è errato");		
+		model.addAttribute("controllo2","Il codice è errato");		
 	}
 	return "forgottenpassword";	
 	}
@@ -204,7 +205,7 @@ public class SocialNetworkController {
     Transport.send(message);	
 	
     model.addAttribute("idUtente",idUtente);	
-	
+    model.addAttribute("controllo3","L'email con il link per resettare la password è stata inviata.");	
 	}
 
 	

@@ -12,7 +12,7 @@
 
 </head>
 <body>
-
+<a id = "homelink" href= ""><i class="material-icons">home</i></a>
 
 <div id= "formPassDim">
 
@@ -24,9 +24,9 @@
 
 <form action = "sendMailVerifica" >
 
-Inserisci la tua email: <input type = "text" placeholder = "Email" name = "mailPass"/>
+Inserisci la tua email: <input type = "text" placeholder = "Email" name = "mailPass"/> <p id="confermaMailVerifica"></p>${controllo1}
 
-<input class = "button" type = "submit"   value = "Avanti" />
+<input class = "button" type = "submit" onclick = "showConfermaEmail()"  value = "Avanti" />
 </form>
 <br>
 <br>
@@ -36,10 +36,10 @@ Inserisci la tua email: <input type = "text" placeholder = "Email" name = "mailP
 <form action = "controlloCodice" >
 
 Ti sarà inviata una mail con un codice di verifica. Inseriscilo qui: <br><br>
- <input type = "number"  name = "codiceVerifica" required/>  ${controllo}
+ <input type = "number"  name = "codiceVerifica" required/>  ${controllo2}
 <br>
 <br>
-<input class = "button" type = "submit"  onclick = "showConferma()" value = "Avanti" />
+<input class = "button" type = "submit" value = "Avanti" />
 <br>
 <br>
 <br>
@@ -50,24 +50,13 @@ Ti sarà inviata una mail con un codice di verifica. Inseriscilo qui: <br><br>
 
 <div  id ="formFine">
 <form action = "sendMail">
-<input class = "button" type = "submit"  value = "Fine" />
+<input class = "button" type = "submit"  value = "Fine" />${controllo3}
 </form>
 </div>
 
 <script>
-
-
-function openForm() {
-	 document.getElementById("formPassDim").style.display = "block";
-	}
-	
-
 	
 	
-	function showConferma(){
-		
-		 document.getElementById("conferma").innerHTML = "Sarà inviato un link per reimpostare la password.";
-	}
 </script>
 </div>
 
