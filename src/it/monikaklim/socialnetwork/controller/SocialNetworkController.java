@@ -27,8 +27,6 @@ public class SocialNetworkController {
 	
 	
 
-	
-	
 	@RequestMapping("/")
 	public String homepage() {
 
@@ -36,7 +34,7 @@ public class SocialNetworkController {
 	}	
 	
 	
-	
+//-----homepage-----	
 	@RequestMapping("/login")
 	public String showLogin() {
 
@@ -44,13 +42,7 @@ public class SocialNetworkController {
 	}		
 	
 	
-	@RequestMapping("/confirmRegistration")
-	public String showConfirmRegistration() {
-
-	return "confirmregistration";
-	}	
-	
-	
+//------login------
 	@RequestMapping("/processLogin")
 	public String processLogin(HttpServletRequest request, Model model,HttpServletResponse response) throws ServletException, IOException{
 
@@ -60,26 +52,19 @@ public class SocialNetworkController {
 		String messaggio = "";
 		
 		if( service.findUtente(username,password) == false)
-			{messaggio = "password e/o username non validi";
+			{messaggio = "Password e/o username non validi.";
 			model.addAttribute("msg",messaggio);
 			return "login";
 			}
-		else
-			
+		else	
 		{
 			return "homelogged";
 			}
-		
-		
 		}
 	
 	
-	@RequestMapping("/registration")
-	public String showRegistation() {
 
-	return "registration";
-	}	
-	
+//-----home utente-------	
 	@RequestMapping("/logged")
 	public String showLogged() {
 
@@ -87,7 +72,7 @@ public class SocialNetworkController {
 	}	
 	
 	
-	
+//--------recupero password--------
 	@RequestMapping("/forgottenPassword")
 	public String showForgottenPassword() {
 
@@ -192,7 +177,6 @@ public class SocialNetworkController {
     }
     );
     
-    
     MimeMessage message = new MimeMessage(session);
     message.setSubject("Reset password");
     message.setText(messaggio);
@@ -216,15 +200,13 @@ public class SocialNetworkController {
 	}
 	
 	
-	
 	@RequestMapping("/resetPassword")
 	public String showReset(){
 
 	return "resetpassword";
 	}
 	
-	
-	
+	//controlla password e aggiorna
 	@RequestMapping("/confrontaPassword")
 	public String confrontaPassword(@RequestParam("idUtente") String id, HttpServletRequest request, Model model) {
 		int idUt = Integer.parseInt(id);
@@ -250,13 +232,17 @@ public class SocialNetworkController {
 			} else
 				 return "resetpassword";
 			
-		
-	
 		}
 	
 	
 
+//------registrazione--------
+	
+	@RequestMapping("/registration")
+	public String showRegistation() {
 
+	return "registration";
+	}	
 	
 	@RequestMapping("/processRegistrazione")
 	public String processInsert(HttpServletRequest request, Model model) {
@@ -279,9 +265,13 @@ public class SocialNetworkController {
 
 	return "redirect:/";
 	}	
-	
-	
-	
+		
+	//conferma registrazione
+	@RequestMapping("/confirmRegistration")
+	public String showConfirmRegistration() {
+
+	return "confirmregistration";
+	}	
 	
 	
 	

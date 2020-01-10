@@ -21,25 +21,12 @@ a:hover, .button:hover {
 }
 
 
-#link
-{
-position: absolute;
-right: 25px;	
-top: 5px;	
-}
-
-#homelink
-{
-font-size:15px;	
- width: 50px;	
-}
-
 html,body{	
     background-color:#ccebff;	
     font-family:"Verdana";
     cursor:default;  
 }
-p{
+p,label{
 font-size:13px;
 color:	#001433;
 	
@@ -51,18 +38,16 @@ padding: 8px;
 font-size:12px;
 }
 
-#formPassDim{
+input[type=checkbox]{
+  height: 15px;
+  width: 15px;
 
-  width:400px;
-  height:350px;
-  display: none;
-  position: fixed;
-  bottom: 25px;
-  right: 25px;
-  border: 2px solid #0059b3;
-  background-color: #66a3ff;
-  padding: 10px;	
 }
+
+input[type=checkbox]: checked{
+  background-color:  #0059b3;
+}
+
 
 #close{
 font-size:10px;
@@ -75,12 +60,17 @@ border:none;
 background-color: #66a3ff;	
 }
 
-
-
-
-
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+#form{
+	width:600px;
+	margin:auto;
+	padding:15px;
+	
+	
 }
+
+table{
+	width:100%;
+	
+}
+
+
