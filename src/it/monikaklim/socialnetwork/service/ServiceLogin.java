@@ -43,6 +43,19 @@ public class ServiceLogin {
 			
 		}	
 	
+	@Transactional
+	public Utente findUtenteById(int idUtente) {		
+		if(loginDAO.findUtenteById(idUtente) == null)
+		{
+			return  null;
+		}
+		else {
+			
+			return loginDAO.findUtenteById(idUtente);
+		}
+			
+		}	
+	
 	
 @Transactional
 	public String registraUtente(Utente utente) {		
@@ -57,4 +70,15 @@ public class ServiceLogin {
 		
 	}	
 	
+
+
+@Transactional
+public void setRichiestaModificaPsw(int idUtente, int richiesta) {
+	 loginDAO.setRichiestaModificaPsw(idUtente,richiesta);
+	
+}
+
+
+
+
 }

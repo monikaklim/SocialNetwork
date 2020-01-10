@@ -45,7 +45,7 @@
 <div id = "link">
 <table>
 <tr>
-<td><a href= "registrazione">Registrati</a> </td>
+<td><a href= "registration">Registrati</a> </td>
 <td><a id = "homelink" href= ""><i class="material-icons">home</i></a></td></tr>
 
 </table>

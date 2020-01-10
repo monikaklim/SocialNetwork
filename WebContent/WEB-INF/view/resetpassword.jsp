@@ -15,6 +15,7 @@
 
 <div>
 <h4>Reset password</h4>
+<p>Quando la password verrà aggiornata sarai reindirizzato alla pagina di login.</p>
 <form action = "confrontaPassword" >
 
 <table>
@@ -34,6 +35,9 @@
 
 
 <input style="display:none" type = text  value = "${param.idUtente}" name = "idUtente" />
+
+${controllo}
+${controllo1}
 </form>
 </div>
 </body>

@@ -21,7 +21,7 @@
 </form> </td>
 
 <td>
-<form id = "regi" action = "registrazione"  >
+<form id = "regi" action = "registration"  >
 <input class = "button" type = "submit" value = "Registrati" />
 
 </form>

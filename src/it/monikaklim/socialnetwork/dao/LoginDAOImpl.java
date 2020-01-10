@@ -70,9 +70,7 @@ public class LoginDAOImpl implements LoginDAO{
 
 //update password
 	public void updatePassword(int idUtente,String pass1) {
-			Utente utente = null;		
-			String esito = "";	
-				
+			Utente utente = null;						
 			try {
 			Session session = sessionFactory.getCurrentSession();
 			utente = session.get(Utente.class, idUtente);
@@ -89,6 +87,41 @@ public class LoginDAOImpl implements LoginDAO{
 		}
 		
 		
+	}
+
+//set richiesta
+	public void setRichiestaModificaPsw(int idUtente, int richiesta) {
+	
+		Utente utente = null;			
+			
+		try {
+		Session session = sessionFactory.getCurrentSession();
+		utente = session.get(Utente.class, idUtente);
+	    utente.setRichiestaModificaPsw(richiesta);
+		System.out.println( "Richiesta aggiornata con successo.");
+		}
+	catch(Exception e) {
+		e.printStackTrace();
+		System.out.println( "errore");
+	}
+	
+}
+
+
+	public Utente findUtenteById(int idUtente) {
+	Utente utente = null;
+		
+		try {
+			Session session = sessionFactory.getCurrentSession();
+			utente = session.createQuery("from Utente where idUtente = "+idUtente, Utente.class).getSingleResult();
+
+			}
+			catch(Exception e) {
+				e.printStackTrace();
+				System.out.println("Utente non trovato");
+			}
+
+		return utente;
 	}
 	
 	

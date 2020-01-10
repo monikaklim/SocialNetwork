@@ -142,6 +142,8 @@ public class SocialNetworkController {
     model.addAttribute("controllo1","L'email di verifica è stata inviata.");	
 		
 	}
+	else
+		 model.addAttribute("controllo1","Non sei registrato.");
 	return "forgottenpassword";
 	}
 	
@@ -152,7 +154,9 @@ public class SocialNetworkController {
 		
 	if(codiceGenerato == codiceInserito)
 	{
-	utente.setRichiestaModificaPsw(1);		
+	utente.setRichiestaModificaPsw(1);	
+	service.setRichiestaModificaPsw(utente.getIdUtente(), 1);
+	model.addAttribute("controllo2","Identità verificata. Clicca 'Fine' per ricevere il link di reset.");	
 	}
 	else
 	{
@@ -165,15 +169,12 @@ public class SocialNetworkController {
 	//invio email con link
 	@RequestMapping("/sendMail")
 	public String sendMail(HttpServletRequest request, Model model) throws MessagingException{
-	int idUtente = 0,modifica = 0;
+	int idUtente = 0;
 
 	if(utente != null) {
 	 idUtente = utente.getIdUtente();
-	 modifica = utente.getRichiestaModificaPsw();
 	
-	}
-	
-	if(modifica == 1) {
+	if(utente.getRichiestaModificaPsw() == 1) {
 	String messaggio = messaggioResetPassword  + idUtente;
 	 // Creazione di una mail session
     Properties props = new Properties();
@@ -207,7 +208,9 @@ public class SocialNetworkController {
     model.addAttribute("idUtente",idUtente);	
     model.addAttribute("controllo3","L'email con il link per resettare la password è stata inviata.");	
 	}
-
+	else
+    model.addAttribute("controllo3","L'email non è stata inviata.");	
+ }
 	
 	return "forgottenpassword";
 	}
@@ -224,21 +227,33 @@ public class SocialNetworkController {
 	
 	@RequestMapping("/confrontaPassword")
 	public String confrontaPassword(@RequestParam("idUtente") String id, HttpServletRequest request, Model model) {
-	
+		int idUt = Integer.parseInt(id);
+	   Utente utentePass = service.findUtenteById(idUt);
 		String pass1 = request.getParameter("p1").trim();
 		String pass2 = request.getParameter("p2").trim();
 		
-		if(pass1.equals(pass2)) {
-
-			service.updatePassword(Integer.parseInt(id), pass1);
-			utente.setRichiestaModificaPsw(0);
-			return "redirect:/login";	
+		if(pass1.equals(pass2) && (utentePass.getRichiestaModificaPsw() == 1)) {
+			service.updatePassword(idUt, pass1);
+			utentePass.setRichiestaModificaPsw(0);
+			service.setRichiestaModificaPsw(Integer.parseInt(id), 0);
+			return "redirect:/login";}
+		
+			if(pass1.equals(pass2) && (utentePass.getRichiestaModificaPsw() == 0)) {
+				    model.addAttribute("controllo","Non sei autorizzato a modificare questa password.");
+				    return "resetpassword";
+			}
+			
+			if(!pass1.equals(pass2)) {
+				
+				  model.addAttribute("controllo","Le password non corrispondono.");
+				  return "resetpassword";		
+			} else
+				 return "resetpassword";
+			
+		
+	
 		}
-		else {
-	System.out.println("no");
-			return "redirect:/resetPassword";	
-		}
-	}
+	
 	
 
 

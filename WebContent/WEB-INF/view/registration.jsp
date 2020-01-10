@@ -71,7 +71,7 @@ function annulla(){
 </div>
 </form>
 
-<a id = "homelink" href= ""><i class="material-icons">home</i></a>
+<a id = "homelink" href= " "><i class="material-icons">home</i></a>
 
 
 </body>

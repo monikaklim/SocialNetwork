@@ -24,9 +24,9 @@
 
 <form action = "sendMailVerifica" >
 
-Inserisci la tua email: <input type = "text" placeholder = "Email" name = "mailPass"/> <p id="confermaMailVerifica"></p>${controllo1}
-
-<input class = "button" type = "submit" onclick = "showConfermaEmail()"  value = "Avanti" />
+Inserisci la tua email: <input type = "text" placeholder = "Email" name = "mailPass"/> <p>${controllo1}</p>
+<br>
+<input class = "button" type = "submit"   value = "Avanti" />
 </form>
 <br>
 <br>
@@ -35,23 +35,24 @@ Inserisci la tua email: <input type = "text" placeholder = "Email" name = "mailP
 <div  id ="formCodice">
 <form action = "controlloCodice" >
 
-Ti sarà inviata una mail con un codice di verifica. Inseriscilo qui: <br><br>
- <input type = "number"  name = "codiceVerifica" required/>  ${controllo2}
+Ti sarà inviato un codice di verifica per confermare la tua identità. Inseriscilo qui: <br><br>
+ <input type = "number"  name = "codiceVerifica" required/> <p> ${controllo2}</p>
 <br>
 <br>
 <input class = "button" type = "submit" value = "Avanti" />
 <br>
 <br>
 <br>
-<p id = "conferma"></p>
 
 </form>
 </div>
 
 <div  id ="formFine">
 <form action = "sendMail">
-<input class = "button" type = "submit"  value = "Fine" />${controllo3}
+<input class = "button" type = "submit"  value = "Fine" /><br><br>
+<p>${controllo3}</p>
 </form>
+
 </div>
 
 <script>
