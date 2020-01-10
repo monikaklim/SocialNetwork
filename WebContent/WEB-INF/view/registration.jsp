@@ -30,6 +30,7 @@
 <td>Email:</td>
 <td> <input type = "email" name = "email" required/></td>
 </tr>
+<tr>
 <td>Username:</td>
 <td> <input type = "text" name = "username"required /></td>
 </tr>
@@ -70,7 +71,7 @@ function annulla(){
 </div>
 </form>
 
-<a id = "homelink" href= ""><i class="material-icons">home</i></a>
+<a id = "homelink" href= " "><i class="material-icons">home</i></a>
 
 
 </body>

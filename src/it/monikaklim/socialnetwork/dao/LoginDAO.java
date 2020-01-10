@@ -8,7 +8,11 @@ public interface LoginDAO {
 	
 	String registraUtente(Utente utente);
 	
+	Utente findUtenteByEmail(String mail);
 	
+	void updatePassword(int idUtente,String pass1);
 	
+	void setRichiestaModificaPsw(int idUtente, int richiesta);
 	
+	 Utente findUtenteById(int idUtente);
 }

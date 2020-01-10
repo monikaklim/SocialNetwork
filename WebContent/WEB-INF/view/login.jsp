@@ -1,4 +1,5 @@
-
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
+<%@ taglib prefix= "form" uri = "http://www.springframework.org/tags/form"  %>
 <!DOCTYPE html>
 
 <html>
@@ -34,7 +35,7 @@
 <tr></tr>
 <tr>
 <td></td>
-<td><input class = "button" type = "button" onclick = "openForm()" value = "Password Dimenticata?" /></td>
+<td><a href="forgottenPassword" >Password dimenticata?</a></td>
 </tr>
 
 </table>
@@ -44,7 +45,7 @@
 <div id = "link">
 <table>
 <tr>
-<td><a href= "registrazione">Registrati</a> </td>
+<td><a href= "registration">Registrati</a> </td>
 <td><a id = "homelink" href= ""><i class="material-icons">home</i></a></td></tr>
 
 </table>
@@ -53,7 +54,6 @@
 
 
 <script>
-
 
 function mostraPassword() {
 	  var x = document.getElementById("pass");
@@ -65,30 +65,15 @@ function mostraPassword() {
 	}
 
 </script>
-</form>
-
-
-
-<form action = "sendMail" id= "passDim">
-<button class = "button" id = "close"> <i class="material-icons">close</i>  </button>
-<br><br>
-Inserisci la tua email: <input type = "text" placeholder = "Email" name = "mailPass"/>
-<p>Sarà inviato un link per reimpostare la password.</p>
-<br>
-<input class = "button" type = "submit" value = "Invia" />
-
-
 
 </form>
 
-<script>
-function openForm() {
-	  document.getElementById("passDim").style.display = "block";
-	}
-function closeForm() {
-	  document.getElementById("passDim").style.display = "none";
-	}
-</script>
+
+
+
+
+
+
 
 
 

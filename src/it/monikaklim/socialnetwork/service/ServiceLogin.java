@@ -31,9 +31,54 @@ public class ServiceLogin {
 	
 	
 	@Transactional
+	public Utente findUtenteByEmail(String mail) {		
+		if(loginDAO.findUtenteByEmail(mail) == null)
+		{
+			return  null;
+		}
+		else {
+			
+			return loginDAO.findUtenteByEmail(mail);
+		}
+			
+		}	
+	
+	@Transactional
+	public Utente findUtenteById(int idUtente) {		
+		if(loginDAO.findUtenteById(idUtente) == null)
+		{
+			return  null;
+		}
+		else {
+			
+			return loginDAO.findUtenteById(idUtente);
+		}
+			
+		}	
+	
+	
+@Transactional
 	public String registraUtente(Utente utente) {		
 		return loginDAO.registraUtente(utente);
 				
-		}	
+		}
+
+
+@Transactional
+	public void updatePassword(int idUtente,String pass1) {
+		 loginDAO.updatePassword(idUtente, pass1);
+		
+	}	
 	
+
+
+@Transactional
+public void setRichiestaModificaPsw(int idUtente, int richiesta) {
+	 loginDAO.setRichiestaModificaPsw(idUtente,richiesta);
+	
+}
+
+
+
+
 }

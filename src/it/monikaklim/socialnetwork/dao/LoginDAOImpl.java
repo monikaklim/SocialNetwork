@@ -14,6 +14,7 @@ public class LoginDAOImpl implements LoginDAO{
 	@Autowired
 	private SessionFactory sessionFactory;
 	
+	//select where username password
 	public Utente findUtente(String user, String pass) {
 		Utente utente = null;	
 		try {
@@ -29,7 +30,27 @@ public class LoginDAOImpl implements LoginDAO{
 		}	
 			
 	
+	//select where email
+	public Utente findUtenteByEmail(String mail){
+		Utente utente = null;
+		
+		try {
+			Session session = sessionFactory.getCurrentSession();
+			utente = session.createQuery("from Utente where email = '"+mail+"'", Utente.class).getSingleResult();
+
+			}
+			catch(Exception e) {
+				e.printStackTrace();
+				System.out.println("Utente non trovato");
+			}
+
+		return utente;
+	}
 	
+	
+	
+	
+	//insert
 	public String registraUtente(Utente utente) {
 		String esito = "";	
 			
@@ -45,6 +66,63 @@ public class LoginDAOImpl implements LoginDAO{
 
 		return esito;
 		}
+
+
+//update password
+	public void updatePassword(int idUtente,String pass1) {
+			Utente utente = null;						
+			try {
+			Session session = sessionFactory.getCurrentSession();
+			utente = session.get(Utente.class, idUtente);
+			if(utente.getRichiestaModificaPsw() == 1) {
+		    utente.setPassword(pass1);
+			System.out.println( "Password aggiornata con successo.");
+			}
+			else
+				System.out.println("Non è stata richiesta la modifica di questa password");
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+			System.out.println( "errore");
+		}
+		
+		
+	}
+
+//set richiesta
+	public void setRichiestaModificaPsw(int idUtente, int richiesta) {
+	
+		Utente utente = null;			
+			
+		try {
+		Session session = sessionFactory.getCurrentSession();
+		utente = session.get(Utente.class, idUtente);
+	    utente.setRichiestaModificaPsw(richiesta);
+		System.out.println( "Richiesta aggiornata con successo.");
+		}
+	catch(Exception e) {
+		e.printStackTrace();
+		System.out.println( "errore");
+	}
+	
+}
+
+
+	public Utente findUtenteById(int idUtente) {
+	Utente utente = null;
+		
+		try {
+			Session session = sessionFactory.getCurrentSession();
+			utente = session.createQuery("from Utente where idUtente = "+idUtente, Utente.class).getSingleResult();
+
+			}
+			catch(Exception e) {
+				e.printStackTrace();
+				System.out.println("Utente non trovato");
+			}
+
+		return utente;
+	}
 	
 	
 	

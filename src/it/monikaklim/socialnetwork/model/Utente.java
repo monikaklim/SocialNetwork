@@ -30,8 +30,19 @@ public class Utente {
 	private String password;
 	@Column
 	private String email;
+	@Column
+	private int richiestaModificaPsw; //0 = no - 1 = si
 	
-	
+	public int getRichiestaModificaPsw() {
+		return richiestaModificaPsw;
+	}
+
+
+	public void setRichiestaModificaPsw(int richiestaModificaPsw) {
+		this.richiestaModificaPsw = richiestaModificaPsw;
+	}
+
+
 	public Utente() {
 		
 	}
@@ -45,6 +56,7 @@ public class Utente {
 		this.username = username;
 		this.password = password;
 		this.email = email;
+		this.richiestaModificaPsw = 0;
 	}
 
 
@@ -58,7 +70,6 @@ public class Utente {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
 
 	public String getUsername() {
 		return username;
