@@ -24,12 +24,12 @@ Benvenuto  <% out.println(username); %>!</p>
 
 
 
-<div id = "divpost">
-<form id = "newPost" action = "newPost">
+
+<form  action = "newPost">
 <a id ="newpostlink" href = "newpost"><i class="material-icons">add_circle</i></a>
 
 </form>
-</div>
+
 
 
 

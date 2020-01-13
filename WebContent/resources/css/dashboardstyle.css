@@ -64,11 +64,17 @@ html,body{
   color: white;
 }
  
-  #divpost{
-  bottom:0px;
-  
-  }
-  
+#newpostlink
+{
+	 text-decoration: none;
+	 color:black;
+  position: fixed;
+  bottom: 10px;
+ left:700px;
+ right:500px;
+  width: 50%;
+  border: none;
+}
   
   
   
