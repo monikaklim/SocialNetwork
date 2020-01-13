@@ -26,8 +26,7 @@ Benvenuto  <% out.println(username); %>!</p>
 
 
 <form  action = "newPost">
-<a id ="newpostlink" href = "newpost"><i class="material-icons">add_circle</i></a>
-
+<a id ="newpostlink" href = "newpost"><i style = "font-size:35px; "class="material-icons">add_circle</i></a>
 </form>
 
 
