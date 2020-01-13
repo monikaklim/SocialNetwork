@@ -1,10 +1,14 @@
 package it.monikaklim.socialnetwork.controller;
 
 import java.util.*;
-import java.io.IOException;
+import java.io.*;
+
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
@@ -12,6 +16,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
+
 
 import it.monikaklim.socialnetwork.model.Utente;
 import it.monikaklim.socialnetwork.service.ServiceLogin;
@@ -273,6 +279,29 @@ public String showNewPost() {
 return "newpost";
 }		
 	
+
+@RequestMapping("/uploadImage")
+public String uploadImage(@RequestParam CommonsMultipartFile file, HttpSession session) throws Exception{
+
+ServletContext context = session.getServletContext();	
+String path = context.getRealPath("/images");
+String nomeFile = file.getOriginalFilename();	
+
+System.out.println(path + " "+ nomeFile);
+	
+
+byte[] bytes = file.getBytes();  
+BufferedOutputStream stream =new BufferedOutputStream(new FileOutputStream(new File(path + File.separator + nomeFile)));  
+stream.write(bytes);  
+stream.flush();  
+stream.close();  
+
+System.out.println("caricato");
+return "newpost";
+}
+
+
+
 	
 	
 }
