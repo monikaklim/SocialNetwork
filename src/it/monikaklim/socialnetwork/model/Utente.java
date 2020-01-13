@@ -1,10 +1,12 @@
 package it.monikaklim.socialnetwork.model;
 
+import java.util.*;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -33,15 +35,11 @@ public class Utente {
 	@Column
 	private int richiestaModificaPsw; //0 = no - 1 = si
 	
-	public int getRichiestaModificaPsw() {
-		return richiestaModificaPsw;
-	}
-
-
-	public void setRichiestaModificaPsw(int richiestaModificaPsw) {
-		this.richiestaModificaPsw = richiestaModificaPsw;
-	}
-
+	@OneToMany(mappedBy="utente")
+	private ArrayList<Post> post;
+	
+	
+	
 
 	public Utente() {
 		
@@ -117,8 +115,36 @@ public class Utente {
 	}	
 	
 	
+	public int getRichiestaModificaPsw() {
+		return richiestaModificaPsw;
+	}
+
+
+	public void setRichiestaModificaPsw(int richiestaModificaPsw) {
+		this.richiestaModificaPsw = richiestaModificaPsw;
+	}
+
+
+	public ArrayList<Post> getPost() {
+		return post;
+	}
+
+
+	public void setPost(ArrayList<Post> post) {
+		this.post = post;
+	}
 	
+	//add post
 	
+	public void addPost(Post p) {
+	
+		if(post == null) {
+			post = new ArrayList<Post>();
+		}
+		
+		post.add(p);
+		p.setUtente(this);
+	}
 	
 	
 	

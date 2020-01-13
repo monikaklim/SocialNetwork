@@ -32,6 +32,20 @@ public class Immagine {
 		this.path = path;
 		this.extension = extension;
 	}
+	
+	
+	
+	
+	public int getIdImmagine() {
+		return idImmagine;
+	}
+
+
+	public void setIdImmagine(int idImmagine) {
+		this.idImmagine = idImmagine;
+	}
+
+
 	public String getNome() {
 		return nome;
 	}
