@@ -1,14 +1,14 @@
 package it.monikaklim.socialnetwork.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 import it.monikaklim.socialnetwork.dao.*;
 import it.monikaklim.socialnetwork.model.Immagine;
 import it.monikaklim.socialnetwork.model.Post;
 
 
-@Service
+@Component
 public class ServiceImmagine {
 
 
@@ -16,7 +16,6 @@ public class ServiceImmagine {
 private ImmagineDAOImpl imDAO;
 	
 	
-
 @Transactional
 public Immagine selectImmagineByPost(Post p) {		
 	
@@ -28,8 +27,8 @@ public Immagine selectImmagineByPost(Post p) {
 
 
 @Transactional
-public String insertImmagine(Immagine immagine) {		
-	return imDAO.insertImmagine(immagine);		
+public void insertImmagine(Immagine immagine) {		
+	 imDAO.insertImmagine(immagine);		
 	}
 
 
@@ -46,6 +45,7 @@ public String deleteImmagine(Immagine immagine) {
 	}	
 	
 	
+
 	
 	
 	

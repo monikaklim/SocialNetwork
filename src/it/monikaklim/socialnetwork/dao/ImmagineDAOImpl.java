@@ -3,12 +3,12 @@ package it.monikaklim.socialnetwork.dao;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Component;
 import it.monikaklim.socialnetwork.model.Immagine;
 import it.monikaklim.socialnetwork.model.Post;
 
 
-@Repository
+@Component
 public class ImmagineDAOImpl implements ImmagineDAO {
 
 
@@ -17,17 +17,18 @@ public class ImmagineDAOImpl implements ImmagineDAO {
 	
 	
 	//insert
-	public String insertImmagine(Immagine immagine) {
-		String esito = "";		
+	public void insertImmagine(Immagine immagine) {
+	if(immagine != null) {
 		try {
 		Session session = sessionFactory.getCurrentSession();
-		session.save(immagine);
-		esito = "Immagine salvata con successo";
+		session.save("Immagine", immagine);
+		System.out.println( "Immagine salvata con successo");
 		}
 		catch(Exception e){
-		esito = "Errore.";	
+			System.out.println("Errore.");	
 		}
-		return esito;
+	  }
+		
 		}
 	
 	

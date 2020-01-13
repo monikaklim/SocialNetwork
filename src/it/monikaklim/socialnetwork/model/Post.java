@@ -24,12 +24,12 @@ public class Post {
 		
 		@ManyToOne
 		@JoinColumn(name = "idUtente")
-		@Column
+
 		private Utente utente;
 		
 		@OneToOne
 		@JoinColumn(name = "idImmagine")
-		@Column
+	
 		private Immagine immagine;
 		
 		public Post() 

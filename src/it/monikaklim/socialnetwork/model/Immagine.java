@@ -34,8 +34,6 @@ public class Immagine {
 	}
 	
 	
-	
-	
 	public int getIdImmagine() {
 		return idImmagine;
 	}
@@ -63,6 +61,12 @@ public class Immagine {
 	}
 	public void setExtension(String extension) {
 		this.extension = extension;
+	}
+
+
+	@Override
+	public String toString() {
+		return "Immagine [nome=" + nome + ", path=" + path + ", extension=" + extension + "]";
 	}
 	
 	

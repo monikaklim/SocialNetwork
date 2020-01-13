@@ -46,7 +46,7 @@
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
 		<property name="dataSource" ref="myDataSource" />
-		<property name="packagesToScan" value="it.monikaklim.socialnetwork" />
+		<property name="packagesToScan" value="it.monikaklim.socialnetwork.model,it.monikaklim.socialnetwork.dao,it.monikaklim.socialnetwork.service,it.monikaklim.socialnetwork.controller " />
 		<property name="hibernateProperties">
 		   <props>
 		      <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>

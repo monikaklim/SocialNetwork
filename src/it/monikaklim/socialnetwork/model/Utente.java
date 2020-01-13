@@ -36,7 +36,7 @@ public class Utente {
 	private int richiestaModificaPsw; //0 = no - 1 = si
 	
 	@OneToMany(mappedBy="utente")
-	private ArrayList<Post> post;
+	private List<Post> post;
 	
 	
 	
@@ -125,7 +125,7 @@ public class Utente {
 	}
 
 
-	public ArrayList<Post> getPost() {
+	public List<Post> getPost() {
 		return post;
 	}
 

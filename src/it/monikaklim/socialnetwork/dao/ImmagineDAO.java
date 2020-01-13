@@ -5,7 +5,7 @@ import it.monikaklim.socialnetwork.model.Post;
 
 public interface ImmagineDAO {
 
-	String insertImmagine(Immagine immagine);
+	void insertImmagine(Immagine immagine);
 	
 	Immagine selectImmagineByPost(Post p);
 	
