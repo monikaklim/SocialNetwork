@@ -18,16 +18,17 @@
 <div>
 <h3><b>New post <i class="material-icons">edit</i>   </b></h3>
 
-<form id = "newpost" action = "publishPost" method = post>
+<form id = "newpost" action = "publishPost"  method = "post" enctype = "multipart/form-data">
 <textarea placeholder= "Scrivi qualcosa..."  name = "inputtext" id ="inputtext" > </textarea>
 <br>
 <input class = "button" type ="submit" id = "pubblica" value = "Pubblica">
-</form>
+
 <br>
-<form action ="uploadImage" id ="uploadimage" method = "post" enctype = "multipart/form-data">
 
  <input type = "file" name = "file" size = "50" id = "inputfile" />
- <button  class = "button" id = "caricafoto" type = "submit" ><i class="material-icons">add_a_photo</i></button>
+
+
+<!--  <button  class = "button" id = "caricafoto" type = "submit" ><i class="material-icons">add_a_photo</i></button> -->
       
 
 </form>

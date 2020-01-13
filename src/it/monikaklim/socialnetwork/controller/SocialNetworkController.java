@@ -49,6 +49,8 @@ public class SocialNetworkController {
 	
 	
 //------login------
+	Utente utente = null;
+	
 	@RequestMapping("/processLogin")
 	public String processLogin(HttpServletRequest request, Model model,HttpServletResponse response) throws ServletException, IOException{
 
@@ -87,7 +89,7 @@ public class SocialNetworkController {
 	
 	
 	String indirizzomail = "";
-	Utente utente = null;
+	
 	int codiceGenerato = 0;
 	
 	//email di verifica per richiesta modifica password
@@ -314,11 +316,35 @@ return "newpost";
 //pubblica post
 
 @RequestMapping("/publishPost")
-public String publishPost(HttpServletRequest request, Model model) {
+public String publishPost(@RequestParam CommonsMultipartFile file, HttpSession session, HttpServletRequest request, Model model)throws Exception {
 
+	//immagine
+	Immagine immagine = null;
+	try {
+	String path = "C:\\Users\\monika.klim\\eclipse-workspace\\SocialNetwork\\WebContent\\resources\\images";
+	String ext = file.getOriginalFilename().substring((file.getOriginalFilename().indexOf("."))+1);
+	String nomeFile = file.getOriginalFilename().substring(0,file.getOriginalFilename().indexOf("."));
+
+	byte[] bytes = file.getBytes();  
+	BufferedOutputStream stream =new BufferedOutputStream(new FileOutputStream(new File(path + File.separator + nomeFile)));  
+	stream.write(bytes);  
+	stream.flush();  
+	stream.close();  
+
+	immagine = new Immagine(nomeFile,path,ext);
+	System.out.println(immagine.toString());
+	serviceImm.insertImmagine(immagine);
+	System.out.println("caricato");}
+	catch(Exception e) {
+		e.printStackTrace();
+		System.out.println("Errore, non è stato possibile caricare l'immagine.");
+	}
+	
+	
+	//testo
 	String contenuto = request.getParameter("inputtext").trim();
 	
-	Post p = new Post(contenuto);
+	Post p = new Post(contenuto,utente,immagine);
 	servicePost.insertPost(p);
 
 	return "redirect:/dashboard";
