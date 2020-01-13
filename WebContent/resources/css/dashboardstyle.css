@@ -23,7 +23,6 @@ html,body{
 }
 
 
-
 #nav {  
 	margin-top:0px;
 	top:0px;
@@ -37,20 +36,19 @@ html,body{
     height:30px;
     border:none;
     border-radius:1px;
-    background-color: #66b3ff;
-   
+    background-color: #66b3ff;   
  }
  
  #nav a{
   display: inline-block;
   top:0px;
   float:left;
-  font-size: 15px;
+  font-size: 20px;
   vertical-align:middle;
   cursor:pointer;
   display: block;
   background-color: #66b3ff;
-  padding:  5px;
+  padding:  3px;
   text-decoration: none;
   color:black;
   border: none;
@@ -59,10 +57,22 @@ html,body{
   border-radius: 8px;
  }
  
+#nav #settingslink
+ {
+ float:right;
+ }
+ 
  #nav a:hover {
   background-color:  #0059b3;
   color: white;
 }
+ 
+#nav #user
+{
+	margin-left:200px;
+	
+} 
+ 
  
 #newpostlink
 {

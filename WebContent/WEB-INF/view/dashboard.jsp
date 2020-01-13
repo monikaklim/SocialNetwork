@@ -12,14 +12,17 @@
 </head>
 <body>
 <div id= "nav">
+<a id ="settingslink" href =""><i class="material-icons">settings</i></a>
 
 <a href =""><i class="material-icons">home</i></a>
-<a href =""><i class="material-icons">account_circle</i></a>
-<a href =""><i class="material-icons">settings</i></a>
 
-<p id = "user">
+<a href =""><i class="material-icons">account_circle</i></a>
+
+<a href =""><i class="material-icons">notifications</i></a>
+<p id = "user"> <b>
 <% String username = request.getParameter("username"); %>
-Benvenuto  <% out.println(username); %>!</p>
+Welcome
+  <% out.println(username+"!"); %> </b></p>
 </div>
 
 
