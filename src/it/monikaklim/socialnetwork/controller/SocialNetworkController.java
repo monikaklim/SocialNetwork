@@ -254,11 +254,6 @@ public class SocialNetworkController {
 		return "confirmregistration";
 	}	
 		
-	@RequestMapping("/select")
-	public String showSelect() {
-
-	return "redirect:/";
-	}	
 		
 	//conferma registrazione
 	@RequestMapping("/confirmRegistration")
@@ -266,6 +261,17 @@ public class SocialNetworkController {
 
 	return "confirmregistration";
 	}	
+	
+	
+	
+//------post-------
+	
+	
+@RequestMapping("/newPost")
+public String showNewPost() {
+
+return "newpost";
+}		
 	
 	
 	

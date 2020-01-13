@@ -1,0 +1,78 @@
+#homelink
+{
+font-size:15px;	
+width: 30px;	
+position: absolute;
+right: 25px;	
+top: 5px;
+ vertical-align:middle;
+  cursor:pointer;
+  border-radius: 8px;
+  border: none;
+  display: block;
+  padding: 3px 10px;
+  text-decoration: none;
+  text-align: center;
+  color:black;
+}
+
+#homelink:hover, .button:hover {
+  background-color:  #0059b3;
+  color: white;
+}
+
+html,body{	
+    background-color:#ccebff;	
+    font-family:"Verdana";
+    cursor:default;  
+}
+
+
+.button{
+  float:right;
+  font-size: 15px;
+  vertical-align:middle;
+  cursor:pointer;
+  background-color: #66b3ff;
+  padding:  10px;
+  text-decoration: none;
+  color:black;
+  border: 2px solid  #0059b3;
+  border-radius: 8px;
+
+}
+
+ 
+ .button:hover {
+  background-color:  #0059b3;
+  color: white;
+}
+
+#inputtext{
+border: 2px solid #66b3ff;
+border-radius: 4px;
+width:600px;
+height:200px;
+box-sizing: border-box;	
+resize: none;
+padding: 12px 20px;
+font-size:13px;
+overflow:auto;
+
+}
+
+#inputtext:focus {
+  border: 2px solid #0059b3;
+}
+
+
+div{
+  margin-top:100px;
+  margin-right: auto;
+  margin-left: auto;
+  width: 600px;
+  padding: 10px;
+  height:50%;
+	
+	
+}

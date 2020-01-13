@@ -28,9 +28,9 @@ Welcome
 
 
 
-<form  action = "newPost">
-<a id ="newpostlink" href = "newpost"><i style = "font-size:35px; "class="material-icons">add_circle</i></a>
-</form>
+
+<a id ="newpostlink" href = "newPost"><i style = "font-size:35px; "class="material-icons">add_circle</i></a>
+
 
 
 
