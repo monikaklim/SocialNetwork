@@ -52,17 +52,17 @@ public class SocialNetworkController {
 			}
 		else	
 		{
-			return "homelogged";
+			return "dashboard";
 			}
 		}
 	
 	
 
 //-----home utente-------	
-	@RequestMapping("/logged")
+	@RequestMapping("/dashboard")
 	public String showLogged() {
 
-	return "homelogged";
+	return "dashboard";
 	}	
 	
 	

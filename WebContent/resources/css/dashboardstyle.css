@@ -1,0 +1,109 @@
+.button{
+  font-size: 15px;
+  vertical-align:middle;
+  cursor:pointer;
+  background-color: #66b3ff;
+  padding:  10px;
+  text-decoration: none;
+  color:black;
+  border: 2px solid  #0059b3;
+  border-radius: 8px;
+}
+
+ 
+ .button:hover {
+  background-color:  #0059b3;
+  color: white;
+}
+
+html,body{	
+    background-color:#ccebff;	
+    font-family:"Verdana";
+    cursor:default;  
+}
+
+
+#nav {  
+	margin-top:0px;
+	top:0px;
+	float:none;
+    display: block;
+    text-align: left;
+    width: 100%;
+    padding: 6px;
+    text-decoration: none;
+    font-size: 15px; 
+    height:30px;
+    border:none;
+    border-radius:1px;
+    background-color: #66b3ff;   
+ }
+ 
+ #nav a{
+  display: inline-block;
+  top:0px;
+  float:left;
+  font-size: 20px;
+  vertical-align:middle;
+  cursor:pointer;
+  display: block;
+  background-color: #66b3ff;
+  padding:  3px;
+  text-decoration: none;
+  color:black;
+  border: none;
+  width: 25px;
+  height:25px;
+  border-radius: 8px;
+ }
+ 
+#nav #settingslink
+ {
+ float:right;
+ }
+ 
+ #nav a:hover {
+  background-color:  #0059b3;
+  color: white;
+}
+ 
+#nav #user
+{
+	margin-left:200px;
+	
+} 
+ 
+ 
+#newpostlink
+{
+    text-decoration: none;
+	color: black;
+	position: fixed;
+	bottom: 10px;
+	left: 700px;
+	right: 500px;
+	width: 35px;
+	height:35px;
+	border: none;
+	border-radius:8px;
+	}
+  
+#newpostlink:hover
+{
+ background-color:  #0059b3;
+  color: white;	
+}  
+  
+ 
+ @media screen and (max-width: 500px) {
+  .navbar a {
+    float: none;
+    display: block;
+  }
+ 
+
+ 
+
+
+
+
