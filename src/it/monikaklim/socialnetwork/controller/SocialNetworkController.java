@@ -74,8 +74,9 @@ public class SocialNetworkController {
 
 //-----home utente-------	
 	@RequestMapping("/dashboard")
-	public String showDashboard() {
-
+	public String showDashboard(HttpServletRequest request) {
+    /*String id = request.getParameter("idUtente");
+    System.out.println(id); */
 	return "dashboard";
 	}	
 	

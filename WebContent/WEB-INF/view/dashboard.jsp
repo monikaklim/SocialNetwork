@@ -28,8 +28,10 @@ Welcome
 
 
 
-
-<a id ="newpostlink" href = "newPost"><i style = "font-size:35px; "class="material-icons">add_circle</i></a>
+<c:url  var ="newpostlink" value = "/newPost" > 
+						<c:param name="idUtente" value= "${idUtente}"/>
+						</c:url>
+<a id ="newpostlink" href = "${newpostlink} "><i style = "font-size:35px; "class="material-icons">add_circle</i></a>
 
 
 
