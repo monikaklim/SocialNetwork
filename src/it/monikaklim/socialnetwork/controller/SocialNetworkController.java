@@ -2,6 +2,7 @@ package it.monikaklim.socialnetwork.controller;
 
 import java.util.*;
 import java.io.*;
+import java.nio.file.Path;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -284,7 +285,7 @@ return "newpost";
 public String uploadImage(@RequestParam CommonsMultipartFile file, HttpSession session) throws Exception{
 
 ServletContext context = session.getServletContext();	
-String path = context.getRealPath("/images");
+String path = "C:\\Users\\monika.klim\\eclipse-workspace\\SocialNetwork\\WebContent\\resources\\images";
 String nomeFile = file.getOriginalFilename();	
 
 System.out.println(path + " "+ nomeFile);

@@ -24,7 +24,7 @@
 <input class = "button" type ="submit" id = "pubblica" value = "Pubblica">
 </form>
 <br>
-<form id ="uploadimage" method = "post" enctype = "multipart/form-data">
+<form action ="uploadImage" id ="uploadimage" method = "post" enctype = "multipart/form-data">
 
  <input type = "file" name = "file" size = "50" id = "inputfile" />
  <button  class = "button" id = "caricafoto" type = "submit" ><i class="material-icons">add_a_photo</i></button>
