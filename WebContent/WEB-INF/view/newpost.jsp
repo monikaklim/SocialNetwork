@@ -18,8 +18,8 @@
 <div>
 <h3><b>New post <i class="material-icons">edit</i>   </b></h3>
 
-<form id = "newpost" action = "publishPost">
-<textarea placeholder= "Scrivi qualcosa..."  id ="inputtext" > </textarea>
+<form id = "newpost" action = "publishPost" method = post>
+<textarea placeholder= "Scrivi qualcosa..."  name = "inputtext" id ="inputtext" > </textarea>
 <br>
 <input class = "button" type ="submit" id = "pubblica" value = "Pubblica">
 </form>

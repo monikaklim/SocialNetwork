@@ -24,16 +24,33 @@ public class Post {
 		
 		@ManyToOne
 		@JoinColumn(name = "idUtente")
-
 		private Utente utente;
 		
 		@OneToOne
 		@JoinColumn(name = "idImmagine")
-	
 		private Immagine immagine;
 		
 		public Post() 
 		{}
+
+
+		public Post(String testo) {
+			this.testo = testo;
+		}
+
+
+		public Post(String testo, Utente utente) {
+			this.testo = testo;
+			this.utente = utente;
+		}
+
+
+		public Post(String testo, Utente utente, Immagine immagine) {
+			this.testo = testo;
+			this.utente = utente;
+			this.immagine = immagine;
+		}
+
 
 
 		public Utente getUtente() {

@@ -25,6 +25,7 @@ public class SocialNetworkController {
 
    private final String messaggioResetPassword ="Clicca sul link per creare una nuova password:\n\n http://localhost:8080/SocialNetwork/resetPassword?idUtente=";
 	
+   //service
 	@Autowired
 	@Qualifier("serviceLogin")
 	private ServiceLogin service;	
@@ -33,6 +34,9 @@ public class SocialNetworkController {
 	@Qualifier("serviceImmagine")
 	private ServiceImmagine serviceImm;	
 	
+	@Autowired
+	@Qualifier("servicePost")
+	private ServicePost servicePost;	
 	
 
 	
@@ -68,7 +72,7 @@ public class SocialNetworkController {
 
 //-----home utente-------	
 	@RequestMapping("/dashboard")
-	public String showLogged() {
+	public String showDashboard() {
 
 	return "dashboard";
 	}	
@@ -306,6 +310,22 @@ catch(Exception e) {
 }
 return "newpost";
 }
+
+//pubblica post
+
+@RequestMapping("/publishPost")
+public String publishPost(HttpServletRequest request, Model model) {
+
+	String contenuto = request.getParameter("inputtext").trim();
+	
+	Post p = new Post(contenuto);
+	servicePost.insertPost(p);
+
+	return "redirect:/dashboard";
+}
+
+
+
 
 
 
