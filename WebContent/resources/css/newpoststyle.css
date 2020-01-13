@@ -23,12 +23,13 @@ top: 5px;
 
 html,body{	
     background-color:#ccebff;	
-    font-family:"Verdana";
+    font-family:"Calibri";
     cursor:default;  
 }
 
 
 .button{
+  margin-top:30px;
   float:right;
   font-size: 15px;
   vertical-align:middle;
@@ -42,8 +43,27 @@ html,body{
 
 }
 
+#inputfile{
+	
+border: 1px solid #66b3ff;
+border-radius: 2px;	
+background-color:white;
+ cursor: pointer;
+ overflow: hidden;	
+}
+
+
+#caricafoto
+{
+float:none;
+margin-top:0px;	
+height:40px;
+width:40px;
+font-size:10px;
+padding:4px;	
+}
  
- .button:hover {
+.button:hover {
   background-color:  #0059b3;
   color: white;
 }
@@ -64,7 +84,6 @@ overflow:auto;
 #inputtext:focus {
   border: 2px solid #0059b3;
 }
-
 
 div{
   margin-top:100px;
