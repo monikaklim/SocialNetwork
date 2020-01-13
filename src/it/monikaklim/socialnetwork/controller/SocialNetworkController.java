@@ -284,12 +284,10 @@ return "newpost";
 @RequestMapping("/uploadImage")
 public String uploadImage(@RequestParam CommonsMultipartFile file, HttpSession session) throws Exception{
 
-ServletContext context = session.getServletContext();	
 String path = "C:\\Users\\monika.klim\\eclipse-workspace\\SocialNetwork\\WebContent\\resources\\images";
 String nomeFile = file.getOriginalFilename();	
 
-System.out.println(path + " "+ nomeFile);
-	
+System.out.println(path + " "+ nomeFile);	
 
 byte[] bytes = file.getBytes();  
 BufferedOutputStream stream =new BufferedOutputStream(new FileOutputStream(new File(path + File.separator + nomeFile)));  
