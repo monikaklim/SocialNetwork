@@ -64,7 +64,7 @@ public class PostDAOImpl implements PostDAO {
 	
 	//select all utente post
 	
-	public List<Post> selectPost( Utente utente){
+	public List<Post> selectAllPost( Utente utente){
 		List<Post> post = null;
 		
 		try {
