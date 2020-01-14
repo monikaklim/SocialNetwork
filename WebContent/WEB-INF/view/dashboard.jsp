@@ -9,6 +9,8 @@
     rel="stylesheet">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
+
+<link href='https://fonts.googleapis.com/css?family=Didact Gothic' rel='stylesheet'>
 </head>
 <body>
 <div id= "nav">
@@ -40,13 +42,14 @@ Welcome <% out.println(username+"!"); %> </b></p> -->
 
 
 
-<c:forEach var="post" items="${postlist}">
+<c:forEach var="post" items="${postlist}" end = "9">
 
 <table id ="tabellapost">
 
 						<tr > <td id ="username">${post.utente.username} </td> </tr>
 						<tr><td id = "contenutopost"> ${post.testo} </td></tr>
-					<tr>	<td id = "immaginepost"> <img src = " ${post.immagine.path}${post.immagine.nome}.${post.immagine.extension }   "  style="width:128px;height:128px;"></td> </tr>
+						
+					<tr> <td id = "immaginepost"> <img src = " ${post.immagine.path}${post.immagine.nome}.${post.immagine.extension }" onerror="this.style.display='none'" ></td> </tr>
 						
 
 </table>

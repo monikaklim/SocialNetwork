@@ -322,11 +322,13 @@ public String publishPost(@RequestParam CommonsMultipartFile file, @RequestParam
 	}
 	}
 	Utente ut = service.findUtenteById(Integer.parseInt(id));
+	
 	//testo
 	String contenuto = request.getParameter("inputtext").trim();
 	
-	Post p = new Post(contenuto,ut,immagine);
-	servicePost.insertPost(p);
+		Post p = new Post(contenuto,ut,immagine);
+		servicePost.insertPost(p);
+
 
 	return "redirect:/dashboard";
 }

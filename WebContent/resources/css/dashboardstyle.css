@@ -103,15 +103,32 @@ float:none;
  margin-left:500px;
 margin-top:40px;
  width:600px; 
+ padding:5px;
  }  
   
   #username{
+  font-weight: bold;
+   text-align:center;
   background-color:  #0059b3;
   color: white;	
-    border-radius: 6px;
+  border-radius: 6px;
   }
   
-  
+  #contenutopost{
+  font-family: 'Didact Gothic';
+  font-size:17px;
+  text-align:center;
+  padding:5px;
+  }
+ 
+ #immaginepost{
+ 
+ width:50%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+ }
+ 
  
  @media screen and (max-width: 500px) {
   .navbar a {
