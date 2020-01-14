@@ -16,10 +16,11 @@
   color: white;
 }
 
-html,body{	
+html{	
     background-color:#ccebff;	
     font-family:"Calibri";
     cursor:default;  
+    overflow:scroll;
 }
 
 
@@ -94,6 +95,23 @@ html,body{
   color: white;	
 }  
   
+
+ #postcontainer, table{
+   border: 2px solid  #0059b3;
+  border-radius: 8px;
+float:none;
+ margin-left:500px;
+margin-top:40px;
+ width:600px; 
+ }  
+  
+  #username{
+  background-color:  #0059b3;
+  color: white;	
+    border-radius: 6px;
+  }
+  
+  
  
  @media screen and (max-width: 500px) {
   .navbar a {
@@ -102,7 +120,6 @@ html,body{
   }
  
 
- 
 
 
 

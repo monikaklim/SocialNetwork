@@ -65,6 +65,8 @@ public class SocialNetworkController {
 			}
 		else	
 		{
+			List<Post> postlist = servicePost.selectAllPost(u);	
+			model.addAttribute("postlist",postlist);
 			model.addAttribute("idUtente", u.getIdUtente());
 			return "dashboard";
 			}

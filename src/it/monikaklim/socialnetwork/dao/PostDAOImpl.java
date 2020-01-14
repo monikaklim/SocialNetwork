@@ -62,14 +62,14 @@ public class PostDAOImpl implements PostDAO {
 		return post;
 	}
 	
-	//select all utente post
+	//select all utente post dal più recente
 	
 	public List<Post> selectAllPost( Utente utente){
 		List<Post> post = null;
 		
 		try {
 			Session session = sessionFactory.getCurrentSession();
-			post = session.createQuery("from Post where idUtente = "+utente.getIdUtente() , Post.class).getResultList();
+			post = session.createQuery("from Post where idUtente = "+utente.getIdUtente() + " order by idUtente DESC" , Post.class).getResultList();
 
 			}
 			catch(Exception e) {

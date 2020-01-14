@@ -38,23 +38,23 @@ Welcome <% out.println(username+"!"); %> </b></p> -->
 
 <div id = "postContainer">
 
-<table>
+
 
 <c:forEach var="post" items="${postlist}">
 
-<tr>
+<table id ="tabellapost">
 
-						<td> ${post.testo} </td>
-						<td> <img src = " ${post.immagine.path}${post.immagine.nome}.${post.immagine.extension }   "  style="width:128px;height:128px;"></td>
-						<td> .... </td>
+						<tr > <td id ="username">${post.utente.username} </td> </tr>
+						<tr><td id = "contenutopost"> ${post.testo} </td></tr>
+					<tr>	<td id = "immaginepost"> <img src = " ${post.immagine.path}${post.immagine.nome}.${post.immagine.extension }   "  style="width:128px;height:128px;"></td> </tr>
+						
 
-</tr>
+</table>
 </c:forEach>
 
 
 
 
-</table>
 
 
 
