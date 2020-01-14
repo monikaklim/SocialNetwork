@@ -145,6 +145,19 @@ public class Utente {
 		post.add(p);
 		p.setUtente(this);
 	}
+
+
+	@Override
+	public String toString() {
+		return "Utente [idUtente=" + idUtente + ", nome=" + nome + ", cognome=" + cognome + ", dataNascita="
+				+ dataNascita + ", username=" + username + ", password=" + password + ", email=" + email
+				+ ", richiestaModificaPsw=" + richiestaModificaPsw ;
+	}
+	
+	
+	
+	
+	
 	
 	
 	

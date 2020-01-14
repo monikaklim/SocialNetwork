@@ -66,11 +66,10 @@ public class PostDAOImpl implements PostDAO {
 	
 	public List<Post> selectAllPost( Utente utente){
 		List<Post> post = null;
-		
+	
 		try {
 			Session session = sessionFactory.getCurrentSession();
-			post = session.createQuery("from Post where idUtente = "+utente.getIdUtente() + " order by idUtente DESC" , Post.class).getResultList();
-
+			post = session.createQuery("from Post where idUtente = "+utente.getIdUtente() + " order by idUtente" , Post.class).getResultList();
 			}
 			catch(Exception e) {
 				e.printStackTrace();

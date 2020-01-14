@@ -66,6 +66,7 @@ public class SocialNetworkController {
 		else	
 		{
 			List<Post> postlist = servicePost.selectAllPost(u);	
+			Collections.reverse(postlist);
 			model.addAttribute("postlist",postlist);
 			model.addAttribute("idUtente", u.getIdUtente());
 			return "dashboard";
@@ -74,11 +75,18 @@ public class SocialNetworkController {
 	
 	
 
-//-----home utente-------	
+//-----dashboard-------	
 
 	@RequestMapping("/dashboard")
 	public String showDashboard(HttpServletRequest request, Model model) {
+
 	List<Post> postlist = servicePost.selectAllPost(u);	
+	
+	 Collections.reverse(postlist);
+	for(int i = 0; i< postlist.size();i++) {
+	System.out.println(postlist.get(i).toString());
+	}
+
 	model.addAttribute("postlist",postlist);
 	return "dashboard";
 	}	

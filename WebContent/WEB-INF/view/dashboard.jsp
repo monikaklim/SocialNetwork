@@ -14,7 +14,7 @@
 <div id= "nav">
 <a id ="settingslink" href =""><i class="material-icons">settings</i></a>
 
-<a href =""><i class="material-icons">home</i></a>
+<a href ="dashboard"><i class="material-icons">home</i></a>
 
 <a href =""><i class="material-icons">account_circle</i></a>
 
@@ -29,7 +29,10 @@
 </c:url>
 <a id ="newpostlink" href = "${newpostlink} "><i style = "font-size:35px; "class="material-icons">add_circle</i></a>
 
-<input style="display:none" type = text  value = "${param.idUtente}" name = "idUtente" />
+<input id = "idUtente" style="display:none" type = text  value = "${idUtente}" name = "idUtente" />
+
+
+
 
 </div>
 
@@ -38,7 +41,7 @@
 
 
 
-<c:forEach var="post" items="${postlist}" end = "9">
+<c:forEach var="post" items="${postlist}"  end="10" >
 
 <table id ="tabellapost">
 
@@ -47,7 +50,7 @@
 						
 					<tr> <td id = "immaginepost"> <img src = "${post.immagine.path}${post.immagine.nome}.${post.immagine.extension }" onerror="this.style.display='none'" ></td> </tr>
 					
-					<tr> <td class = "dislike" >   <i onclick = "like(this)" class="material-icons">favorite</i>							
+					<tr id = "heart"> <td class = "dislike" >   <i onclick = "like(this)" class="material-icons">favorite</i>							
 	<script>
 function like(x) {
 	 x.classList.toggle("like");	}

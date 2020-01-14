@@ -15,6 +15,9 @@ import javax.persistence.Table;
 
 public class Post {
 
+	
+
+
 		@Id
 		@GeneratedValue(strategy = GenerationType.IDENTITY)
 		@Column
@@ -96,7 +99,10 @@ public class Post {
 		
 		
 		
-		
+		@Override
+		public String toString() {
+			return "Post [idPost=" + idPost + ", testo=" + testo + ", utente=" + utente + ", immagine=" + immagine + "]";
+		}
 		
 		
 		
