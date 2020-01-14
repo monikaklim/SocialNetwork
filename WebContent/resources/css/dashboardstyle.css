@@ -77,7 +77,7 @@ html{
   border-radius: 8px;
  }
  
-#nav #settingslink
+#nav #settingslink, #nav #escilink
  {
  float:right;
  margin-right:20px;

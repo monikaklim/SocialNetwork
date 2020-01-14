@@ -40,9 +40,18 @@
 
 
 
-<a id = "homelink" href= "dashboard"><i class="material-icons">home</i></a>
+<a title= "Dashboard" onclick = "annulla()" id = "homelink" href= "dashboard"><i class="material-icons">home</i></a>
 
+<script>
+function annulla(){
+	if (confirm("Vuoi annullare la creazione del post?")) {
+		window.location.href ="";	
+	  } else {
+	   
+	  }	
+}
 
+</script>
 
 
 

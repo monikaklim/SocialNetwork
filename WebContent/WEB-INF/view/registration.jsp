@@ -63,15 +63,14 @@ function annulla(){
 		window.location.href ="";	
 	  } else {
 	   
-	  }
-	
+	  }	
 }
 
 </script>
 
 </form>
 </div>
-<a id = "homelink" href= " "><i class="material-icons">home</i></a>
+<a title= "Homepage" id = "homelink" href= " "><i class="material-icons">home</i></a>
 
 
 </body>

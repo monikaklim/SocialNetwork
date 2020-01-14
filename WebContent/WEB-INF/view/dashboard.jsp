@@ -12,13 +12,14 @@
 </head>
 <body>
 <div id= "nav">
-<a id ="settingslink" href =""><i class="material-icons">settings</i></a>
+<a title= "Logout" id = "escilink" href =""><i class="material-icons">highlight_off</i></a>
+<a title= "Impostazioni" id ="settingslink" href =""><i class="material-icons">settings</i></a>
 
-<a href ="dashboard"><i class="material-icons">home</i></a>
+<a title= "Dashboard" href ="dashboard"><i class="material-icons">home</i></a>
 
-<a href =""><i class="material-icons">account_circle</i></a>
+<a title= "Account" href =""><i class="material-icons">account_circle</i></a>
 
-<a href =""><i class="material-icons">notifications</i></a>
+<a title= "Notifiche" href =""><i class="material-icons">notifications</i></a>
 
 </div>
 
@@ -27,7 +28,7 @@
 <c:url  var ="newpostlink" value = "/newPost" > 
 						<c:param name="idUtente" value= "${idUtente}"/>
 </c:url>
-<a id ="newpostlink" href = "${newpostlink} "><i style = "font-size:35px; "class="material-icons">add_circle</i></a>
+<a title= "Nuovo post" id ="newpostlink" href = "${newpostlink} "><i style = "font-size:35px; "class="material-icons">add_circle</i></a>
 
 <input id = "idUtente" style="display:none" type = text  value = "${idUtente}" name = "idUtente" />
 
@@ -41,7 +42,7 @@
 
 
 
-<c:forEach var="post" items="${postlist}"  end="10" >
+<c:forEach var="post" items="${postlist}"  end="9" >
 
 <table id ="tabellapost">
 

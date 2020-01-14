@@ -81,12 +81,8 @@ public class SocialNetworkController {
 	public String showDashboard(HttpServletRequest request, Model model) {
 
 	List<Post> postlist = servicePost.selectAllPost(u);	
+	Collections.reverse(postlist);
 	
-	 Collections.reverse(postlist);
-	for(int i = 0; i< postlist.size();i++) {
-	System.out.println(postlist.get(i).toString());
-	}
-
 	model.addAttribute("postlist",postlist);
 	return "dashboard";
 	}	
@@ -336,7 +332,7 @@ public String publishPost(@RequestParam CommonsMultipartFile file, @RequestParam
 	
 		Post p = new Post(contenuto,ut,immagine);
 		servicePost.insertPost(p);
-
+		model.addAttribute("idUtente",id);
 
 	return "redirect:/dashboard";
 }
