@@ -12,7 +12,7 @@
 
  
  .button:hover {
-  background-color:  #0059b3;
+
   color: white;
 }
 
@@ -98,50 +98,46 @@ html{
 {
     text-decoration: none;
 	color: black;
-	position: fixed;
 	bottom: 10px;
 	margin-left:50%;
 	margin-right:50%;
-	width: 25px;
-	height:25px;
+	width: 30px;
+	height:30px;
 	border: none;
 	border-radius:8px;
 	}
   
-#newpostlink:hover
-{
- background-color:  #0059b3;
-  color: white;	
-}  
-  
-
 
 #postcontainer{
-	margin-left: 25%;
-	margin-right: 25%;
+	max-width: 600px;
+	margin-left: 50%;
+	margin-right: 50%;
 	height: 600px;
 	position: absolute;
 	overflow-y: auto;
 	margin-top: 100px;}
+	
  #postcontainer, table {
 	overflow-y: auto;
+     background-color:#e6f5ff;
 	width: 600px;
 	border: 2px solid #0059b3;
 	border-radius: 8px;
 	float: none;
 	margin-left: 25%;
 	margin-right: 25%;
-	margin-top: 8%;
-	margin-bottom: 8%;
+	margin-top: 4%;
+	margin-bottom: 6%;
 	padding: 5px;}  
   
   #username{
+  font-size:18px;
   font-weight: bold;
-   text-align:center;
-    text-shadow: 2px 2px 4px #000000;
+  text-align:center;
+  text-shadow: 2px 2px 4px #000000;
   background-color:  #0059b3;
   color: white;	
-  border-radius: 6px;
+  border-radius: 4px;
   }
   
   #contenutopost{
@@ -152,17 +148,39 @@ html{
   }
  
  #immaginepost{
-   width:50%;
-  display: block;
+ max-width: 600px;
+ width:auto;
+ height:auto;
+ display: block;
+ margin-left: auto;
+ margin-right: auto;
+ padding:5px;
+ }
+ 
+ #immaginepost img{
+  max-width: 570px;
+  width:auto;
+  height:auto;
+  border: 2px solid  #0059b3;
+  border-radius: 4px;
   margin-left: auto;
   margin-right: auto;
  }
  
- #immaginepost img{
- 
-   border: 2px solid  #0059b3;
-  border-radius: 4px;
+ .like
+ {
+ color: red;
  }
+ 
+ .dislike{
+ font-size:35px;
+ color: black;
+ }
+ 
+ 
+ 
+ 
+ 
  
  @media screen and (max-width: 500px) {
   .navbar a {

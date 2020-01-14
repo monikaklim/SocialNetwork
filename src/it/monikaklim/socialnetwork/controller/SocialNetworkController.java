@@ -206,8 +206,7 @@ public class SocialNetworkController {
 	}
 	else
     model.addAttribute("controllo3","L'email non è stata inviata.");	
- }
-	
+	}
 	return "forgottenpassword";
 	}
 	
@@ -282,7 +281,7 @@ public class SocialNetworkController {
 	
 	
 	
-//------post-------
+//--------post---------
 	
 	
 @RequestMapping("/newPost")
@@ -293,6 +292,7 @@ return "newpost";
 	
 
 //pubblica post
+Utente ut = null;
 
 @RequestMapping("/publishPost")
 public String publishPost(@RequestParam CommonsMultipartFile file, @RequestParam(value ="idUtente") String id,HttpSession session, HttpServletRequest request, Model model)throws Exception {
@@ -307,7 +307,7 @@ public String publishPost(@RequestParam CommonsMultipartFile file, @RequestParam
 	String nomeFile = file.getOriginalFilename().substring(0,file.getOriginalFilename().indexOf("."));
 
 	byte[] bytes = file.getBytes();  
-	BufferedOutputStream stream =new BufferedOutputStream(new FileOutputStream(new File(path + File.separator + nomeFile)));  
+	BufferedOutputStream stream =new BufferedOutputStream(new FileOutputStream(new File(path + File.separator + file.getOriginalFilename())));  
 	stream.write(bytes);  
 	stream.flush();  
 	stream.close();  
@@ -315,13 +315,13 @@ public String publishPost(@RequestParam CommonsMultipartFile file, @RequestParam
 	immagine = new Immagine(nomeFile,path,ext);
 	System.out.println(immagine.toString());
 	serviceImm.insertImmagine(immagine);
-	System.out.println("caricato");}
+	System.out.println("caricata");}
 	catch(Exception e) {
 		e.printStackTrace();
 		System.out.println("Errore, non è stato possibile caricare l'immagine.");
 	}
 	}
-	Utente ut = service.findUtenteById(Integer.parseInt(id));
+	 ut = service.findUtenteById(Integer.parseInt(id));
 	
 	//testo
 	String contenuto = request.getParameter("inputtext").trim();

@@ -5,11 +5,9 @@
 <head>
 <title>Home</title>
 
-<link href="${pageContext.request.contextPath}/resources/css/dashboardstyle.css"
-    rel="stylesheet">
+<link href="${pageContext.request.contextPath}/resources/css/dashboardstyle.css"rel="stylesheet">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link href='https://fonts.googleapis.com/css?family=Didact Gothic' rel='stylesheet'>
 </head>
 <body>
@@ -47,12 +45,17 @@
 						<tr > <td id ="username">${post.utente.username} </td> </tr>
 						<tr><td id = "contenutopost"> ${post.testo} </td></tr>
 						
-					<tr> <td id = "immaginepost"> <img src = " ${post.immagine.path}${post.immagine.nome}.${post.immagine.extension }" onerror="this.style.display='none'" ></td> </tr>
-						
+					<tr> <td id = "immaginepost"> <img src = "${post.immagine.path}${post.immagine.nome}.${post.immagine.extension }" onerror="this.style.display='none'" ></td> </tr>
+					
+					<tr> <td class = "dislike" >   <i onclick = "like(this)" class="material-icons">favorite</i>							
+	<script>
+function like(x) {
+	 x.classList.toggle("like");	}
+	</script>
+                   </td></tr> 	
 
 </table>
 </c:forEach>
-
 
 
 
