@@ -14,7 +14,7 @@ public class LoginDAOImpl implements LoginDAO{
 	@Autowired
 	private SessionFactory sessionFactory;
 	
-	//select where username password
+	//select by username password
 	public Utente findUtente(String user, String pass) {
 		Utente utente = null;	
 		try {
@@ -30,7 +30,7 @@ public class LoginDAOImpl implements LoginDAO{
 		}	
 			
 	
-	//select where email
+	//select by email
 	public Utente findUtenteByEmail(String mail){
 		Utente utente = null;
 		
@@ -107,7 +107,7 @@ public class LoginDAOImpl implements LoginDAO{
 	
 }
 
-
+//select by id
 	public Utente findUtenteById(int idUtente) {
 	Utente utente = null;
 		
