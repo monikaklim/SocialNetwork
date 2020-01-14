@@ -1,5 +1,7 @@
 package it.monikaklim.socialnetwork.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -31,14 +33,14 @@ public void updatePost(Post post,String contenuto) {
 	}	
 	
 @Transactional
-public void selectPost(int idPost) {		
-	 postDAO.selectPost(idPost);	
+public Post selectPost(int idPost) {		
+	return postDAO.selectPost(idPost);	
 	}	
 	
 
 @Transactional
-public void selectAllPost(Utente utente) {		
- postDAO.selectAllPost(utente);	
+public List<Post> selectAllPost(Utente utente) {		
+return postDAO.selectAllPost(utente);	
 }	
 	
 }

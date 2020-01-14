@@ -50,14 +50,14 @@ public class SocialNetworkController {
 	
 //------login------
 	Utente utente = null;
-	
+	Utente u = null;
 	@RequestMapping("/processLogin")
 	public String processLogin(HttpServletRequest request, Model model) {
 
 		String username = request.getParameter("username").trim();
 		String password = request.getParameter("password").trim();
 		String messaggio = "";
-		Utente u = service.findUtente(username,password);
+		 u = service.findUtente(username,password);
 		if(  u == null)
 			{messaggio = "Password e/o username non validi.";
 			model.addAttribute("msg",messaggio);
@@ -76,7 +76,8 @@ public class SocialNetworkController {
 
 	@RequestMapping("/dashboard")
 	public String showDashboard(HttpServletRequest request, Model model) {
-
+	List<Post> postlist = servicePost.selectAllPost(u);	
+	model.addAttribute("postlist",postlist);
 	return "dashboard";
 	}	
 	
@@ -296,8 +297,10 @@ public String publishPost(@RequestParam CommonsMultipartFile file, @RequestParam
 
 	//immagine
 	Immagine immagine = null;
+	
+	if(file != null) {
 	try {
-	String path = "C:\\Users\\monika.klim\\eclipse-workspace\\SocialNetwork\\WebContent\\resources\\images";
+	String path = "C:\\Users\\monika.klim\\eclipse-workspace\\SocialNetwork\\WebContent\\resources\\images\\";
 	String ext = file.getOriginalFilename().substring((file.getOriginalFilename().indexOf("."))+1);
 	String nomeFile = file.getOriginalFilename().substring(0,file.getOriginalFilename().indexOf("."));
 
@@ -315,7 +318,7 @@ public String publishPost(@RequestParam CommonsMultipartFile file, @RequestParam
 		e.printStackTrace();
 		System.out.println("Errore, non è stato possibile caricare l'immagine.");
 	}
-	
+	}
 	Utente ut = service.findUtenteById(Integer.parseInt(id));
 	//testo
 	String contenuto = request.getParameter("inputtext").trim();
