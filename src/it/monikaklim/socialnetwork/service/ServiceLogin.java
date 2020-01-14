@@ -16,16 +16,16 @@ public class ServiceLogin {
 	
 	
 	@Transactional
-	public boolean findUtente(String user, String pass) {
+	public Utente findUtente(String user, String pass) {
 		
 		
 		if(loginDAO.findUtente(user,pass) == null)
 		{
-			return  false;
+			return  null;
 		}
 		else {
 			
-			return true;
+			return loginDAO.findUtente(user,pass);
 		}
 			
 		}	

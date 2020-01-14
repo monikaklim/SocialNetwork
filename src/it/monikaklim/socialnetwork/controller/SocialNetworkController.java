@@ -52,20 +52,20 @@ public class SocialNetworkController {
 	Utente utente = null;
 	
 	@RequestMapping("/processLogin")
-	public String processLogin(HttpServletRequest request, Model model,HttpServletResponse response) throws ServletException, IOException{
+	public String processLogin(HttpServletRequest request, Model model) {
 
 		String username = request.getParameter("username").trim();
 		String password = request.getParameter("password").trim();
-		
 		String messaggio = "";
-		
-		if( service.findUtente(username,password) == false)
+		Utente u = service.findUtente(username,password);
+		if(  u == null)
 			{messaggio = "Password e/o username non validi.";
 			model.addAttribute("msg",messaggio);
 			return "login";
 			}
 		else	
 		{
+			model.addAttribute("idUtente", u.getIdUtente());
 			return "dashboard";
 			}
 		}
@@ -73,10 +73,10 @@ public class SocialNetworkController {
 	
 
 //-----home utente-------	
+
 	@RequestMapping("/dashboard")
-	public String showDashboard(HttpServletRequest request) {
-    /*String id = request.getParameter("idUtente");
-    System.out.println(id); */
+	public String showDashboard(HttpServletRequest request, Model model) {
+
 	return "dashboard";
 	}	
 	
@@ -289,35 +289,10 @@ return "newpost";
 }		
 	
 
-@RequestMapping("/uploadImage")
-public String uploadImage(@RequestParam CommonsMultipartFile file, HttpSession session) throws Exception{
-	Immagine immagine = null;
-try {
-String path = "C:\\Users\\monika.klim\\eclipse-workspace\\SocialNetwork\\WebContent\\resources\\images";
-String ext = file.getOriginalFilename().substring((file.getOriginalFilename().indexOf("."))+1);
-String nomeFile = file.getOriginalFilename().substring(0,file.getOriginalFilename().indexOf("."));
-
-byte[] bytes = file.getBytes();  
-BufferedOutputStream stream =new BufferedOutputStream(new FileOutputStream(new File(path + File.separator + nomeFile)));  
-stream.write(bytes);  
-stream.flush();  
-stream.close();  
-
-immagine = new Immagine(nomeFile,path,ext);
-System.out.println(immagine.toString());
-serviceImm.insertImmagine(immagine);
-System.out.println("caricato");}
-catch(Exception e) {
-	e.printStackTrace();
-	System.out.println("Errore, non è stato possibile caricare l'immagine.");
-}
-return "newpost";
-}
-
 //pubblica post
 
 @RequestMapping("/publishPost")
-public String publishPost(@RequestParam CommonsMultipartFile file, HttpSession session, HttpServletRequest request, Model model)throws Exception {
+public String publishPost(@RequestParam CommonsMultipartFile file, @RequestParam(value ="idUtente") String id,HttpSession session, HttpServletRequest request, Model model)throws Exception {
 
 	//immagine
 	Immagine immagine = null;
@@ -341,11 +316,11 @@ public String publishPost(@RequestParam CommonsMultipartFile file, HttpSession s
 		System.out.println("Errore, non è stato possibile caricare l'immagine.");
 	}
 	
-	
+	Utente ut = service.findUtenteById(Integer.parseInt(id));
 	//testo
 	String contenuto = request.getParameter("inputtext").trim();
 	
-	Post p = new Post(contenuto,utente,immagine);
+	Post p = new Post(contenuto,ut,immagine);
 	servicePost.insertPost(p);
 
 	return "redirect:/dashboard";

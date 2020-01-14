@@ -21,10 +21,8 @@
 <a href =""><i class="material-icons">notifications</i></a>
 <p id = "user"> <b>
 <% String username = request.getParameter("username"); %>
-Welcome
-  <% out.println(username+"!"); %> </b></p>
+Welcome <% out.println(username+"!"); %> </b></p>
 </div>
-
 
 
 
@@ -34,7 +32,7 @@ Welcome
 <a id ="newpostlink" href = "${newpostlink} "><i style = "font-size:35px; "class="material-icons">add_circle</i></a>
 
 
-
+<input style="display:none" type = text  value = "${param.idUtente}" name = "idUtente" />
 
 
 

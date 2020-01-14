@@ -28,8 +28,7 @@
  <input type = "file" name = "file" size = "50" id = "inputfile" />
 
 
-<!--  <button  class = "button" id = "caricafoto" type = "submit" ><i class="material-icons">add_a_photo</i></button> -->
-      
+ <input style="display:none" type = text  value = "${param.idUtente}" name = "idUtente" />     
 
 </form>
 
