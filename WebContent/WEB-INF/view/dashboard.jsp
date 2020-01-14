@@ -21,12 +21,10 @@
 <a href =""><i class="material-icons">account_circle</i></a>
 
 <a href =""><i class="material-icons">notifications</i></a>
-<!-- <p id = "user"> <b>
-<% String username = request.getParameter("username"); %>
-Welcome <% out.println(username+"!"); %> </b></p> -->
+
 </div>
 
-
+<div id = "bottomnav">
 
 <c:url  var ="newpostlink" value = "/newPost" > 
 						<c:param name="idUtente" value= "${idUtente}"/>
@@ -35,7 +33,7 @@ Welcome <% out.println(username+"!"); %> </b></p> -->
 
 <input style="display:none" type = text  value = "${param.idUtente}" name = "idUtente" />
 
-
+</div>
 
 
 <div id = "postContainer">
