@@ -1,5 +1,7 @@
 package it.monikaklim.socialnetwork.service;
 
+import java.io.FileOutputStream;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -46,6 +48,27 @@ public String deleteImmagine(Immagine immagine) {
 	
 	
 
+
+@Transactional
+public String saveImmagineFromDB(int idImmagine) {
+	
+	Immagine img = imDAO.selectImmagineById(idImmagine);
+	
+	byte[] datiImg = img.getDati();
+
+	try{
+	    FileOutputStream fos = new FileOutputStream("C:\\\\Users\\\\monika.klim\\\\eclipse-workspace\\\\SocialNetwork\\\\WebContent\\\\resources\\\\images\\"+img.getNome()+"."+img.getExtension()); 
+	    fos.write(datiImg);
+	    fos.close();
+	    
+	    return "caricata";
+	}catch(Exception e){
+	    e.printStackTrace();
+	    return "non caricata";
+	}
+	
+	
+}
 	
 	
 	

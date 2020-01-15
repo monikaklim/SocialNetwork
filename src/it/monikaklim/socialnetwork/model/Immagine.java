@@ -21,19 +21,38 @@ public class Immagine {
 	private String path;
 	@Column
 	private String extension;
-	
+	@Column
+	private byte[] dati;
 	
 	public Immagine() 
 	{}
 	
 
-	public Immagine(String nome, String path, String extension) {
+
+	
+	public Immagine(String nome, String path, String extension, byte[] dati) {
 		this.nome = nome;
 		this.path = path;
 		this.extension = extension;
+		this.dati = dati;
 	}
-	
-	
+
+
+
+	public byte[] getDati() {
+		return dati;
+	}
+
+
+
+
+	public void setDati(byte[] dati) {
+		this.dati = dati;
+	}
+
+
+
+
 	public int getIdImmagine() {
 		return idImmagine;
 	}

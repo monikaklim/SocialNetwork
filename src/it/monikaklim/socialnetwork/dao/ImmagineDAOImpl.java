@@ -33,7 +33,7 @@ public class ImmagineDAOImpl implements ImmagineDAO {
 	
 	
 	
-	//select immagine
+	//select immagine by post
 	public Immagine selectImmagineByPost(Post p) {
 		Immagine immagine = null;
 		if(p.getImmagine() == null) {
@@ -56,7 +56,43 @@ public class ImmagineDAOImpl implements ImmagineDAO {
 		return immagine;
 		
 		}	
+
+
+	
+	
+	//select immagine by id
+	public Immagine selectImmagineById(int idImmagine) {
+		Immagine immagine = null;
 			
+		try {
+					Session session = sessionFactory.getCurrentSession();
+
+					immagine= session.createQuery("from Immagine where idImmagine = "+idImmagine, Immagine.class).getSingleResult();
+
+					}
+					catch(Exception e) {
+						System.out.println("Immagine non trovata");
+					}
+		
+		return immagine;
+		
+		}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	//delete
 		public String deleteImmagine(Immagine immagine) {
@@ -89,7 +125,8 @@ public class ImmagineDAOImpl implements ImmagineDAO {
 			}
 	
 	
-	
+
+
 	
 	
 	

@@ -9,6 +9,8 @@ public interface ImmagineDAO {
 	
 	Immagine selectImmagineByPost(Post p);
 	
+	Immagine selectImmagineById(int idImmagine);
+	
 	String deleteImmagine(Immagine immagine);
 	
 	String rinominaImmagine(Immagine immagine, String nome);

@@ -309,17 +309,12 @@ public String publishPost(@RequestParam CommonsMultipartFile file, @RequestParam
 	String path = "C:\\Users\\monika.klim\\eclipse-workspace\\SocialNetwork\\WebContent\\resources\\images\\";
 	String ext = file.getOriginalFilename().substring((file.getOriginalFilename().indexOf("."))+1);
 	String nomeFile = file.getOriginalFilename().substring(0,file.getOriginalFilename().indexOf("."));
+	byte[] bytes = file.getBytes();
 
-	byte[] bytes = file.getBytes();  
-	BufferedOutputStream stream =new BufferedOutputStream(new FileOutputStream(new File(path + File.separator + file.getOriginalFilename())));  
-	stream.write(bytes);  
-	stream.flush();  
-	stream.close();  
-
-	immagine = new Immagine(nomeFile,path,ext);
-	System.out.println(immagine.toString());
+	immagine = new Immagine(nomeFile,path,ext,bytes);
+	
 	serviceImm.insertImmagine(immagine);
-	System.out.println("caricata");}
+	}
 	catch(Exception e) {
 		e.printStackTrace();
 		System.out.println("Errore, non è stato possibile caricare l'immagine.");
@@ -327,6 +322,8 @@ public String publishPost(@RequestParam CommonsMultipartFile file, @RequestParam
 	}
 	 ut = service.findUtenteById(Integer.parseInt(id));
 	
+	 serviceImm.saveImmagineFromDB(immagine.getIdImmagine());
+	 
 	//testo
 	String contenuto = request.getParameter("inputtext").trim();
 	
