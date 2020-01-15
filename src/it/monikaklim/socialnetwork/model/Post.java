@@ -1,5 +1,6 @@
 package it.monikaklim.socialnetwork.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -25,11 +26,11 @@ public class Post {
 		@Column
 		private String testo;
 		
-		@ManyToOne
+		@ManyToOne(cascade = CascadeType.ALL)
 		@JoinColumn(name = "idUtente")
 		private Utente utente;
 		
-		@OneToOne
+		@OneToOne(cascade = CascadeType.ALL)
 		@JoinColumn(name = "idImmagine")
 		private Immagine immagine;
 		

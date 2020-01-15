@@ -12,6 +12,7 @@
 </head>
 
 <body >
+<c:set var="idU" scope="application" value="${idUtente}"/>
 
 <div id= "nav">
 <a title= "Logout" id = "escilink" href =""><i class="material-icons">highlight_off</i></a>
@@ -23,12 +24,13 @@
 
 <div id = "bottomnav">
 
+
 <c:url  var ="newpostlink" value = "/newPost" > 
-						<c:param name="idUtente" value= "${idUtente}"/>
+						<c:param name="idUtente" value= "${idU}"/>
 </c:url>
 <a title= "Nuovo post" id ="newpostlink" href = "${newpostlink} "><i style = "font-size:35px; "class="material-icons">add_circle</i></a>
 
-<input id = "idUtente" style="display:none" type = text  value = "${idUtente}" name = "idUtente" />
+<input id = "idUtente" style="display:none" type = text  value = "${idU}" name = "idUtente" />
 
 
 
@@ -42,15 +44,29 @@
 
 
 
-
 <c:set var = "i" value = "${9}"/>
- <c:forEach var="post" items="${postlist}"  end= "${i}" > 
+ <c:forEach var="post" items="${postlist}"  end= "${i}" varStatus = "loop" > 
 <table id ="tabellapost">
 
-						<tr > <td id ="username">${post.utente.username} </td> </tr>
-						<tr><td id = "contenutopost"> ${post.testo} </td></tr>
-					<tr> <td id = "immaginepost"> <img src = "${post.immagine.path}${post.immagine.nome}.${post.immagine.extension }" onerror="this.style.display='none'" ></td> </tr>
+						<tr > <td id ="username">${post.utente.username}  </td> </tr>
+						
+						
 					
+						<tr><td >
+						
+							<div class = "dropdown">
+							<button id = "optionsbutton" onclick = "showOptions()"> <i class="material-icons">expand_more</i>  </button>
+							<div id ="opzioni">
+							<a href="deletePost"><i class="material-icons">delete</i>Elimina post</a>
+							<a href="updatePost"><i class="material-icons">edit</i>Modifica post</a>
+							
+							</div>				
+							</div>
+											</td> </tr>
+											
+					
+						<tr><td id = "contenutopost"> ${post.testo} </td></tr>
+					<tr> <td id = "immaginepost"> <img src = "${post.immagine.path}${post.immagine.nome}.${post.immagine.extension }" onerror="this.style.display='none'" ></td> </tr>						
 					<tr id = "heart"> <td class = "dislike" >   <i onclick = "like(this)" class="material-icons">favorite</i>							
 	<script>
 function like(x) {
@@ -62,15 +78,44 @@ function like(x) {
 </c:forEach>
 
 
+
+<c:forEach begin = "0" end = "${size-1}" > 
+
 <div id= "moreposts" style = "display:none" >
 
  <c:forEach var="post" items="${postlist}" begin= "${i+1}" end= "${i+10}" > 
 <table id ="tabellapost">
-
-						<tr > <td id ="username">${post.utente.username} </td> </tr>
+<tr > <td id ="username">${post.utente.username} </td> </tr>
+						
+						
 						<tr><td id = "contenutopost"> ${post.testo} </td></tr>
 					<tr> <td id = "immaginepost"> <img src = "${post.immagine.path}${post.immagine.nome}.${post.immagine.extension }" onerror="this.style.display='none'" ></td> </tr>
 					
+					
+					
+					
+						<tr><td id = "deletepost">
+							<form action = "deletePost">
+							<button onclick = "deletePost"> <i class="material-icons">delete</i>  </button>
+
+							</form>
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+											</td> </tr>
 					<tr id = "heart"> <td class = "dislike" >   <i onclick = "like(this)" class="material-icons">favorite</i>							
 	<script>
 function like(x) {
@@ -95,6 +140,7 @@ function showMore() {
 
 </div>
 
+</c:forEach>
 
 <button id ="more" onclick = "showMore()" > <i class="material-icons" style = "font-size:25px;">more_horiz</i> </button>
 </div>

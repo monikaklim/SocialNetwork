@@ -25,7 +25,7 @@
 
 <br>
 
- <input type = "file" name = "file" size = "50" id = "inputfile" />
+ <input type = "file" name = "file" id = "inputfile" accept="image/*"  />
 
 
  <input style="display:none" type = text  value = "${param.idUtente}" name = "idUtente" />     

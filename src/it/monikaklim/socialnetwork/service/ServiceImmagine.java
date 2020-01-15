@@ -60,7 +60,7 @@ public String saveImmagineFromDB(int idImmagine) {
 	    FileOutputStream fos = new FileOutputStream("C:\\\\Users\\\\monika.klim\\\\eclipse-workspace\\\\SocialNetwork\\\\WebContent\\\\resources\\\\images\\"+img.getNome()+"."+img.getExtension()); 
 	    fos.write(datiImg);
 	    fos.close();
-	    
+	    fos.flush();
 	    return "caricata";
 	}catch(Exception e){
 	    e.printStackTrace();

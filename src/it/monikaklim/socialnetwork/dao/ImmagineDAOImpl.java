@@ -23,18 +23,20 @@ public class ImmagineDAOImpl implements ImmagineDAO {
 		Session session = sessionFactory.getCurrentSession();
 		session.save("Immagine", immagine);
 		System.out.println( "Immagine salvata con successo");
+
 		}
 		catch(Exception e){
 			System.out.println("Errore.");	
 		}
 	  }
-		
+	
 		}
 	
 	
 	
 	//select immagine by post
 	public Immagine selectImmagineByPost(Post p) {
+		
 		Immagine immagine = null;
 		if(p.getImmagine() == null) {
 		System.out.println("Il post non ha un'immagine");		
@@ -47,12 +49,14 @@ public class ImmagineDAOImpl implements ImmagineDAO {
 					Session session = sessionFactory.getCurrentSession();
 
 					immagine= session.createQuery("from Immagine where idImmagine = "+idImmagine, Immagine.class).getSingleResult();
-
+					
 					}
 					catch(Exception e) {
 						System.out.println("Immagine non trovata");
 					}
+
 		}
+	
 		return immagine;
 		
 		}	
@@ -77,13 +81,6 @@ public class ImmagineDAOImpl implements ImmagineDAO {
 		return immagine;
 		
 		}
-	
-	
-	
-	
-	
-	
-	
 	
 	
 	

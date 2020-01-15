@@ -67,7 +67,12 @@ public class SocialNetworkController {
 		{
 			List<Post> postlist = servicePost.selectAllPost(u);	
 			Collections.reverse(postlist);
+			
+			double s = (postlist.size() /(10.0)) ;
+			int size = (int) Math.round(Math.ceil(s));
+		
 			model.addAttribute("postlist",postlist);
+			model.addAttribute("size",size);
 			model.addAttribute("idUtente", u.getIdUtente());
 			return "dashboard";
 			}
@@ -83,6 +88,8 @@ public class SocialNetworkController {
 	List<Post> postlist = servicePost.selectAllPost(u);	
 	Collections.reverse(postlist);
 	
+	
+	model.addAttribute("size",postlist.size());
 	model.addAttribute("postlist",postlist);
 	return "dashboard";
 	}	
@@ -327,11 +334,11 @@ public String publishPost(@RequestParam CommonsMultipartFile file, @RequestParam
 	 
 	//testo
 	String contenuto = request.getParameter("inputtext").trim();
-	
+	if(contenuto.isEmpty() == false) {
 		Post p = new Post(contenuto,ut,immagine);
 		servicePost.insertPost(p);
 		model.addAttribute("idUtente",id);
-
+	}
 	return "redirect:/dashboard";
 }
 
