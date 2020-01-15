@@ -91,31 +91,18 @@ function like(x) {
 						<tr><td id = "contenutopost"> ${post.testo} </td></tr>
 					<tr> <td id = "immaginepost"> <img src = "${post.immagine.path}${post.immagine.nome}.${post.immagine.extension }" onerror="this.style.display='none'" ></td> </tr>
 					
-					
-					
-					
-						<tr><td id = "deletepost">
-							<form action = "deletePost">
-							<button onclick = "deletePost"> <i class="material-icons">delete</i>  </button>
+								<tr><td >
+						
+							<div class = "dropdown">
+							<button id = "optionsbutton" onclick = "showOptions()"> <i class="material-icons">expand_more</i>  </button>
+							<div id ="opzioni" class = "hide">
+							<a href="deletePost"><i class="material-icons">delete</i>Elimina post</a>
+							<a href="updatePost"><i class="material-icons">edit</i>Modifica post</a>
 
-							</form>
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
+							</div>				
+							</div>
 											</td> </tr>
+											
 					<tr id = "heart"> <td class = "dislike" >   <i onclick = "like(this)" class="material-icons">favorite</i>							
 	<script>
 function like(x) {
@@ -135,6 +122,16 @@ function showMore() {
 	    x.style.display = "block";
 	  } 
 	 }
+
+
+
+function showOptions(){
+	document.getElementById("opzioni").classList.toggle("show");	
+	
+	
+}
+
+
 
 </script>
 

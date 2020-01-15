@@ -193,8 +193,8 @@ background-color:  #0059b3;
   color: white;
   }
   
-  
-  
+  .show {display:block;}
+  .hide {display:none;}
   #username{
   font-size:18px;
   font-weight: bold;
