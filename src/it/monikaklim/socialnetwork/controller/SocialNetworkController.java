@@ -314,6 +314,7 @@ public String publishPost(@RequestParam CommonsMultipartFile file, @RequestParam
 	immagine = new Immagine(nomeFile,path,ext,bytes);
 	
 	serviceImm.insertImmagine(immagine);
+	 serviceImm.saveImmagineFromDB(immagine.getIdImmagine());
 	}
 	catch(Exception e) {
 		e.printStackTrace();
@@ -322,7 +323,7 @@ public String publishPost(@RequestParam CommonsMultipartFile file, @RequestParam
 	}
 	 ut = service.findUtenteById(Integer.parseInt(id));
 	
-	 serviceImm.saveImmagineFromDB(immagine.getIdImmagine());
+	
 	 
 	//testo
 	String contenuto = request.getParameter("inputtext").trim();
