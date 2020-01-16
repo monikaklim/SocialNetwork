@@ -16,7 +16,7 @@
 <body>
 
 <div>
-<h3><b>New post <i class="material-icons">edit</i>   </b></h3>
+<h3><b>Nuovo post <i class="material-icons">edit</i>   </b></h3>
 
 <form id = "newpost" action = "publishPost"  method = "post" enctype = "multipart/form-data">
 <textarea placeholder= "Scrivi qualcosa..."  name = "inputtext" id ="inputtext" > </textarea>
@@ -24,8 +24,9 @@
 <input class = "button" type ="submit" id = "pubblica" value = "Pubblica">
 
 <br>
-
- <input type = "file" name = "file" id = "inputfile" accept="image/*"  />
+<b>Carica una foto:</b> <br>
+<i style ="font-size:25px;" class="material-icons">add_a_photo</i>
+<input type = "file" name = "file" id = "inputfile" accept="image/*"  /> 
 
 
  <input style="display:none" type = text  value = "${param.idUtente}" name = "idUtente" />     
@@ -33,24 +34,11 @@
 </form>
 
 </div>
- ${cookie.idUtente.value}
 
 
 
-<a title= "Dashboard" onclick = "annulla()" id = "homelink" href= "dashboard"><i class="material-icons">home</i></a>
 
-<script>
-function annulla(){
-	if (confirm("Vuoi annullare la creazione del post?")) {
-		window.location.href ="";	
-	  } else {
-	   
-	  }	
-}
-
-</script>
-
-
+<a title= "Dashboard" onclick = "if(!(confirm('Vuoi annullare la creazione del post?'))) return false" id = "homelink" href= "dashboard"><i class="material-icons">home</i></a>
 
 
 

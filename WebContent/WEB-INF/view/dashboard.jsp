@@ -15,7 +15,7 @@
 
 
 <div id= "nav">
-<a title= "Logout" id = "escilink" href =""><i class="material-icons">highlight_off</i></a>
+<a title= "Logout" id = "escilink" href ="logout"><i class="material-icons">highlight_off</i></a>
 <a title= "Impostazioni" id ="settingslink" href =""><i class="material-icons">settings</i></a>
 <a title= "Dashboard" href ="dashboard"><i class="material-icons">home</i></a>
 <a title= "Account" href =""><i class="material-icons">account_circle</i></a>
@@ -125,7 +125,7 @@ function showMore() {
 
 
 
-<button id ="more" onclick = "showMore()" > <i class="material-icons" style = "font-size:25px;">more_horiz</i> </button>
+<button title= "Carica più post" id ="more" onclick = "showMore()" > <i class="material-icons" style = "font-size:25px;">more_horiz</i> </button>
 </div>
 
 

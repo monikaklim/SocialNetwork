@@ -45,11 +45,12 @@ html,body{
 
 #inputfile{
 	
-border: 1px solid #66b3ff;
-border-radius: 2px;	
-background-color:white;
- cursor: pointer;
- overflow: hidden;	
+border: 2px solid #66b3ff;
+border-radius: 4px;	
+cursor: pointer;
+overflow: hidden;
+vertcal-align:middle;
+height:25px;	
 }
 
 
