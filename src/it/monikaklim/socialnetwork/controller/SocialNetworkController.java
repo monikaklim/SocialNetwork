@@ -72,14 +72,6 @@ public class SocialNetworkController {
 		else	
 		{
 		List<Post> postlist = servicePost.selectAllPost(u);		
-		Cookie user = new Cookie("username", username);
-		Cookie id = new Cookie("idUtente",Integer.toString(u.getIdUtente()));
-		user.setMaxAge(60*60);
-		id.setMaxAge(60*60);
-		
-		  response.addCookie(user);
-		  response.addCookie(id);
-
 			model.addAttribute("postlist",postlist);
 			model.addAttribute("idUtente", u.getIdUtente());
 			model.addAttribute("utenteSession", u);
@@ -93,13 +85,37 @@ public class SocialNetworkController {
 //-------dashboard-------	
 
 	@RequestMapping("/dashboard")
-	public String showDashboard(HttpServletRequest request, Model model) {
-
+	public String showDashboard(HttpServletRequest request, Model model,@ModelAttribute Utente utente) {
+	
 	List<Post> postlist = servicePost.selectAllPost(u);	
 
 	model.addAttribute("postlist",postlist);
+	
+	model.addAttribute("utenteSession",u);
 	return "dashboard";
 	}	
+	
+	
+	
+	
+
+	
+//-------profilo utente--------	
+	
+	@RequestMapping("/userProfile")
+	public String showUserProfile(@ModelAttribute Utente utente, Model model) {
+	model.addAttribute("utenteSession",u);
+	return "userprofile";
+	}	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 //--------recupero password--------
@@ -247,7 +263,7 @@ public class SocialNetworkController {
 			service.updatePassword(idUt, pass1);
 			utentePass.setRichiestaModificaPsw(0);
 			service.setRichiestaModificaPsw(Integer.parseInt(id), 0);
-			return "redirect:/login";}
+			return "redirect:/";}
 		
 			if(pass1.equals(pass2) && (utentePass.getRichiestaModificaPsw() == 0)) {
 				    model.addAttribute("controllo","Non sei autorizzato a modificare questa password.");
