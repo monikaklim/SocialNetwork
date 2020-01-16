@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import it.monikaklim.socialnetwork.model.*;
 import it.monikaklim.socialnetwork.service.*;
@@ -24,6 +26,7 @@ import javax.mail.*;
 import javax.mail.internet.*;
 
 @Controller
+@SessionAttributes("utenteSession")
 public class SocialNetworkController {
 
    private final String messaggioResetPassword ="Clicca sul link per creare una nuova password:\n\n http://localhost:8080/SocialNetwork/resetPassword?idUtente=";
@@ -45,8 +48,8 @@ public class SocialNetworkController {
 	
 //------pagina iniziale------	
 	@RequestMapping("/")
-	public String showLogin() {
-
+	public String showLogin(HttpServletResponse response,SessionStatus status) {
+		status.setComplete();
 	return "login";
 	}		
 	
@@ -55,9 +58,9 @@ public class SocialNetworkController {
 	Utente utente = null;
 	Utente u = null;
 	@RequestMapping("/processLogin")
-	public String processLogin(@CookieValue(value = "username", defaultValue = "") String username,HttpServletRequest request,HttpServletResponse response, Model model) {
+	public String processLogin( HttpServletRequest request,HttpServletResponse response, Model model, @ModelAttribute Utente utente) {
 
-		username = request.getParameter("username").trim();
+		String username = request.getParameter("username").trim();
 		String password = request.getParameter("password").trim();
 		String messaggio = "";
 		 u = service.findUtente(username,password);
@@ -68,17 +71,23 @@ public class SocialNetworkController {
 			}
 		else	
 		{
-			List<Post> postlist = servicePost.selectAllPost(u);		
+		List<Post> postlist = servicePost.selectAllPost(u);		
 		Cookie user = new Cookie("username", username);
 		Cookie id = new Cookie("idUtente",Integer.toString(u.getIdUtente()));
+		user.setMaxAge(60*60);
+		id.setMaxAge(60*60);
+		
 		  response.addCookie(user);
 		  response.addCookie(id);
+
 			model.addAttribute("postlist",postlist);
 			model.addAttribute("idUtente", u.getIdUtente());
+			model.addAttribute("utenteSession", u);
 			return "dashboard";
 			}
 		}
 	
+
 	
 
 //-------dashboard-------	
@@ -304,18 +313,9 @@ return "newpost";
 Utente ut = null;
 
 @RequestMapping("/publishPost")
-public String publishPost(@RequestParam CommonsMultipartFile file, @RequestParam(value ="idUtente") String id,HttpSession session, HttpServletRequest request, Model model)throws Exception {
-Cookie[] c = request.getCookies();
-String idcookie = "";
-for(int i=0; i< c.length;i++){
-	if(c[i].getName().equals("idUtente"))
-	idcookie = c[i].getValue().toString();
-}
-
-System.out.println(idcookie);
-int idint = Integer.parseInt(idcookie);
-
-if(idint != 0) {
+public String publishPost(@RequestParam CommonsMultipartFile file, @RequestParam(value ="idUtente") String idU,HttpSession session, HttpServletRequest request, Model model)throws Exception {
+int id = Integer.parseInt(idU);
+if(id != 0) {
 	//immagine
 	Immagine immagine = null;
 	
@@ -335,7 +335,7 @@ if(idint != 0) {
 		System.out.println("Errore, non è stato possibile caricare l'immagine.");
 	}
 	}
-	 ut = service.findUtenteById(idint); ///
+	 ut = service.findUtenteById(id); ///
 	
 	
 	 
@@ -344,7 +344,7 @@ if(idint != 0) {
 	if(contenuto.isEmpty() == false) {
 		Post p = new Post(contenuto,ut,immagine);
 		servicePost.insertPost(p);
-		model.addAttribute("idUtente",idint);
+		model.addAttribute("utenteSession",ut);
 	}else {
 		Post p = new Post(immagine,ut);
 		servicePost.insertPost(p);
