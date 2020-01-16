@@ -8,6 +8,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -20,6 +24,9 @@ public class Utente {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column
+	@ManyToMany
+	@JoinTable(name = "amicizia",   joinColumns =@JoinColumn(name = "idAmico"), 
+	inverseJoinColumns=@JoinColumn(name ="idUtente"))
 	private int idUtente;	
 	
 	@Column
@@ -41,7 +48,10 @@ public class Utente {
 	private List<Post> post;
 	
 	
-	@OneToMany(mappedBy="idAmico")
+	@ManyToMany
+	@JoinTable(name = "amicizia",   joinColumns =@JoinColumn(name = "idUtente"), 
+	inverseJoinColumns=@JoinColumn(name ="idAmico"))
+	
 	private List<Utente> amici;
 	
 	
@@ -151,6 +161,27 @@ public class Utente {
 		post.add(p);
 		p.setUtente(this);
 	}
+
+
+	
+	
+	
+	
+	public List<Utente> getAmici() {
+		return amici;
+	}
+
+	
+	public void addAmico(Utente u) {
+		
+		if(amici == null) {
+			amici = new ArrayList<Utente>();
+		}
+		
+		amici.add(u);
+
+	}
+
 
 
 	@Override
