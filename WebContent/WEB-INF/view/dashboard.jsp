@@ -15,7 +15,7 @@
 
 
 <div id= "nav">
-<a title= "Logout" id = "escilink" href ="logout"><i class="material-icons">highlight_off</i></a>
+<a title= "Logout" id = "escilink" href =""><i class="material-icons">highlight_off</i></a>
 <a title= "Impostazioni" id ="settingslink" href =""><i class="material-icons">settings</i></a>
 <a title= "Dashboard" href ="dashboard"><i class="material-icons">home</i></a>
 <a title= "Account" href =""><i class="material-icons">account_circle</i></a>
@@ -26,11 +26,11 @@
 
 
 <c:url  var ="newpostlink" value = "/newPost" > 
-						<c:param name="idUtente" value= "${cookie.idUtente.value}"/>
+						<c:param name="idUtente" value= "${sessionScope.utenteSession.idUtente}"/>
 </c:url>
 <a title= "Nuovo post" id ="newpostlink" href = "${newpostlink} "><i style = "font-size:35px; "class="material-icons">add_circle</i></a>
 
-<input id = "idUtente" style="display:none" type = text  value = " ${cookie.idUtente.value}" name = "idUtente" />
+<input id = "idUtente" style="display:none" type = text  value = "${sessionScope.utenteSession.idUtente}" name = "idUtente" />
 
 
 
@@ -57,7 +57,7 @@
 <table id ="tabellapost">
 <!-- ${post.utente.username}   -->
 
-			<tr > <td id ="username">   ${cookie.username.value}</td> </tr>
+			<tr > <td id ="username">   @${sessionScope.utenteSession.username}           </td> </tr>
 
 						<tr><td>
 							<a id = "opzioni" href ="${deletepostlink}" onclick = "if(!(confirm('Vuoi eliminare questo post?'))) return false"><i class="material-icons">delete</i></a>
@@ -89,7 +89,7 @@ function like(x) {
 						<c:param name="idPost" value= "${post.idPost}"/>
 </c:url>
 <table id ="tabellapost">
-<tr > <td id ="username">${post.utente.username} </td> </tr>
+<tr > <td id ="username">${sessionScope.utenteSession.nome} </td> </tr>
 		<tr><td >
 							
 							<a href ="${deletepostlink}" onclick = "if(!(confirm('Vuoi eliminare questo post?'))) return false" id = "opzioni"><i class="material-icons">delete</i></a>

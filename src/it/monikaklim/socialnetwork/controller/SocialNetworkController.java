@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import it.monikaklim.socialnetwork.model.*;
 import it.monikaklim.socialnetwork.service.*;
@@ -24,6 +25,7 @@ import javax.mail.*;
 import javax.mail.internet.*;
 
 @Controller
+@SessionAttributes("utenteSession")
 public class SocialNetworkController {
 
    private final String messaggioResetPassword ="Clicca sul link per creare una nuova password:\n\n http://localhost:8080/SocialNetwork/resetPassword?idUtente=";
@@ -45,8 +47,16 @@ public class SocialNetworkController {
 	
 //------pagina iniziale------	
 	@RequestMapping("/")
-	public String showLogin() {
+	public String showLogin(HttpServletResponse response) {
 
+		//logout
+		Cookie usernameCookieRemove = new Cookie("username", null);
+		usernameCookieRemove.setMaxAge(0);
+		response.addCookie(usernameCookieRemove); 
+		
+		Cookie idCookieRemove = new Cookie("idUtente", null);
+		idCookieRemove.setMaxAge(0);
+		response.addCookie(idCookieRemove); 
 	return "login";
 	}		
 	
@@ -55,9 +65,9 @@ public class SocialNetworkController {
 	Utente utente = null;
 	Utente u = null;
 	@RequestMapping("/processLogin")
-	public String processLogin(@CookieValue(value = "username", defaultValue = "") String username,HttpServletRequest request,HttpServletResponse response, Model model) {
+	public String processLogin( HttpServletRequest request,HttpServletResponse response, Model model, @ModelAttribute Utente utente) {
 
-		username = request.getParameter("username").trim();
+		String username = request.getParameter("username").trim();
 		String password = request.getParameter("password").trim();
 		String messaggio = "";
 		 u = service.findUtente(username,password);
@@ -68,17 +78,23 @@ public class SocialNetworkController {
 			}
 		else	
 		{
-			List<Post> postlist = servicePost.selectAllPost(u);		
+		List<Post> postlist = servicePost.selectAllPost(u);		
 		Cookie user = new Cookie("username", username);
 		Cookie id = new Cookie("idUtente",Integer.toString(u.getIdUtente()));
+		user.setMaxAge(60*60);
+		id.setMaxAge(60*60);
+		
 		  response.addCookie(user);
 		  response.addCookie(id);
+
 			model.addAttribute("postlist",postlist);
 			model.addAttribute("idUtente", u.getIdUtente());
+			model.addAttribute("utenteSession", u);
 			return "dashboard";
 			}
 		}
 	
+
 	
 
 //-------dashboard-------	
