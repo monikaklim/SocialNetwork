@@ -5,8 +5,8 @@
 <head>
 <title>Modifica Post</title>
 
-<link href="${pageContext.request.contextPath}/resources/css/updatestyle.css"
-    rel="stylesheet">
+<link href="${pageContext.request.contextPath}/resources/css/updatestyle.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 
 
@@ -14,9 +14,9 @@
 
 
 
-<h3> Modifica Post</h3>
 <div>
 
+<h3> Modifica Post</h3>
 
 <form:form action = "processUpdate" modelAttribute = "post" method = "PUT">
 
@@ -24,20 +24,19 @@
 <table>
 <tr>
 <td>
-<form:input type="text"  path= "testo" placeholder= "Scrivi qualcosa..."  name = "inputtext" id ="inputtext" /> 
+<form:textarea   path= "testo" placeholder= "Scrivi qualcosa..."  name = "inputtext" id ="inputtext" /> 
 <br>
 </td>
 </tr>
 <tr>
-<td>
-<form:input type="file" path = "immagine" name = "file" id = "inputfile" accept="image/*" />
-</td>
-</tr>
+
+</tr><tr>
+<td> <br><input class = "button"  type = "submit" value = "Salva" /></td></tr>
 </table>
 </form:form>
 
  <br><br> <br>
-<a href="dashboard">Annulla</a> 
+<a id = "homelink" href="dashboard"><i class="material-icons">home</i></a> 
 </div>
 
 </body>

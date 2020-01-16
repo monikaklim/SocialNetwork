@@ -85,7 +85,9 @@ public class PostDAOImpl implements PostDAO {
 	if(post != null) {
 		try {
 		Session session = sessionFactory.getCurrentSession();
-		session.saveOrUpdate(post);
+		Post p =session.get(Post.class, post.getIdPost());
+		p.setTesto(post.getTesto());
+		session.update(p);
 		System.out.println( "Post modificato con successo");
 		}
 		catch(Exception e){
