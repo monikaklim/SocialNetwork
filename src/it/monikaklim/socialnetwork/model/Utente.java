@@ -1,6 +1,8 @@
 package it.monikaklim.socialnetwork.model;
 
 import java.util.*;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

@@ -366,6 +366,12 @@ public String processUpdate2(@ModelAttribute("post") Post post, Model model) {
 	return "redirect:/dashboard";
 }	
 
+@GetMapping("/deletePost")
+public String showDelete(@RequestParam("idPost")String idPost) {
+	Post post = servicePost.selectPost(Integer.parseInt(idPost));
+	servicePost.deletePost(post);
+	return "redirect:/dashboard";
+}	
 
 
 

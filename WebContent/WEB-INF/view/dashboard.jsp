@@ -91,11 +91,19 @@ function like(x) {
 <div id= "moreposts" style = "display:none" >
 
  <c:forEach var="post" items="${postlist}" begin= "${i+1}" end= "${i+10}" > 
+  <c:url  var ="deletepostlink" value = "/deletePost" > 
+						<c:param name="idPost" value= "${post.idPost}"/>
+</c:url>
+
+ <c:url  var ="updatepostlink" value = "/updatePost" > 
+						<c:param name="idPost" value= "${post.idPost}"/>
+</c:url>
 <table id ="tabellapost">
 <tr > <td id ="username">${post.utente.username} </td> </tr>
 		<tr><td >
-							<a id = "opzioni" href="deletePost"><i class="material-icons">delete</i></a>
-							<a id = "opzioni" href="updatePost"><i class="material-icons">edit</i></a>
+							
+							<a id = "opzioni" href="${deletepostlink} "><i class="material-icons">delete</i></a>
+							<a id = "opzioni" href="${updatepostlink}"><i class="material-icons">edit</i></a>	
 											</td> </tr>
 																
 						<tr><td id = "contenutopost"> ${post.testo} </td></tr>

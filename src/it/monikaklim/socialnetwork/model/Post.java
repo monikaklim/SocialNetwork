@@ -26,11 +26,11 @@ public class Post {
 		@Column
 		private String testo;
 		
-		@ManyToOne(cascade = CascadeType.ALL)
+		@ManyToOne
 		@JoinColumn(name = "idUtente")
 		private Utente utente;
 		
-		@OneToOne(cascade = CascadeType.ALL)
+		@OneToOne
 		@JoinColumn(name = "idImmagine")
 		private Immagine immagine;
 		
