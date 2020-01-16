@@ -163,15 +163,12 @@ public class Utente {
 	}
 
 
-	
-	
-	
-	
+
 	public List<Utente> getAmici() {
 		return amici;
 	}
 
-	
+	//add amico
 	public void addAmico(Utente u) {
 		
 		if(amici == null) {

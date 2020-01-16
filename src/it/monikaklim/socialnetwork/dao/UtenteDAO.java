@@ -1,8 +1,10 @@
 package it.monikaklim.socialnetwork.dao;
 
+import java.util.List;
+
 import it.monikaklim.socialnetwork.model.Utente;
 
-public interface LoginDAO {
+public interface UtenteDAO {
 
 	Utente findUtente(String user, String pass);	
 	
@@ -15,4 +17,5 @@ public interface LoginDAO {
 	void setRichiestaModificaPsw(int idUtente, int richiesta);
 	
 	 Utente findUtenteById(int idUtente);
+	 List<Utente> selectAllAmici(Utente utente);
 }

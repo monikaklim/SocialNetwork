@@ -34,7 +34,7 @@ public class SocialNetworkController {
    //service
 	@Autowired
 	@Qualifier("serviceLogin")
-	private ServiceLogin service;	
+	private ServiceUtente service;	
 	
 	@Autowired
 	@Qualifier("serviceImmagine")
