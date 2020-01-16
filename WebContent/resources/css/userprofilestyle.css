@@ -128,7 +128,8 @@ html{
 	float: left;
 	vertical-align:center;  
 	margin-left:50px;
-
+color:#000099;
+font-weight:bold;
 	}
   
   #pagecontainer{
@@ -152,6 +153,7 @@ html{
 	float: right;
 	vertical-align:center;
   	margin-right:50px;
+  	color:#000099;
   }
   
  #listaamici:hover{
@@ -166,6 +168,8 @@ html{
   .dati {
   text-align:right;
   font-family: Didact Gothic;
+  color:black;
+  font-weight:normal;
   }
   
   
