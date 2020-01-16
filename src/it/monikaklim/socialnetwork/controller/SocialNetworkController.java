@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import it.monikaklim.socialnetwork.model.*;
 import it.monikaklim.socialnetwork.service.*;
@@ -47,16 +48,8 @@ public class SocialNetworkController {
 	
 //------pagina iniziale------	
 	@RequestMapping("/")
-	public String showLogin(HttpServletResponse response) {
-
-		//logout
-		Cookie usernameCookieRemove = new Cookie("username", null);
-		usernameCookieRemove.setMaxAge(0);
-		response.addCookie(usernameCookieRemove); 
-		
-		Cookie idCookieRemove = new Cookie("idUtente", null);
-		idCookieRemove.setMaxAge(0);
-		response.addCookie(idCookieRemove); 
+	public String showLogin(HttpServletResponse response,SessionStatus status) {
+		status.setComplete();
 	return "login";
 	}		
 	
@@ -320,18 +313,9 @@ return "newpost";
 Utente ut = null;
 
 @RequestMapping("/publishPost")
-public String publishPost(@RequestParam CommonsMultipartFile file, @RequestParam(value ="idUtente") String id,HttpSession session, HttpServletRequest request, Model model)throws Exception {
-Cookie[] c = request.getCookies();
-String idcookie = "";
-for(int i=0; i< c.length;i++){
-	if(c[i].getName().equals("idUtente"))
-	idcookie = c[i].getValue().toString();
-}
-
-System.out.println(idcookie);
-int idint = Integer.parseInt(idcookie);
-
-if(idint != 0) {
+public String publishPost(@RequestParam CommonsMultipartFile file, @RequestParam(value ="idUtente") String idU,HttpSession session, HttpServletRequest request, Model model)throws Exception {
+int id = Integer.parseInt(idU);
+if(id != 0) {
 	//immagine
 	Immagine immagine = null;
 	
@@ -351,7 +335,7 @@ if(idint != 0) {
 		System.out.println("Errore, non è stato possibile caricare l'immagine.");
 	}
 	}
-	 ut = service.findUtenteById(idint); ///
+	 ut = service.findUtenteById(id); ///
 	
 	
 	 
@@ -360,7 +344,7 @@ if(idint != 0) {
 	if(contenuto.isEmpty() == false) {
 		Post p = new Post(contenuto,ut,immagine);
 		servicePost.insertPost(p);
-		model.addAttribute("idUtente",idint);
+		model.addAttribute("utenteSession",ut);
 	}else {
 		Post p = new Post(immagine,ut);
 		servicePost.insertPost(p);
