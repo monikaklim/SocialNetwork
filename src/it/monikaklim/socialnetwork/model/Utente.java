@@ -1,10 +1,14 @@
 package it.monikaklim.socialnetwork.model;
 
+import java.util.*;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -33,15 +37,11 @@ public class Utente {
 	@Column
 	private int richiestaModificaPsw; //0 = no - 1 = si
 	
-	public int getRichiestaModificaPsw() {
-		return richiestaModificaPsw;
-	}
-
-
-	public void setRichiestaModificaPsw(int richiestaModificaPsw) {
-		this.richiestaModificaPsw = richiestaModificaPsw;
-	}
-
+	@OneToMany(mappedBy="utente")
+	private List<Post> post;
+	
+	
+	
 
 	public Utente() {
 		
@@ -115,6 +115,47 @@ public class Utente {
 	public void setDataNascita(String dataNascita) {
 		this.dataNascita = dataNascita;
 	}	
+	
+	
+	public int getRichiestaModificaPsw() {
+		return richiestaModificaPsw;
+	}
+
+
+	public void setRichiestaModificaPsw(int richiestaModificaPsw) {
+		this.richiestaModificaPsw = richiestaModificaPsw;
+	}
+
+
+	public List<Post> getPost() {
+		return post;
+	}
+
+
+	public void setPost(ArrayList<Post> post) {
+		this.post = post;
+	}
+	
+	//add post
+	
+	public void addPost(Post p) {
+	
+		if(post == null) {
+			post = new ArrayList<Post>();
+		}
+		
+		post.add(p);
+		p.setUtente(this);
+	}
+
+
+	@Override
+	public String toString() {
+		return "Utente [idUtente=" + idUtente + ", nome=" + nome + ", cognome=" + cognome + ", dataNascita="
+				+ dataNascita + ", username=" + username + ", password=" + password + ", email=" + email
+				+ ", richiestaModificaPsw=" + richiestaModificaPsw ;
+	}
+	
 	
 	
 	

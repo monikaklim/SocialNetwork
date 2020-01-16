@@ -10,11 +10,11 @@
 </head>
 
 <body>
-
+<div>
 <h3>Inserisci i tuoi dati</h3>
 
 <form action = "processRegistrazione" method = "POST" >
-<div>
+
 <table>
 <tr>
 <td>Nome:</td>
@@ -63,15 +63,14 @@ function annulla(){
 		window.location.href ="";	
 	  } else {
 	   
-	  }
-	
+	  }	
 }
 
 </script>
-</div>
-</form>
 
-<a id = "homelink" href= " "><i class="material-icons">home</i></a>
+</form>
+</div>
+<a title= "Homepage" id = "homelink" href= " "><i class="material-icons">home</i></a>
 
 
 </body>

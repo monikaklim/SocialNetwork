@@ -1,34 +1,49 @@
 package it.monikaklim.socialnetwork.controller;
 
 import java.util.*;
-import java.io.IOException;
-import javax.servlet.ServletException;
+import java.io.*;
+
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CookieValue;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseStatus;
-
-import it.monikaklim.socialnetwork.model.Utente;
-import it.monikaklim.socialnetwork.service.ServiceLogin;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
+import it.monikaklim.socialnetwork.model.*;
+import it.monikaklim.socialnetwork.service.*;
 import javax.mail.*;
 import javax.mail.internet.*;
+
 @Controller
 public class SocialNetworkController {
 
    private final String messaggioResetPassword ="Clicca sul link per creare una nuova password:\n\n http://localhost:8080/SocialNetwork/resetPassword?idUtente=";
 	
+   //service
 	@Autowired
+	@Qualifier("serviceLogin")
 	private ServiceLogin service;	
 	
+	@Autowired
+	@Qualifier("serviceImmagine")
+	private ServiceImmagine serviceImm;	
+	
+	@Autowired
+	@Qualifier("servicePost")
+	private ServicePost servicePost;	
 	
 
 	
-//-----homepage-----	
+//------pagina iniziale------	
 	@RequestMapping("/")
 	public String showLogin() {
 
@@ -36,32 +51,44 @@ public class SocialNetworkController {
 	}		
 	
 	
-//------login------
+//-------login-------
+	Utente utente = null;
+	Utente u = null;
 	@RequestMapping("/processLogin")
-	public String processLogin(HttpServletRequest request, Model model,HttpServletResponse response) throws ServletException, IOException{
+	public String processLogin(@CookieValue(value = "username", defaultValue = "") String username,HttpServletRequest request,HttpServletResponse response, Model model) {
 
-		String username = request.getParameter("username").trim();
+		username = request.getParameter("username").trim();
 		String password = request.getParameter("password").trim();
-		
 		String messaggio = "";
-		
-		if( service.findUtente(username,password) == false)
+		 u = service.findUtente(username,password);
+		if(  u == null)
 			{messaggio = "Password e/o username non validi.";
 			model.addAttribute("msg",messaggio);
 			return "login";
 			}
 		else	
 		{
+			List<Post> postlist = servicePost.selectAllPost(u);		
+		Cookie user = new Cookie("username", username);
+		Cookie id = new Cookie("idUtente",Integer.toString(u.getIdUtente()));
+		  response.addCookie(user);
+		  response.addCookie(id);
+			model.addAttribute("postlist",postlist);
+			model.addAttribute("idUtente", u.getIdUtente());
 			return "dashboard";
 			}
 		}
 	
 	
 
-//-----home utente-------	
-	@RequestMapping("/dashboard")
-	public String showLogged() {
+//-------dashboard-------	
 
+	@RequestMapping("/dashboard")
+	public String showDashboard(HttpServletRequest request, Model model) {
+
+	List<Post> postlist = servicePost.selectAllPost(u);	
+
+	model.addAttribute("postlist",postlist);
 	return "dashboard";
 	}	
 	
@@ -75,7 +102,7 @@ public class SocialNetworkController {
 	
 	
 	String indirizzomail = "";
-	Utente utente = null;
+	
 	int codiceGenerato = 0;
 	
 	//email di verifica per richiesta modifica password
@@ -188,8 +215,7 @@ public class SocialNetworkController {
 	}
 	else
     model.addAttribute("controllo3","L'email non è stata inviata.");	
- }
-	
+	}
 	return "forgottenpassword";
 	}
 	
@@ -254,11 +280,6 @@ public class SocialNetworkController {
 		return "confirmregistration";
 	}	
 		
-	@RequestMapping("/select")
-	public String showSelect() {
-
-	return "redirect:/";
-	}	
 		
 	//conferma registrazione
 	@RequestMapping("/confirmRegistration")
@@ -267,6 +288,110 @@ public class SocialNetworkController {
 	return "confirmregistration";
 	}	
 	
+	
+	
+//--------post---------
+	
+	
+@RequestMapping("/newPost")
+public String showNewPost(Model model) {
+model.addAttribute("idUtente", u.getIdUtente());
+return "newpost";
+}		
+	
+
+//pubblica post
+Utente ut = null;
+
+@RequestMapping("/publishPost")
+public String publishPost(@RequestParam CommonsMultipartFile file, @RequestParam(value ="idUtente") String id,HttpSession session, HttpServletRequest request, Model model)throws Exception {
+Cookie[] c = request.getCookies();
+String idcookie = "";
+for(int i=0; i< c.length;i++){
+	if(c[i].getName().equals("idUtente"))
+	idcookie = c[i].getValue().toString();
+}
+
+System.out.println(idcookie);
+int idint = Integer.parseInt(idcookie);
+
+if(idint != 0) {
+	//immagine
+	Immagine immagine = null;
+	
+	if(file != null) {
+	try {
+	String path = "C:\\Users\\monika.klim\\eclipse-workspace\\SocialNetwork\\WebContent\\resources\\images\\";
+	String ext = file.getOriginalFilename().substring((file.getOriginalFilename().indexOf("."))+1);
+	String nomeFile = file.getOriginalFilename().substring(0,file.getOriginalFilename().indexOf("."));
+	byte[] bytes = file.getBytes();
+
+	immagine = new Immagine(nomeFile,path,ext,bytes);
+	
+	serviceImm.insertImmagine(immagine);
+	serviceImm.saveImmagineFromDB(immagine.getIdImmagine());
+	}
+	catch(Exception e) {
+		System.out.println("Errore, non è stato possibile caricare l'immagine.");
+	}
+	}
+	 ut = service.findUtenteById(idint); ///
+	
+	
+	 
+	//testo
+	String contenuto = request.getParameter("inputtext").trim();
+	if(contenuto.isEmpty() == false) {
+		Post p = new Post(contenuto,ut,immagine);
+		servicePost.insertPost(p);
+		model.addAttribute("idUtente",idint);
+	}else {
+		Post p = new Post(immagine,ut);
+		servicePost.insertPost(p);
+	}
+	
+}
+	return "redirect:/dashboard";
+}
+
+
+
+
+//modifica post
+
+
+@GetMapping("/updatePost")
+public String showUpdate(@RequestParam("idPost")String idPost, Model model) {
+	Post post = servicePost.selectPost(Integer.parseInt(idPost));
+	model.addAttribute("post", post);
+	return "updatepost";
+}	
+
+
+@RequestMapping("/processUpdate")
+public String processUpdate2(@ModelAttribute("post") Post post, Model model) {
+	servicePost.updatePost(post);
+	model.addAttribute("post2",post);
+
+	return "redirect:/dashboard";
+}	
+
+//elimina post
+@GetMapping("/deletePost")
+public String showDelete(@RequestParam("idPost")String idPost) {
+	Post post = servicePost.selectPost(Integer.parseInt(idPost));
+	servicePost.deletePost(post);
+	return "redirect:/dashboard";
+}	
+
+
+
+
+
+
+
+
+
 	
 	
 }
