@@ -46,6 +46,17 @@
 
 <c:set var = "i" value = "${9}"/>
  <c:forEach var="post" items="${postlist}"  end= "${i}" varStatus = "loop" > 
+ 
+ <c:url  var ="deletepostlink" value = "/deletePost" > 
+						<c:param name="idPost" value= "${post.idPost}"/>
+</c:url>
+
+ <c:url  var ="updatepostlink" value = "/updatePost" > 
+						<c:param name="idPost" value= "${post.idPost}"/>
+</c:url>
+
+
+
 <table id ="tabellapost">
 
 						<tr > <td id ="username">${post.utente.username}  </td> </tr>
@@ -54,8 +65,8 @@
 					
 						<tr><td >
 						
-							<a id = "opzioni" href="deletePost"><i class="material-icons">delete</i></a>
-							<a id = "opzioni" href="updatePost"><i class="material-icons">edit</i></a>		
+							<a id = "opzioni" href="${deletepostlink} "><i class="material-icons">delete</i></a>
+							<a id = "opzioni" href="${updatepostlink}"><i class="material-icons">edit</i></a>		
 
 											</td> </tr>
 											

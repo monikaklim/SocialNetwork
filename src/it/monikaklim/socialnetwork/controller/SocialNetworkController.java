@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -341,6 +343,32 @@ public String publishPost(@RequestParam CommonsMultipartFile file, @RequestParam
 	}
 	return "redirect:/dashboard";
 }
+
+
+
+
+//modifica post
+
+
+@GetMapping("/updatePost")
+public String showUpdate(@RequestParam("idPost")String idPost, Model model) {
+	Post post = servicePost.selectPost(Integer.parseInt(idPost));
+	model.addAttribute("post", post);
+	return "updatepost";
+}	
+
+
+@RequestMapping("/processUpdate")
+public String processUpdate2(@ModelAttribute("post") Post post, Model model) {
+	servicePost.updatePost(post);
+	model.addAttribute("post2",post);
+
+	return "redirect:/dashboard";
+}	
+
+
+
+
 
 
 

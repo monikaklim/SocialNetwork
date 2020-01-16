@@ -28,8 +28,8 @@ public void deletePost(Post post) {
 	
 
 @Transactional
-public void updatePost(Post post,String contenuto) {		
-	 postDAO.updatePost(post, contenuto);	
+public void updatePost(Post post) {		
+	 postDAO.updatePost(post);	
 	}	
 	
 @Transactional

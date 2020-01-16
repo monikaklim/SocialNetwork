@@ -10,7 +10,7 @@ public interface PostDAO {
 	
 	void insertPost(Post post);
 	
-	void updatePost(Post post, String contenuto);
+	void updatePost(Post post);
 	
 	List<Post> selectAllPost( Utente utente);
 	
