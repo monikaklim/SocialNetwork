@@ -54,14 +54,9 @@
 					
 						<tr><td >
 						
-							<div class = "dropdown">
-							<button id = "optionsbutton" onclick = "showOptions()"> <i class="material-icons">expand_more</i>  </button>
-							<div id ="opzioni">
-							<a href="deletePost"><i class="material-icons">delete</i>Elimina post</a>
-							<a href="updatePost"><i class="material-icons">edit</i>Modifica post</a>
-							
-							</div>				
-							</div>
+							<a id = "opzioni" href="deletePost"><i class="material-icons">delete</i></a>
+							<a id = "opzioni" href="updatePost"><i class="material-icons">edit</i></a>		
+
 											</td> </tr>
 											
 					
@@ -70,7 +65,9 @@
 					<tr id = "heart"> <td class = "dislike" >   <i onclick = "like(this)" class="material-icons">favorite</i>							
 	<script>
 function like(x) {
-	 x.classList.toggle("like");	}
+	 x.classList.toggle("like");}
+	  
+	 
 	</script>
                    </td></tr> 	
 
@@ -79,34 +76,25 @@ function like(x) {
 
 
 
-<c:forEach begin = "0" end = "${size-1}" > 
 
 <div id= "moreposts" style = "display:none" >
 
  <c:forEach var="post" items="${postlist}" begin= "${i+1}" end= "${i+10}" > 
 <table id ="tabellapost">
 <tr > <td id ="username">${post.utente.username} </td> </tr>
-						
-						
+		<tr><td >
+							<a id = "opzioni" href="deletePost"><i class="material-icons">delete</i></a>
+							<a id = "opzioni" href="updatePost"><i class="material-icons">edit</i></a>
+											</td> </tr>
+																
 						<tr><td id = "contenutopost"> ${post.testo} </td></tr>
 					<tr> <td id = "immaginepost"> <img src = "${post.immagine.path}${post.immagine.nome}.${post.immagine.extension }" onerror="this.style.display='none'" ></td> </tr>
-					
-								<tr><td >
-						
-							<div class = "dropdown">
-							<button id = "optionsbutton" onclick = "showOptions()"> <i class="material-icons">expand_more</i>  </button>
-							<div id ="opzioni" class = "hide">
-							<a href="deletePost"><i class="material-icons">delete</i>Elimina post</a>
-							<a href="updatePost"><i class="material-icons">edit</i>Modifica post</a>
-
-							</div>				
-							</div>
-											</td> </tr>
-											
 					<tr id = "heart"> <td class = "dislike" >   <i onclick = "like(this)" class="material-icons">favorite</i>							
 	<script>
 function like(x) {
 	 x.classList.toggle("like");}
+	 
+
 	</script>
                    </td></tr> 	
 
@@ -124,20 +112,11 @@ function showMore() {
 	 }
 
 
-
-function showOptions(){
-	document.getElementById("opzioni").classList.toggle("show");	
-	
-	
-}
-
-
-
 </script>
 
 </div>
 
-</c:forEach>
+
 
 <button id ="more" onclick = "showMore()" > <i class="material-icons" style = "font-size:25px;">more_horiz</i> </button>
 </div>

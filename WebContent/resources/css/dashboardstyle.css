@@ -25,6 +25,7 @@ html{
 
 
 #nav {  
+	   z-index: 1;
 	position:fixed;
 	top:0px;
 	margin-top:0px;
@@ -46,6 +47,7 @@ html{
  }
  
 #bottomnav{
+	 z-index: 1;
 	position:fixed;
 	margin-bottom:0px;
 	bottom:0px;
@@ -148,53 +150,29 @@ html{
   font-size:15px;
 
   }
- 
- #optionsbutton{
-  width:30px;
-  height:30px;
+
+  
+  #opzioni { 
   float:right;
-  padding:10px;
-  margin-right:5px;
+  margin-right:0px;
   margin-top:0px;
   top:0px;
-  border:none;
-  background-color:#e6f5ff;
-  cursor:pointer;
- } 
-  
-  .dropdown {
-  
-  width:110px;
-  float:right;
-  position: relative;
-  display:inline-block;
-}
-
-  .dropdown #opzioni{
-   
-  display: none;
-  position: absolute;
-  min-width: 100px;
-  box-shadow: 0px 2px 16px 0px rgba(0,0,0,0.2);
-  width:130px;
-  }
-  
-  #opzioni a{
-  background-color: #66b3ff; 
   color: black;
-  padding:4px;
+  padding:1px;
   text-decoration: none;
   display: block;
-  width:130px;
+  width:20px;
   }
   
-    #opzioni a:hover{
-background-color:  #0059b3;
-  color: white;
+  #opzioni i {
+   font-size:18px;
   }
   
-  .show {display:block;}
-  .hide {display:none;}
+  #opzioni:hover{
+  color: #0059b3;
+  }
+  
+
   #username{
   font-size:18px;
   font-weight: bold;
