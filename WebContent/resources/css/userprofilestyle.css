@@ -127,10 +127,41 @@ html{
 	border-radius: 8px;
 	float: left;
 	vertical-align:center;  
-	margin-right:20%;
+	margin-left:50px;
 
 	}
   
+  #pagecontainer{
+  display:table;
+  width:100%;
+  
+  }
+  
+  
+  #listaamici{
+  font-size:30px;
+	max-width: 500px;
+	height: 500px;
+	width:auto;
+	margin-top: 100px;
+	padding:10px;
+    background-color:#e6f5ff;
+   border: 2px solid #0059b3;
+   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+	border-radius: 8px;
+	float: right;
+	vertical-align:center;
+  	margin-right:50px;
+  }
+  
+ #listaamici:hover{
+   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+ 
+ }
+ 
+ 
+ 
   
   .dati {
   text-align:right;

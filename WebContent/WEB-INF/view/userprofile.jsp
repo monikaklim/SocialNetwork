@@ -62,8 +62,16 @@
 
 
 <div id = "listaamici">
+<table>
+<tr><td>Lista Amici </td></tr>
 
 
+
+
+
+
+
+</table>
 </div>
 
 
