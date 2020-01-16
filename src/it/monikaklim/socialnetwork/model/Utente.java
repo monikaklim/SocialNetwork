@@ -41,6 +41,10 @@ public class Utente {
 	private List<Post> post;
 	
 	
+	@OneToMany(mappedBy="idAmico")
+	private List<Utente> amici;
+	
+	
 	
 
 	public Utente() {
