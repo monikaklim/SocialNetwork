@@ -1,7 +1,6 @@
 package it.monikaklim.socialnetwork.dao;
 
-import java.util.List;
-
+import java.util.*;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,7 +51,7 @@ public class PostDAOImpl implements PostDAO {
 		try {
 			Session session = sessionFactory.getCurrentSession();
 			post = session.createQuery("from Post where idPost = "+idPost , Post.class).getSingleResult();
-
+			
 			}
 			catch(Exception e) {
 				e.printStackTrace();
@@ -70,6 +69,7 @@ public class PostDAOImpl implements PostDAO {
 		try {
 			Session session = sessionFactory.getCurrentSession();
 			post = session.createQuery("from Post where idUtente = "+utente.getIdUtente() + " order by idUtente" , Post.class).getResultList();
+			Collections.reverse(post);
 			}
 			catch(Exception e) {
 				e.printStackTrace();

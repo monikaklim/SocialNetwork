@@ -48,6 +48,11 @@ public class Post {
 			this.utente = utente;
 		}
 
+		public Post(Immagine immagine, Utente utente) {
+			this.immagine = immagine;
+			this.utente = utente;
+		}
+		
 
 		public Post(String testo, Utente utente, Immagine immagine) {
 			this.testo = testo;

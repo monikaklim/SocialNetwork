@@ -12,7 +12,7 @@
 </head>
 
 <body >
-<c:set var="idU" scope="application" value="${idUtente}"/>
+
 
 <div id= "nav">
 <a title= "Logout" id = "escilink" href =""><i class="material-icons">highlight_off</i></a>
@@ -26,11 +26,11 @@
 
 
 <c:url  var ="newpostlink" value = "/newPost" > 
-						<c:param name="idUtente" value= "${idU}"/>
+						<c:param name="idUtente" value= "${cookie.idUtente.value}"/>
 </c:url>
 <a title= "Nuovo post" id ="newpostlink" href = "${newpostlink} "><i style = "font-size:35px; "class="material-icons">add_circle</i></a>
 
-<input id = "idUtente" style="display:none" type = text  value = "${idU}" name = "idUtente" />
+<input id = "idUtente" style="display:none" type = text  value = " ${cookie.idUtente.value}" name = "idUtente" />
 
 
 
@@ -39,9 +39,6 @@
 
 
 <div id = "postContainer">
-
-
-
 
 
 <c:set var = "i" value = "${9}"/>
@@ -58,19 +55,15 @@
 
 
 <table id ="tabellapost">
+<!-- ${post.utente.username}   -->
 
-						<tr > <td id ="username">${post.utente.username}  </td> </tr>
-						
-						
-					
-						<tr><td >
-						
-							<a id = "opzioni" href="${deletepostlink} "><i class="material-icons">delete</i></a>
+			<tr > <td id ="username">   ${cookie.username.value}</td> </tr>
+
+						<tr><td>
+							<a id = "opzioni" href ="${deletepostlink}" onclick = "if(!(confirm('Vuoi eliminare questo post?'))) return false"><i class="material-icons">delete</i></a>
 							<a id = "opzioni" href="${updatepostlink}"><i class="material-icons">edit</i></a>		
-
-											</td> </tr>
+						</td> </tr>
 											
-					
 						<tr><td id = "contenutopost"> ${post.testo} </td></tr>
 					<tr> <td id = "immaginepost"> <img src = "${post.immagine.path}${post.immagine.nome}.${post.immagine.extension }" onerror="this.style.display='none'" ></td> </tr>						
 					<tr id = "heart"> <td class = "dislike" >   <i onclick = "like(this)" class="material-icons">favorite</i>							
@@ -78,14 +71,11 @@
 function like(x) {
 	 x.classList.toggle("like");}
 	  
-	 
 	</script>
                    </td></tr> 	
 
 </table>
 </c:forEach>
-
-
 
 
 <div id= "moreposts" style = "display:none" >
@@ -102,7 +92,7 @@ function like(x) {
 <tr > <td id ="username">${post.utente.username} </td> </tr>
 		<tr><td >
 							
-							<a id = "opzioni" href="${deletepostlink} "><i class="material-icons">delete</i></a>
+							<a href ="${deletepostlink}" onclick = "if(!(confirm('Vuoi eliminare questo post?'))) return false" id = "opzioni"><i class="material-icons">delete</i></a>
 							<a id = "opzioni" href="${updatepostlink}"><i class="material-icons">edit</i></a>	
 											</td> </tr>
 																
@@ -130,20 +120,13 @@ function showMore() {
 	  } 
 	 }
 
-
 </script>
-
 </div>
 
 
 
 <button id ="more" onclick = "showMore()" > <i class="material-icons" style = "font-size:25px;">more_horiz</i> </button>
 </div>
-
-
-
-
-
 
 
 
