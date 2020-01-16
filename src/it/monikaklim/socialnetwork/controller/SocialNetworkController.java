@@ -104,13 +104,28 @@ public class SocialNetworkController {
 	
 	@RequestMapping("/userProfile")
 	public String showUserProfile(@ModelAttribute Utente utente, Model model) {
+		
+	List<Utente> amici = service.selectAllAmici(u);	
+	model.addAttribute("listaAmici",amici);	
 	model.addAttribute("utenteSession",u);
 	return "userprofile";
 	}	
 	
 	
+	//aggiungi amici
 	
 	
+	@RequestMapping("/addFriend")
+	public String addFriend(@ModelAttribute Utente utente, Model model) {
+	//add user
+		
+		
+		
+	List<Utente> amici = service.selectAllAmici(u);	
+	model.addAttribute("listaAmici",amici);	
+	model.addAttribute("utenteSession",u);
+	return "userprofile";
+	}	
 	
 	
 	
