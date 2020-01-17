@@ -47,8 +47,8 @@ public class Utente {
 	
 
 	@ManyToMany
-	@JoinTable(name = "amicizia",   joinColumns =@JoinColumn(name = "idUtente"), 
-	inverseJoinColumns=@JoinColumn(name ="idAmico"))   
+	@JoinTable(name = "amicizia",   joinColumns =@JoinColumn(name = "idUtente1"), 
+	inverseJoinColumns=@JoinColumn(name ="idUtente2"))   
 	
 	private List<Utente> amici;
 	

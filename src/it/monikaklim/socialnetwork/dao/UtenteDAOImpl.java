@@ -87,8 +87,7 @@ public class UtenteDAOImpl implements UtenteDAO{
 			e.printStackTrace();
 			System.out.println( "errore");
 		}
-		
-		
+	
 	}
 
 //set richiesta
@@ -129,25 +128,7 @@ public class UtenteDAOImpl implements UtenteDAO{
 	
 	
 	
-//select all amici
-	
-	public List<Utente> selectAllAmici(Utente utente){
-		
-		List<Utente> amici = null;
-		
-		try {
-			Session session = sessionFactory.getCurrentSession();
-			amici = session.createQuery("from Utente u join amicizia a on a.idUtente = u.idUtente where u.idUtente ="+utente.getIdUtente(), Utente.class).getResultList();
 
-			}
-			catch(Exception e) {
-				e.printStackTrace();
-				System.out.println("Utente non trovato");
-			}
-		return amici;
-			
-	}
-	
 	
 	
 	

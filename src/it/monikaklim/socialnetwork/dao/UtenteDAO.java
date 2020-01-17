@@ -17,5 +17,5 @@ public interface UtenteDAO {
 	void setRichiestaModificaPsw(int idUtente, int richiesta);
 	
 	 Utente findUtenteById(int idUtente);
-	 List<Utente> selectAllAmici(Utente utente);
+
 }

@@ -12,45 +12,53 @@ public class Amicizia {
 	
 	@Id
     @ManyToOne
-    @JoinColumn(referencedColumnName = "idUtente")
-   Utente idUtente;
+    @JoinColumn(referencedColumnName = "idUtente1")
+   Utente utente1;
 
     @ManyToOne
-    @JoinColumn(referencedColumnName = "idAmico")
-   Utente idAmico;
+    @JoinColumn(referencedColumnName = "idUtente2")
+   Utente utente2;
 	
 	@Column
-	private int statoRichiesta;
+	private int statoRichiesta;  //0 = inviata  1 = accettata  2 = eliminata  
 	
 	@Column
-	private Utente utenteRichiesta;
+	private int utenteRichiesta; //utente che esegue l'ultima azione
 	
 	
 	public Amicizia() {}
+	
 
-	public Amicizia(Utente idUtente, Utente idAmico, int statoRichiesta, Utente utenteRichiesta) {
 
-		this.idUtente = idUtente;
-		this.idAmico = idAmico;
+
+	public Amicizia(Utente utente1, Utente utente2, int statoRichiesta, int utenteRichiesta) {
+		this.utente1 = utente1;
+		this.utente2 = utente2;
 		this.statoRichiesta = statoRichiesta;
 		this.utenteRichiesta = utenteRichiesta;
 	}
 
-	public Utente getIdUtente() {
-		return idUtente;
+
+
+
+	public Utente getUtente1() {
+		return utente1;
 	}
 
-	public void setIdUtente(Utente idUtente) {
-		this.idUtente = idUtente;
+
+	public void setUtente1(Utente utente1) {
+		this.utente1 = utente1;
 	}
 
-	public Utente getIdAmico() {
-		return idAmico;
+	public Utente getUtente2() {
+		return utente2;
 	}
 
-	public void setIdAmico(Utente idAmico) {
-		this.idAmico = idAmico;
+
+	public void setUtente2(Utente utente2) {
+		this.utente2 = utente2;
 	}
+
 
 	public int getStatoRichiesta() {
 		return statoRichiesta;
@@ -60,20 +68,24 @@ public class Amicizia {
 		this.statoRichiesta = statoRichiesta;
 	}
 
-	public Utente getUtenteRichiesta() {
+	public int getUtenteRichiesta() {
 		return utenteRichiesta;
 	}
 
-	public void setUtenteRichiesta(Utente utenteRichiesta) {
+	public void setUtenteRichiesta(int utenteRichiesta) {
 		this.utenteRichiesta = utenteRichiesta;
 	}
 
+
+
+
 	@Override
 	public String toString() {
-		return "Amicizia [idUtente=" + idUtente + ", idAmico=" + idAmico + ", statoRichiesta=" + statoRichiesta
+		return "Amicizia [utente1=" + utente1 + ", utente2=" + utente2 + ", statoRichiesta=" + statoRichiesta
 				+ ", utenteRichiesta=" + utenteRichiesta + "]";
 	}
-	
+
+
 	
 	
 	
