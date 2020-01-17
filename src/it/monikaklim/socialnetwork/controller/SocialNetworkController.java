@@ -44,7 +44,10 @@ public class SocialNetworkController {
 	@Qualifier("servicePost")
 	private ServicePost servicePost;	
 	
-
+	@Autowired
+	@Qualifier("serviceAmicizia")
+	private ServiceAmicizia serviceAmi;	
+	
 	
 //------pagina iniziale------	
 	@RequestMapping("/")
@@ -71,7 +74,9 @@ public class SocialNetworkController {
 			}
 		else	
 		{
-		List<Post> postlist = servicePost.selectAllPost(u);		
+		List<Post> postlist = servicePost.selectAllPost(u);	
+		
+		
 			model.addAttribute("postlist",postlist);
 			model.addAttribute("idUtente", u.getIdUtente());
 			model.addAttribute("utenteSession", u);
@@ -105,8 +110,8 @@ public class SocialNetworkController {
 	@RequestMapping("/userProfile")
 	public String showUserProfile(@ModelAttribute Utente utente, Model model) {
 		
-	//List<Utente> amici = service.selectAllAmici(u);	
-//	model.addAttribute("listaAmici",amici);	
+		List<Amicizia> amici = serviceAmi.selectAllAmici(u);
+		model.addAttribute("amici", amici);
 	model.addAttribute("utenteSession",u);
 	return "userprofile";
 	}	
