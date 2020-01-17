@@ -24,9 +24,7 @@ public class Utente {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column
-	@ManyToMany
-	@JoinTable(name = "amicizia",   joinColumns =@JoinColumn(name = "idAmico"), 
-	inverseJoinColumns=@JoinColumn(name ="idUtente"))
+	@ManyToMany(mappedBy="amici")
 	private int idUtente;	
 	
 	@Column
@@ -47,14 +45,15 @@ public class Utente {
 	@OneToMany(mappedBy="utente")
 	private List<Post> post;
 	
-	
+
 	@ManyToMany
 	@JoinTable(name = "amicizia",   joinColumns =@JoinColumn(name = "idUtente"), 
-	inverseJoinColumns=@JoinColumn(name ="idAmico"))
+	inverseJoinColumns=@JoinColumn(name ="idAmico"))   
 	
 	private List<Utente> amici;
 	
 	
+
 	
 
 	public Utente() {
