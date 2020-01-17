@@ -4,10 +4,11 @@ import java.util.*;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import it.monikaklim.socialnetwork.model.*;
 
-
+@Component
 public class AmiciziaDAOImpl implements AmiciziaDAO {
 	
 	@Autowired
@@ -21,10 +22,10 @@ public class AmiciziaDAOImpl implements AmiciziaDAO {
 		int id2 = utente2.getIdUtente();
 		
 		if(id1 > id2)
-	  amicizia = new Amicizia(utente2,loggato,0,id2);
+	  amicizia = new Amicizia(utente2,loggato.getIdUtente(),0,id2);
 		
 		if(id2>id1)
-	 amicizia = new Amicizia(loggato,utente2,0,id1);	
+	 amicizia = new Amicizia(loggato,utente2.getIdUtente(),0,id1);	
 			
 		
 		try {

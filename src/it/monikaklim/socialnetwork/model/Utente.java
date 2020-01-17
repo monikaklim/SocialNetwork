@@ -24,7 +24,6 @@ public class Utente {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column
-	@ManyToMany(mappedBy="amici")
 	private int idUtente;	
 	
 	@Column
@@ -44,14 +43,8 @@ public class Utente {
 	
 	@OneToMany(mappedBy="utente")
 	private List<Post> post;
-	
+	  
 
-	@ManyToMany
-	@JoinTable(name = "amicizia",   joinColumns =@JoinColumn(name = "idUtente1"), 
-	inverseJoinColumns=@JoinColumn(name ="idUtente2"))   
-	
-	private List<Utente> amici;
-	
 	
 
 	
@@ -163,20 +156,6 @@ public class Utente {
 
 
 
-	public List<Utente> getAmici() {
-		return amici;
-	}
-
-	//add amico
-	public void addAmico(Utente u) {
-		
-		if(amici == null) {
-			amici = new ArrayList<Utente>();
-		}
-		
-		amici.add(u);
-
-	}
 
 
 

@@ -1,5 +1,7 @@
 package it.monikaklim.socialnetwork.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -7,17 +9,17 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity(name = "amicizia")
-public class Amicizia {
+public class Amicizia  implements Serializable{
 
 	
 	@Id
     @ManyToOne
-    @JoinColumn(referencedColumnName = "idUtente1")
+    @JoinColumn(name = "idUtente1")
    Utente utente1;
 
-    @ManyToOne
-    @JoinColumn(referencedColumnName = "idUtente2")
-   Utente utente2;
+	@Id
+	@Column(name = "idUtente2")
+    int idUtente2;
 	
 	@Column
 	private int statoRichiesta;  //0 = inviata  1 = accettata  2 = eliminata  
@@ -31,9 +33,9 @@ public class Amicizia {
 
 
 
-	public Amicizia(Utente utente1, Utente utente2, int statoRichiesta, int utenteRichiesta) {
+	public Amicizia(Utente utente1,int utente2, int statoRichiesta, int utenteRichiesta) {
 		this.utente1 = utente1;
-		this.utente2 = utente2;
+		this.idUtente2 = utente2;
 		this.statoRichiesta = statoRichiesta;
 		this.utenteRichiesta = utenteRichiesta;
 	}
@@ -50,14 +52,21 @@ public class Amicizia {
 		this.utente1 = utente1;
 	}
 
-	public Utente getUtente2() {
-		return utente2;
+
+
+
+	public int getIdUtente2() {
+		return idUtente2;
 	}
 
 
-	public void setUtente2(Utente utente2) {
-		this.utente2 = utente2;
+
+
+	public void setIdUtente2(int idUtente2) {
+		this.idUtente2 = idUtente2;
 	}
+
+
 
 
 	public int getStatoRichiesta() {
@@ -81,7 +90,7 @@ public class Amicizia {
 
 	@Override
 	public String toString() {
-		return "Amicizia [utente1=" + utente1 + ", utente2=" + utente2 + ", statoRichiesta=" + statoRichiesta
+		return "Amicizia [utente1=" + utente1 + ", utente2=" + idUtente2 + ", statoRichiesta=" + statoRichiesta
 				+ ", utenteRichiesta=" + utenteRichiesta + "]";
 	}
 

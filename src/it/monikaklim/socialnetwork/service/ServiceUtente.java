@@ -9,7 +9,6 @@ import it.monikaklim.socialnetwork.dao.UtenteDAOImpl;
 import it.monikaklim.socialnetwork.model.Utente;
 
 @Service
-
 public class ServiceUtente {
 
 	@Autowired
