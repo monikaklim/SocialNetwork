@@ -1,5 +1,6 @@
 package it.monikaklim.socialnetwork.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,7 +44,7 @@ public Amicizia selectAmicizia(Utente loggato, Utente utente2) {
 
 
 @Transactional
-public List<Amicizia> selectAllAmici(Utente utente) {
+public  ArrayList<Utente> selectAllAmici(Utente utente) {
 	return amiDAO.selectAllAmici(utente);
 }	
 	

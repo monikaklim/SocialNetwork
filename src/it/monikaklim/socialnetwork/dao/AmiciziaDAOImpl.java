@@ -99,20 +99,36 @@ public class AmiciziaDAOImpl implements AmiciziaDAO {
 	
 	//select all amici di un utente
 	
-		public List<Amicizia> selectAllAmici(Utente utente){
-			
+		public ArrayList<Utente> selectAllAmici(Utente utente){
+			ArrayList<Utente> utenti = new ArrayList<Utente>();
 			List<Amicizia> amici = null;
-			
+		
+		
 			try {
 				Session session = sessionFactory.getCurrentSession();
-				amici = session.createQuery("from  amicizia   where idUtente1 ="+utente.getIdUtente() + " or idUtente2 ="+utente.getIdUtente() + " and statoRichiesta = 1 ", Amicizia.class).getResultList();
-
+				amici = session.createQuery("from  amicizia  where idUtente1 ="+utente.getIdUtente() + " or idUtente2 ="+utente.getIdUtente() + " and statoRichiesta = 1 ", Amicizia.class).getResultList();
+			
+			
+				for(int i = 0; i<amici.size();i++) {
+				int idU1 = amici.get(i).getUtente1().getIdUtente();
+				int idU2 = amici.get(i).getIdUtente2();	
+				if(idU1 != utente.getIdUtente()) {
+			    Utente ut = session.createQuery("from  Utente where idUtente ="+idU1 , Utente.class).getSingleResult();
+				utenti.add(ut);}
+				
+				if(idU2 != utente.getIdUtente()) {
+					  Utente ut = session.createQuery("from  Utente where idUtente ="+idU2 , Utente.class).getSingleResult();
+						utenti.add(ut);}
+				
+				
+				}
+				
 				}
 				catch(Exception e) {
 					e.printStackTrace();
 					System.out.println("Nessun amico trovato");
 				}
-			return amici;
+			return utenti;
 				
 		}
 		

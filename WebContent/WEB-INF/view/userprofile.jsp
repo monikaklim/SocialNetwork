@@ -68,8 +68,9 @@
 <c:forEach var="amici" items="${amici}" > 
 <table>
  
-<tr> <td>${amici.idUtente2} </td> </tr>
-		<tr><td >																
+<tr>
+<td id = "useramico">@${amici.username}	</td>
+		</tr>														
 
 
 </table>

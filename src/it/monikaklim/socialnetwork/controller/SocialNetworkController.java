@@ -110,7 +110,7 @@ public class SocialNetworkController {
 	@RequestMapping("/userProfile")
 	public String showUserProfile(@ModelAttribute Utente utente, Model model) {
 		
-		List<Amicizia> amici = serviceAmi.selectAllAmici(u);
+		ArrayList<Utente> amici = serviceAmi.selectAllAmici(u);
 		model.addAttribute("amici", amici);
 	model.addAttribute("utenteSession",u);
 	return "userprofile";

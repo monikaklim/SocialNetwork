@@ -12,6 +12,6 @@ public void accettaAmicizia(Utente loggato, Utente richiedente);
 	
 public Amicizia selectAmicizia(Utente loggato, Utente utente2);	
 	
-public List<Amicizia>selectAllAmici(Utente utente);
+public ArrayList<Utente> selectAllAmici(Utente utente);
 	
 }
