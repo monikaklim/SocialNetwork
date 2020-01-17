@@ -81,11 +81,7 @@ public void setRichiestaModificaPsw(int idUtente, int richiesta) {
 	
 }
 
-@Transactional
-public List<Utente> selectAllAmici(Utente utente) {
-	return utenteDAO.selectAllAmici(utente);
-	
-}
+
 
 
 

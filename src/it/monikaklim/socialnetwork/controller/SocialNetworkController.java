@@ -105,8 +105,8 @@ public class SocialNetworkController {
 	@RequestMapping("/userProfile")
 	public String showUserProfile(@ModelAttribute Utente utente, Model model) {
 		
-	List<Utente> amici = service.selectAllAmici(u);	
-	model.addAttribute("listaAmici",amici);	
+	//List<Utente> amici = service.selectAllAmici(u);	
+//	model.addAttribute("listaAmici",amici);	
 	model.addAttribute("utenteSession",u);
 	return "userprofile";
 	}	
@@ -121,8 +121,8 @@ public class SocialNetworkController {
 		
 		
 		
-	List<Utente> amici = service.selectAllAmici(u);	
-	model.addAttribute("listaAmici",amici);	
+	//List<Utente> amici = service.selectAllAmici(u);	
+	//model.addAttribute("listaAmici",amici);	
 	model.addAttribute("utenteSession",u);
 	return "userprofile";
 	}	
@@ -386,10 +386,7 @@ if(id != 0) {
 }
 
 
-
-
 //modifica post
-
 
 @GetMapping("/updatePost")
 public String showUpdate(@RequestParam("idPost")String idPost, Model model) {
