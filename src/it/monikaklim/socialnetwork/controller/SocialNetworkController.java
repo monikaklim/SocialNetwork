@@ -33,8 +33,8 @@ public class SocialNetworkController {
 	
    //service
 	@Autowired
-	@Qualifier("serviceLogin")
-	private ServiceLogin service;	
+	@Qualifier("serviceUtente")
+	private ServiceUtente service;	
 	
 	@Autowired
 	@Qualifier("serviceImmagine")
@@ -44,7 +44,10 @@ public class SocialNetworkController {
 	@Qualifier("servicePost")
 	private ServicePost servicePost;	
 	
-
+	@Autowired
+	@Qualifier("serviceAmicizia")
+	private ServiceAmicizia serviceAmi;	
+	
 	
 //------pagina iniziale------	
 	@RequestMapping("/")
@@ -71,7 +74,9 @@ public class SocialNetworkController {
 			}
 		else	
 		{
-		List<Post> postlist = servicePost.selectAllPost(u);		
+		List<Post> postlist = servicePost.selectAllPost(u);	
+		
+		
 			model.addAttribute("postlist",postlist);
 			model.addAttribute("idUtente", u.getIdUtente());
 			model.addAttribute("utenteSession", u);
@@ -98,23 +103,31 @@ public class SocialNetworkController {
 	
 	
 	
-
-	
 //-------profilo utente--------	
 	
 	@RequestMapping("/userProfile")
 	public String showUserProfile(@ModelAttribute Utente utente, Model model) {
+		
+		ArrayList<Utente> amici = serviceAmi.selectAllAmici(u);
+		model.addAttribute("amici", amici);
 	model.addAttribute("utenteSession",u);
 	return "userprofile";
 	}	
 	
 	
+	//aggiungi amici
 	
 	
-	
-	
-	
-	
+	@RequestMapping("/addFriend")
+	public String addFriend(@ModelAttribute Utente utente, Model model) {
+	//add user
+	Utente ut2 = service.findUtenteById(0);	
+	serviceAmi.richiediAmicizia(u,ut2 );	
+	ArrayList<Utente> amici = serviceAmi.selectAllAmici(u);
+	model.addAttribute("amici", amici);	
+	model.addAttribute("utenteSession",u);
+	return "userprofile";
+	}	
 	
 	
 	
@@ -371,10 +384,7 @@ if(id != 0) {
 }
 
 
-
-
 //modifica post
-
 
 @GetMapping("/updatePost")
 public String showUpdate(@RequestParam("idPost")String idPost, Model model) {

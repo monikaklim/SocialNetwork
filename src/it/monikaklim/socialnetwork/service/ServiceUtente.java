@@ -1,31 +1,31 @@
 package it.monikaklim.socialnetwork.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import it.monikaklim.socialnetwork.dao.LoginDAOImpl;
+import it.monikaklim.socialnetwork.dao.UtenteDAOImpl;
 import it.monikaklim.socialnetwork.model.Utente;
 
 @Service
-
-public class ServiceLogin {
+public class ServiceUtente {
 
 	@Autowired
-	private LoginDAOImpl loginDAO;	
+	private UtenteDAOImpl utenteDAO;	
 	
 	
 	@Transactional
 	public Utente findUtente(String user, String pass) {
 		
 		
-		if(loginDAO.findUtente(user,pass) == null)
+		if(utenteDAO.findUtente(user,pass) == null)
 		{
 			return  null;
 		}
 		else {
 			
-			return loginDAO.findUtente(user,pass);
+			return utenteDAO.findUtente(user,pass);
 		}
 			
 		}	
@@ -34,26 +34,26 @@ public class ServiceLogin {
 	
 	@Transactional
 	public Utente findUtenteByEmail(String mail) {		
-		if(loginDAO.findUtenteByEmail(mail) == null)
+		if(utenteDAO.findUtenteByEmail(mail) == null)
 		{
 			return  null;
 		}
 		else {
 			
-			return loginDAO.findUtenteByEmail(mail);
+			return utenteDAO.findUtenteByEmail(mail);
 		}
 			
 		}	
 	
 	@Transactional
 	public Utente findUtenteById(int idUtente) {		
-		if(loginDAO.findUtenteById(idUtente) == null)
+		if(utenteDAO.findUtenteById(idUtente) == null)
 		{
 			return  null;
 		}
 		else {
 			
-			return loginDAO.findUtenteById(idUtente);
+			return utenteDAO.findUtenteById(idUtente);
 		}
 			
 		}	
@@ -61,14 +61,14 @@ public class ServiceLogin {
 	
 @Transactional
 	public String registraUtente(Utente utente) {		
-		return loginDAO.registraUtente(utente);
+		return utenteDAO.registraUtente(utente);
 				
 		}
 
 
 @Transactional
 	public void updatePassword(int idUtente,String pass1) {
-		 loginDAO.updatePassword(idUtente, pass1);
+		 utenteDAO.updatePassword(idUtente, pass1);
 		
 	}	
 	
@@ -76,9 +76,13 @@ public class ServiceLogin {
 
 @Transactional
 public void setRichiestaModificaPsw(int idUtente, int richiesta) {
-	 loginDAO.setRichiestaModificaPsw(idUtente,richiesta);
+	 utenteDAO.setRichiestaModificaPsw(idUtente,richiesta);
 	
 }
+
+
+
+
 
 
 

@@ -140,6 +140,7 @@ font-weight:bold;
   
   
   #listaamici{
+  min-width: 300px;
   font-size:30px;
 	max-width: 500px;
 	height: 500px;
@@ -155,6 +156,18 @@ font-weight:bold;
   	margin-right:50px;
   	color:#000099;
   }
+  
+  
+    #useramico{
+  font-size:28px;
+  font-weight: bold;
+  text-align:left;
+  text-shadow: 2px 2px 4px  #0059b3;
+  color:white;	
+  border-radius: 4px;
+  }
+  
+  
   
  #listaamici:hover{
    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);

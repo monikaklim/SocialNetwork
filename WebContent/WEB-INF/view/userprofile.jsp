@@ -18,7 +18,7 @@
 <a title= "Logout" id = "escilink" href =""><i class="material-icons">highlight_off</i></a>
 <a title= "Impostazioni" id ="settingslink" href =""><i class="material-icons">settings</i></a>
 <a title= "Dashboard" href ="dashboard"><i class="material-icons">home</i></a>
-<a title= "Profilo" href ="userprofile"><i class="material-icons">account_circle</i></a>
+<a title= "Profilo" href ="userProfile"><i class="material-icons">account_circle</i></a>
 <a title= "Notifiche" href =""><i class="material-icons">notifications</i></a>
 </div>
 
@@ -65,11 +65,16 @@
 <table>
 <tr><td>Lista Amici </td></tr>
 
+<c:forEach var="amici" items="${amici}" > 
+<table>
+ 
+<tr>
+<td id = "useramico">@${amici.username}	</td>
+		</tr>														
 
 
-
-
-
+</table>
+</c:forEach>
 
 </table>
 </div>

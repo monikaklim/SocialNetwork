@@ -1,5 +1,7 @@
 package it.monikaklim.socialnetwork.dao;
 
+import java.util.List;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +10,7 @@ import it.monikaklim.socialnetwork.model.Utente;
 
 
 @Repository
-public class LoginDAOImpl implements LoginDAO{
+public class UtenteDAOImpl implements UtenteDAO{
 
 	
 	@Autowired
@@ -85,8 +87,7 @@ public class LoginDAOImpl implements LoginDAO{
 			e.printStackTrace();
 			System.out.println( "errore");
 		}
-		
-		
+	
 	}
 
 //set richiesta
@@ -123,6 +124,13 @@ public class LoginDAOImpl implements LoginDAO{
 
 		return utente;
 	}
+	
+	
+	
+	
+
+	
+	
 	
 	
 	
